@@ -106,7 +106,7 @@
                         <a href="#" onclick="showSection('buy-balance')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-cart-shopping w-4"></i><span>Bakiye Satın Al</span></a>
                     </div>
 
-                    <!-- YÖNETİM MENÜSÜ (Sadece Admin Görür) -->
+                    <!-- YÖNETİM MENÜSÜ -->
                     <div id="admin-menu-section">
                         <p class="text-[10px] font-bold text-gray-500 uppercase px-3 mb-2 tracking-wider">YÖNETİM</p>
                         <div class="space-y-1">
@@ -132,7 +132,7 @@
         <!-- ANA İÇERİK ALANI -->
         <main class="flex-1 overflow-y-auto p-4 md:p-8 space-y-6">
             
-            <!-- DİNAMİK STATS PANELİ -->
+            <!-- İSTATİSTİKLER -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
@@ -141,9 +141,6 @@
                     </div>
                     <div class="mt-4">
                         <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">KAYITLI KULLANICILAR</p>
-                        <div class="w-full bg-white/5 h-1 rounded-full mt-2 overflow-hidden">
-                            <div class="bg-indigo-500 h-full w-full"></div>
-                        </div>
                     </div>
                 </div>
 
@@ -154,9 +151,6 @@
                     </div>
                     <div class="mt-4">
                         <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">VIP ÜYELER</p>
-                        <div class="w-full bg-white/5 h-1 rounded-full mt-2 overflow-hidden">
-                            <div class="bg-amber-500 h-full w-full"></div>
-                        </div>
                     </div>
                 </div>
 
@@ -170,7 +164,6 @@
                     </div>
                     <div class="mt-4">
                         <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">ÜYELİK DURUMU</p>
-                        <div class="w-full bg-white/5 h-1 rounded-full mt-2"></div>
                     </div>
                 </div>
 
@@ -181,12 +174,11 @@
                     </div>
                     <div class="mt-4">
                         <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">TOPLAM BAKİYE</p>
-                        <div class="w-full bg-white/5 h-1 rounded-full mt-2"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- ADMİN YÖNETİM PANELİ (SADECE ADMİN) -->
+            <!-- ADMİN YÖNETİM PANELİ -->
             <div id="section-admin" class="glass-card p-6 rounded-3xl space-y-6 hidden border border-amber-500/20">
                 <div class="flex items-center justify-between border-b border-white/5 pb-4">
                     <div class="flex items-center space-x-3">
@@ -206,14 +198,12 @@
                                 <th class="p-3">İşlemler</th>
                             </tr>
                         </thead>
-                        <tbody id="user-management-table" class="divide-y divide-white/5">
-                            <!-- JS ile dinamik doldurulur -->
-                        </tbody>
+                        <tbody id="user-management-table" class="divide-y divide-white/5"></tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- BAKİYE SATIN ALMA SEKSİYONU -->
+            <!-- BAKİYE SATIN AL -->
             <div id="section-buy" class="glass-card p-6 rounded-3xl space-y-4 hidden">
                 <h3 class="text-lg font-bold text-white flex items-center space-x-2"><i class="fa-solid fa-cart-shopping text-indigo-400"></i><span>Bakiye Satın Al</span></h3>
                 <p class="text-xs text-gray-400">Bakiye yüklemek için yöneticilerle iletişime geçebilirsiniz.</p>
@@ -223,7 +213,7 @@
                 </div>
             </div>
 
-            <!-- ANA SAYFA İÇERİĞİ -->
+            <!-- ANA SAYFA VE ARAMA ÇUBUĞU -->
             <div id="section-home" class="space-y-6">
                 <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[240px] border border-white/5 shadow-xl">
                     <div class="relative z-10 max-w-2xl w-full">
@@ -234,11 +224,23 @@
                         <p class="text-xs uppercase tracking-widest text-indigo-400/80 font-semibold mt-2">YAKINDA SİZLERLE!</p>
                         <p class="text-xs italic text-gray-400 mt-1">"Ne kadar sessiz olursan, o kadar çok işitebilirsin"</p>
 
+                        <!-- ARAMA ÇUBUĞU VE API BAĞLANTISI -->
                         <div class="mt-6 relative flex items-center">
                             <i class="fa-solid fa-magnifying-glass absolute left-4 text-gray-400 text-sm"></i>
-                            <input type="text" placeholder="Email, username, Discord ID or domain" class="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 pl-11 pr-12 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition shadow-inner">
-                            <button class="absolute right-2 w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition"><i class="fa-solid fa-arrow-right text-xs"></i></button>
+                            <input type="text" id="search-input" placeholder="Email, username, Discord ID or domain" class="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 pl-11 pr-16 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition shadow-inner">
+                            <button onclick="performSearch()" class="absolute right-2 px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center text-white text-xs transition"><i class="fa-solid fa-arrow-right"></i></button>
                         </div>
+                    </div>
+                </div>
+
+                <!-- ARAMA SONUÇLARI ALANI -->
+                <div id="search-results-container" class="glass-card p-6 rounded-3xl space-y-4 hidden">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-semibold text-gray-300"><i class="fa-solid fa-list-check text-indigo-400 mr-2"></i>Sorgu Sonuçları</span>
+                        <span id="result-count" class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded-full border border-indigo-500/20">0 Sonuç</span>
+                    </div>
+                    <div id="result-box" class="bg-black/40 p-4 rounded-xl text-xs font-mono text-gray-300 max-h-60 overflow-y-auto space-y-2">
+                        <!-- Sonuçlar buraya gelecek -->
                     </div>
                 </div>
 
@@ -256,8 +258,8 @@
                         <div class="space-y-3">
                             <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
                                 <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded font-bold border border-indigo-500/20">SİSTEM</span>
-                                <h5 class="text-xs font-bold text-white mt-1">Sistem Güncellemesi v2.5</h5>
-                                <p class="text-[11px] text-gray-400 mt-0.5">Yönetim paneli ve TL Bakiye ekleme özellikleri yayına alındı.</p>
+                                <h5 class="text-xs font-bold text-white mt-1">Sistem Güncellemesi v2.6</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Oatneth API entegrasyonu ve arama altyapısı aktif edildi.</p>
                             </div>
                         </div>
                     </div>
@@ -267,12 +269,10 @@
         </main>
     </div>
 
-    <!-- JAVASCRIPT & MANTIKSAL İŞLEMLER -->
+    <!-- JAVASCRIPT -->
     <script>
         let db = JSON.parse(localStorage.getItem('osint_db')) || {
-            users: [
-                { username: '904yilmaz', role: 'admin', balance: 1000, isVip: true }
-            ],
+            users: [{ username: '904yilmaz', role: 'admin', balance: 1000, isVip: true }],
             logs: []
         };
 
@@ -297,11 +297,9 @@
                 alert('Bu kullanıcı adı zaten alınmış!');
                 return;
             }
-            const newUser = { username: u, role: 'user', balance: 0, isVip: false };
-            db.users.push(newUser);
+            db.users.push({ username: u, role: 'user', balance: 0, isVip: false });
             db.logs.unshift({ user: u, action: 'Sisteme yeni kayıt oldu', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
             saveDB();
-            
             alert('Kayıt başarılı! Giriş yapabilirsiniz.');
             switchTab('login');
         }
@@ -332,7 +330,6 @@
             document.getElementById('user-display-name').innerText = currentUser.username;
             document.getElementById('user-role-badge').innerText = currentUser.role.toUpperCase();
             document.getElementById('admin-menu-section').style.display = currentUser.role === 'admin' ? 'block' : 'none';
-
             updateStats();
             renderActivityFeed();
             if (currentUser.role === 'admin') renderAdminTable();
@@ -345,7 +342,6 @@
             if (currentUser) {
                 const u = db.users.find(x => x.username === currentUser.username) || currentUser;
                 document.getElementById('stat-user-balance').innerHTML = `${u.balance.toFixed(2)} <span class="text-xs font-normal text-gray-400">TL</span>`;
-                
                 const statusText = u.role === 'admin' ? 'Kurucu' : (u.isVip ? 'VIP Üye' : 'Standart Üye');
                 document.getElementById('stat-user-status').innerText = statusText;
                 document.getElementById('stat-user-crown').className = u.role === 'admin' ? 'fa-solid fa-crown text-amber-400 ml-1' : (u.isVip ? 'fa-solid fa-star text-amber-400 ml-1' : 'hidden');
@@ -389,6 +385,55 @@
                 u.isVip = !u.isVip;
                 saveDB();
                 renderAdminTable();
+            }
+        }
+
+        // --- OATHNET API ARAMA ENTEGRASYONU ---
+        async function performSearch() {
+            const query = document.getElementById('search-input').value.trim();
+            const resultsContainer = document.getElementById('search-results-container');
+            const resultBox = document.getElementById('result-box');
+            const resultCount = document.getElementById('result-count');
+
+            if (!query) {
+                alert('Lütfen sorgulanacak bir değer girin.');
+                return;
+            }
+
+            resultsContainer.classList.remove('hidden');
+            resultBox.innerHTML = '<p class="text-indigo-400 animate-pulse">Sorgulanıyor, lütfen bekleyin...</p>';
+
+            // DİKKAT: API Anahtarını buraya yazmalısın
+            const apiKey = "YOUR_API_KEY"; 
+
+            try {
+                const response = await fetch(`https://oathnet.org/api/service/v2/breach/search?q=${encodeURIComponent(query)}`, {
+                    method: 'GET',
+                    headers: {
+                        "x-api-key": apiKey
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('API sorgusu başarısız oldu veya anahtar hatalı.');
+                }
+
+                const payload = await response.json();
+                const total = payload?.data?.meta?.total || 0;
+                
+                resultCount.innerText = `${total} Sonuç`;
+
+                if (total > 0 && payload.data.results) {
+                    resultBox.innerHTML = '';
+                    payload.data.results.forEach(item => {
+                        resultBox.innerHTML += `<div class="border-b border-white/5 pb-1 mb-1">${JSON.stringify(item)}</div>`;
+                    });
+                } else {
+                    resultBox.innerHTML = '<p class="text-gray-400">Bu değere ait bir veri bulunamadı.</p>';
+                }
+
+            } catch (error) {
+                resultBox.innerHTML = `<p class="text-red-400">Hata oluştu: ${error.message} (Not: Tarayıcı tarafında CORS engeline takılıyor olabilirsin, bunun için backend proxy gerekebilir.)</p>`;
             }
         }
 
