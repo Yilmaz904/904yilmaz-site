@@ -14,12 +14,12 @@
             color: #e2e8f0;
         }
         .glass-panel {
-            background: rgba(18, 20, 26, 0.75);
+            background: rgba(18, 20, 26, 0.85);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .glass-card {
-            background: rgba(22, 25, 33, 0.6);
+            background: rgba(22, 25, 33, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -30,7 +30,6 @@
     <!-- GİRİŞ / KAYIT EKRANI -->
     <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0c10] bg-opacity-95 px-4">
         <div class="glass-panel p-8 rounded-2xl w-full max-w-md shadow-2xl relative overflow-hidden">
-            <!-- Arka plan parıltısı -->
             <div class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl"></div>
             
             <div class="text-center mb-8">
@@ -41,40 +40,39 @@
                 <p class="text-sm text-gray-400 mt-1">Devam etmek için giriş yapın veya kayıt olun</p>
             </div>
 
-            <!-- Sekme Butonları -->
             <div class="flex bg-black/40 p-1 rounded-xl mb-6 border border-white/5">
                 <button onclick="switchTab('login')" id="tab-login" class="flex-1 py-2 text-sm font-medium rounded-lg bg-white/10 text-white transition">Giriş Yap</button>
                 <button onclick="switchTab('register')" id="tab-register" class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-400 hover:text-white transition">Kayıt Ol</button>
             </div>
 
             <!-- Giriş Formu -->
-            <form id="form-login" onsubmit="handleAuth(event)" class="space-y-4">
+            <form id="form-login" onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-medium text-gray-400 mb-1.5">E-posta veya Kullanıcı Adı</label>
-                    <input type="text" required placeholder="904yilmaz" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+                    <label class="block text-xs font-medium text-gray-400 mb-1.5">Kullanıcı Adı</label>
+                    <input type="text" id="login-username" required placeholder="904yilmaz" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1.5">Şifre</label>
-                    <input type="password" required placeholder="••••••••" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+                    <input type="password" id="login-password" required placeholder="••••••••" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
                 </div>
                 <button type="submit" class="w-full mt-2 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-medium rounded-xl shadow-lg shadow-indigo-600/20 transition">
                     Sisteme Giriş Yap
                 </button>
             </form>
 
-            <!-- Kayıt Formu (Gizli Başlangıçta) -->
-            <form id="form-register" onsubmit="handleAuth(event)" class="space-y-4 hidden">
+            <!-- Kayıt Formu -->
+            <form id="form-register" onsubmit="handleRegister(event)" class="space-y-4 hidden">
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1.5">Kullanıcı Adı</label>
-                    <input type="text" required placeholder="904yilmaz" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+                    <input type="text" id="reg-username" required placeholder="kullanici_adi" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1.5">E-posta Adresi</label>
-                    <input type="email" required placeholder="ornek@mail.com" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+                    <input type="email" id="reg-email" required placeholder="ornek@mail.com" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1.5">Şifre Belirle</label>
-                    <input type="password" required placeholder="••••••••" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+                    <input type="password" id="reg-password" required placeholder="••••••••" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
                 </div>
                 <button type="submit" class="w-full mt-2 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-medium rounded-xl shadow-lg shadow-indigo-600/20 transition">
                     Hesap Oluştur
@@ -85,18 +83,17 @@
 
     <!-- ANA KONTROL PANELİ (DASHBOARD) -->
     <div id="dashboard-screen" class="flex h-screen overflow-hidden opacity-0 pointer-events-none transition-opacity duration-500">
-        <!-- SOL MENÜ BAR -->
+        <!-- SOL MENÜ -->
         <aside class="w-64 glass-panel border-r border-white/5 flex flex-col justify-between hidden md:flex shrink-0">
             <div>
-                <!-- Profil Kısmı -->
                 <div class="p-4 border-b border-white/5 flex items-center justify-between">
                     <div class="flex items-center space-x-3">
                         <div class="relative w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center border border-white/10">
                             <i class="fa-solid fa-user-secret text-sm text-indigo-400"></i>
                         </div>
                         <div>
-                            <h4 class="text-sm font-bold text-white">904Yilmaz</h4>
-                            <span class="text-[10px] bg-amber-500/10 text-amber-400 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider border border-amber-500/20">ADMIN</span>
+                            <h4 id="user-display-name" class="text-sm font-bold text-white">904Yilmaz</h4>
+                            <span id="user-role-badge" class="text-[10px] bg-amber-500/10 text-amber-400 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider border border-amber-500/20">ADMIN</span>
                         </div>
                     </div>
                     <button onclick="logout()" title="Çıkış Yap" class="text-gray-400 hover:text-red-400 transition"><i class="fa-solid fa-power-off"></i></button>
@@ -105,33 +102,27 @@
                 <!-- Menü Linkleri -->
                 <div class="p-4 space-y-6 overflow-y-auto max-h-[calc(100vh-100px)] text-xs">
                     <div class="space-y-1">
-                        <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-white/5 text-white font-medium"><i class="fa-solid fa-house w-4"></i><span>Ana Sayfa</span></a>
-                        <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-trophy w-4"></i><span>Sıralama</span></a>
+                        <a href="#" onclick="showSection('home')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-white/5 text-white font-medium"><i class="fa-solid fa-house w-4"></i><span>Ana Sayfa</span></a>
+                        <a href="#" onclick="showSection('buy-balance')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-cart-shopping w-4"></i><span>Bakiye Satın Al</span></a>
                     </div>
 
-                    <div>
+                    <!-- YÖNETİM MENÜSÜ (Sadece Admin Görür) -->
+                    <div id="admin-menu-section">
                         <p class="text-[10px] font-bold text-gray-500 uppercase px-3 mb-2 tracking-wider">YÖNETİM</p>
                         <div class="space-y-1">
-                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-shield-halved w-4"></i><span>Admin Paneli</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-wallet w-4"></i><span>Bakiye Paneli</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-bell w-4"></i><span>Bildirim Paneli</span></a>
+                            <a href="#" onclick="showSection('admin-panel')" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-indigo-400 hover:bg-white/5 transition"><i class="fa-solid fa-shield-halved w-4"></i><span>Admin Yönetim Paneli</span></a>
                         </div>
-                    </div>
-
-                    <div>
-                        <p class="text-[10px] font-bold text-gray-500 uppercase px-3 mb-2 tracking-wider">FİNANS</p>
-                        <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-credit-card w-4"></i><span>Bakiye İşlemleri</span></a>
                     </div>
 
                     <div>
                         <p class="text-[10px] font-bold text-gray-500 uppercase px-3 mb-2 tracking-wider">SORGU ÇÖZÜMLERİ</p>
                         <div class="space-y-1">
-                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-user w-4"></i><span>XED Ücretsiz Sorgular</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-heart-pulse w-4"></i><span>XED Hayat Sorgu</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-phone w-4"></i><span>XED Telefon Çözümleri</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-location-dot w-4"></i><span>XED Adres Çözümleri</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-id-card w-4"></i><span>XED Sgk Sorgu</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-file-lines w-4"></i><span>XED Vesika Çözümleri</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-user w-4"></i><span>Ücretsiz Sorgular</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-heart-pulse w-4"></i><span>Hayat Sorgu</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-phone w-4"></i><span>Telefon Çözümleri</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-location-dot w-4"></i><span>Adres Çözümleri</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-id-card w-4"></i><span>SGK Sorgu</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-file-lines w-4"></i><span>Vesika Çözümleri</span></a>
                         </div>
                     </div>
                 </div>
@@ -140,51 +131,31 @@
 
         <!-- ANA İÇERİK ALANI -->
         <main class="flex-1 overflow-y-auto p-4 md:p-8 space-y-6">
-            <!-- Hero / Banner Alanı -->
-            <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[260px] border border-white/5 shadow-xl">
-                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-transparent to-purple-500/5 pointer-events-none"></div>
-                <div class="relative z-10 max-w-2xl w-full">
-                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white flex items-center justify-center space-x-3">
-                        <span>Osint 904Yilmaz</span>
-                        <i class="fa-solid fa-user-secret text-indigo-400"></i>
-                    </h2>
-                    <p class="text-xs uppercase tracking-widest text-indigo-400/80 font-semibold mt-2">YAKINDA SİZLERLE!</p>
-                    <p class="text-xs italic text-gray-400 mt-1">"Ne kadar sessiz olursan, o kadar çok işitebilirsin"</p>
-
-                    <!-- Arama Çubuğu -->
-                    <div class="mt-6 relative flex items-center">
-                        <i class="fa-solid fa-magnifying-glass absolute left-4 text-gray-400 text-sm"></i>
-                        <input type="text" placeholder="Email, username, Discord ID or domain" class="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 pl-11 pr-12 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition shadow-inner">
-                        <button class="absolute right-2 w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition"><i class="fa-solid fa-arrow-right text-xs"></i></button>
-                    </div>
-                    <p class="text-[10px] text-gray-500 mt-2">DISCORD.GG/CPLC & OWER AMCA</p>
-                </div>
-            </div>
-
-            <!-- İstatistik Kartları -->
+            
+            <!-- DİNAMİK STATS PANELİ -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
-                        <span class="text-2xl font-bold text-white">4</span>
+                        <span id="stat-registered-users" class="text-2xl font-bold text-white">1</span>
                         <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-users text-xs"></i></div>
                     </div>
                     <div class="mt-4">
                         <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">KAYITLI KULLANICILAR</p>
                         <div class="w-full bg-white/5 h-1 rounded-full mt-2 overflow-hidden">
-                            <div class="bg-indigo-500 h-full w-1/4"></div>
+                            <div class="bg-indigo-500 h-full w-full"></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
-                        <span class="text-2xl font-bold text-white">2</span>
+                        <span id="stat-vip-users" class="text-2xl font-bold text-white">0</span>
                         <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-star text-xs"></i></div>
                     </div>
                     <div class="mt-4">
                         <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">VIP ÜYELER</p>
                         <div class="w-full bg-white/5 h-1 rounded-full mt-2 overflow-hidden">
-                            <div class="bg-amber-500 h-full w-2/4"></div>
+                            <div class="bg-amber-500 h-full w-full"></div>
                         </div>
                     </div>
                 </div>
@@ -192,8 +163,8 @@
                 <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
                         <div>
-                            <span class="text-base font-bold text-white">Kurucu</span>
-                            <i class="fa-solid fa-crown text-amber-400 ml-1"></i>
+                            <span id="stat-user-status" class="text-base font-bold text-white">Kurucu</span>
+                            <i id="stat-user-crown" class="fa-solid fa-crown text-amber-400 ml-1"></i>
                         </div>
                         <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-id-badge text-xs"></i></div>
                     </div>
@@ -205,7 +176,7 @@
 
                 <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
-                        <span class="text-2xl font-bold text-white">0.00 <span class="text-xs font-normal text-gray-400">TL</span></span>
+                        <span id="stat-user-balance" class="text-2xl font-bold text-white">0.00 <span class="text-xs font-normal text-gray-400">TL</span></span>
                         <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-wallet text-xs"></i></div>
                     </div>
                     <div class="mt-4">
@@ -215,124 +186,236 @@
                 </div>
             </div>
 
-            <!-- Alt Kısım: Spotlight, Activity Feed ve Duyurular -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- XED Spotlight -->
-                <div class="glass-card p-6 rounded-3xl flex flex-col justify-between min-h-[220px]">
-                    <div class="flex items-center space-x-2 text-xs font-semibold text-gray-300">
-                        <i class="fa-solid fa-bolt text-amber-400"></i>
-                        <span>XED SPOTLIGHT</span>
+            <!-- ADMİN YÖNETİM PANELİ (SADECE ADMİN) -->
+            <div id="section-admin" class="glass-card p-6 rounded-3xl space-y-6 hidden border border-amber-500/20">
+                <div class="flex items-center justify-between border-b border-white/5 pb-4">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-user-gear text-amber-400 text-xl"></i>
+                        <h3 class="text-lg font-bold text-white">Admin Yönetim Paneli</h3>
                     </div>
-                    <div class="text-center py-6">
-                        <i class="fa-solid fa-crown text-4xl text-amber-400 mb-2"></i>
-                        <h4 class="text-sm font-bold text-white">Sistem Aktif</h4>
-                    </div>
-                    <div></div>
+                    <span class="text-xs bg-amber-500/10 text-amber-400 px-3 py-1 rounded-lg border border-amber-500/20 font-semibold">YALNIZCA ADMİN</span>
                 </div>
 
-                <!-- Activity Feed -->
-                <div class="glass-card p-6 rounded-3xl space-y-4">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2 text-xs font-semibold text-gray-300">
-                            <i class="fa-solid fa-list-ul"></i>
-                            <span>ACTIVITY FEED</span>
-                        </div>
-                        <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full font-bold border border-emerald-500/20">CANLI</span>
-                    </div>
-                    <div class="space-y-3">
-                        <div class="flex items-start space-x-3 text-xs">
-                            <div class="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center shrink-0 border border-white/10"><i class="fa-solid fa-user-secret text-[10px] text-indigo-400"></i></div>
-                            <div>
-                                <p class="text-white font-medium">904Yilmaz giriş yaptı, nerdesin kardeşim sen?</p>
-                                <span class="text-[10px] text-gray-500"><i class="fa-regular fa-clock mr-1"></i>19:28</span>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-3 text-xs">
-                            <div class="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center shrink-0 border border-white/10"><i class="fa-solid fa-user-secret text-[10px] text-indigo-400"></i></div>
-                            <div>
-                                <p class="text-white font-medium">904Yilmaz giriş yaptı, fazla bakma kafa yapar.</p>
-                                <span class="text-[10px] text-gray-500"><i class="fa-regular fa-clock mr-1"></i>22:41</span>
-                            </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-gray-300">
+                        <thead class="bg-black/40 text-gray-400 uppercase text-[10px] tracking-wider">
+                            <tr>
+                                <th class="p-3">Kullanıcı Adı</th>
+                                <th class="p-3">Rol</th>
+                                <th class="p-3">Bakiye</th>
+                                <th class="p-3">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-management-table" class="divide-y divide-white/5">
+                            <!-- JS ile dinamik doldurulur -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- BAKİYE SATIN ALMA SEKSİYONU -->
+            <div id="section-buy" class="glass-card p-6 rounded-3xl space-y-4 hidden">
+                <h3 class="text-lg font-bold text-white flex items-center space-x-2"><i class="fa-solid fa-cart-shopping text-indigo-400"></i><span>Bakiye Satın Al</span></h3>
+                <p class="text-xs text-gray-400">Bakiye yüklemek için yöneticilerle iletişime geçebilirsiniz.</p>
+                <div class="bg-black/30 p-4 rounded-xl border border-white/5 space-y-2 text-xs">
+                    <p class="text-white font-medium">Yetkili Adresi:</p>
+                    <p class="text-indigo-400 font-mono select-all">DISCORD: DISCORD.GG/CPLC</p>
+                </div>
+            </div>
+
+            <!-- ANA SAYFA İÇERİĞİ -->
+            <div id="section-home" class="space-y-6">
+                <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[240px] border border-white/5 shadow-xl">
+                    <div class="relative z-10 max-w-2xl w-full">
+                        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white flex items-center justify-center space-x-3">
+                            <span>Osint 904Yilmaz</span>
+                            <i class="fa-solid fa-user-secret text-indigo-400"></i>
+                        </h2>
+                        <p class="text-xs uppercase tracking-widest text-indigo-400/80 font-semibold mt-2">YAKINDA SİZLERLE!</p>
+                        <p class="text-xs italic text-gray-400 mt-1">"Ne kadar sessiz olursan, o kadar çok işitebilirsin"</p>
+
+                        <div class="mt-6 relative flex items-center">
+                            <i class="fa-solid fa-magnifying-glass absolute left-4 text-gray-400 text-sm"></i>
+                            <input type="text" placeholder="Email, username, Discord ID or domain" class="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 pl-11 pr-12 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition shadow-inner">
+                            <button class="absolute right-2 w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition"><i class="fa-solid fa-arrow-right text-xs"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Duyurular -->
-                <div class="glass-card p-6 rounded-3xl space-y-4">
-                    <div class="flex items-center space-x-2 text-xs font-semibold text-gray-300">
-                        <i class="fa-solid fa-bullhorn text-indigo-400"></i>
-                        <span>DUYURULAR</span>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="glass-card p-6 rounded-3xl space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2 text-xs font-semibold text-gray-300"><i class="fa-solid fa-list-ul"></i><span>ACTIVITY FEED</span></div>
+                            <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full font-bold border border-emerald-500/20">CANLI</span>
+                        </div>
+                        <div id="activity-feed-list" class="space-y-3 text-xs"></div>
                     </div>
-                    <div class="space-y-3">
-                        <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
-                            <div class="flex justify-between items-center mb-1">
+
+                    <div class="glass-card p-6 rounded-3xl space-y-4">
+                        <div class="flex items-center space-x-2 text-xs font-semibold text-gray-300"><i class="fa-solid fa-bullhorn text-indigo-400"></i><span>DUYURULAR</span></div>
+                        <div class="space-y-3">
+                            <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
                                 <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded font-bold border border-indigo-500/20">SİSTEM</span>
-                                <span class="text-[10px] text-gray-500">Bugün 12:45</span>
+                                <h5 class="text-xs font-bold text-white mt-1">Sistem Güncellemesi v2.5</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Yönetim paneli ve TL Bakiye ekleme özellikleri yayına alındı.</p>
                             </div>
-                            <h5 class="text-xs font-bold text-white">Sistem Güncellemesi v2.5</h5>
-                            <p class="text-[11px] text-gray-400 mt-0.5">Altyapı güçlendirildi, sorgu süreleri %40 hızlandırıldı.</p>
-                        </div>
-                        <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded font-bold border border-purple-500/20">YENİLİK</span>
-                                <span class="text-[10px] text-gray-500">Dün 18:30</span>
-                            </div>
-                            <h5 class="text-xs font-bold text-white">Dosya Paylaşım Sistemi</h5>
-                            <p class="text-[11px] text-gray-400 mt-0.5">Artık dosyalarınızı güvenli ve şifreli olarak paylaşabilirsiniz.</p>
                         </div>
                     </div>
                 </div>
             </div>
+
         </main>
     </div>
 
-    <!-- JavaScript Etkileşim Kodları -->
+    <!-- JAVASCRIPT & MANTIKSAL İŞLEMLER -->
     <script>
-        function switchTab(tab) {
-            const loginForm = document.getElementById('form-login');
-            const registerForm = document.getElementById('form-register');
-            const tabLogin = document.getElementById('tab-login');
-            const tabRegister = document.getElementById('tab-register');
+        let db = JSON.parse(localStorage.getItem('osint_db')) || {
+            users: [
+                { username: '904yilmaz', role: 'admin', balance: 1000, isVip: true }
+            ],
+            logs: []
+        };
 
-            if (tab === 'login') {
-                loginForm.classList.remove('hidden');
-                registerForm.classList.add('hidden');
-                tabLogin.classList.add('bg-white/10', 'text-white');
-                tabLogin.classList.remove('text-gray-400');
-                tabRegister.classList.remove('bg-white/10', 'text-white');
-                tabRegister.classList.add('text-gray-400');
-            } else {
-                loginForm.classList.add('hidden');
-                registerForm.classList.remove('hidden');
-                tabRegister.classList.add('bg-white/10', 'text-white');
-                tabRegister.classList.remove('text-gray-400');
-                tabLogin.classList.remove('bg-white/10', 'text-white');
-                tabLogin.classList.add('text-gray-400');
-            }
+        let currentUser = null;
+
+        function saveDB() {
+            localStorage.setItem('osint_db', JSON.stringify(db));
+            updateStats();
         }
 
-        function handleAuth(event) {
-            event.preventDefault();
-            // Giriş ekranını yavaşça gizle, ana paneli aç
-            const authScreen = document.getElementById('auth-screen');
-            const dashboardScreen = document.getElementById('dashboard-screen');
+        function switchTab(tab) {
+            document.getElementById('form-login').classList.toggle('hidden', tab !== 'login');
+            document.getElementById('form-register').classList.toggle('hidden', tab !== 'register');
+            document.getElementById('tab-login').className = tab === 'login' ? 'flex-1 py-2 text-sm font-medium rounded-lg bg-white/10 text-white transition' : 'flex-1 py-2 text-sm font-medium rounded-lg text-gray-400 hover:text-white transition';
+            document.getElementById('tab-register').className = tab === 'register' ? 'flex-1 py-2 text-sm font-medium rounded-lg bg-white/10 text-white transition' : 'flex-1 py-2 text-sm font-medium rounded-lg text-gray-400 hover:text-white transition';
+        }
 
-            authScreen.style.opacity = '0';
+        function handleRegister(e) {
+            e.preventDefault();
+            const u = document.getElementById('reg-username').value.trim();
+            if (db.users.find(x => x.username.toLowerCase() === u.toLowerCase())) {
+                alert('Bu kullanıcı adı zaten alınmış!');
+                return;
+            }
+            const newUser = { username: u, role: 'user', balance: 0, isVip: false };
+            db.users.push(newUser);
+            db.logs.unshift({ user: u, action: 'Sisteme yeni kayıt oldu', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
+            saveDB();
+            
+            alert('Kayıt başarılı! Giriş yapabilirsiniz.');
+            switchTab('login');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('login-username').value.trim();
+            let user = db.users.find(x => x.username.toLowerCase() === u.toLowerCase());
+            
+            if (!user) {
+                user = { username: u, role: 'user', balance: 0, isVip: false };
+                db.users.push(user);
+            }
+
+            currentUser = user;
+            db.logs.unshift({ user: user.username, action: 'giriş yaptı', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
+            saveDB();
+
+            document.getElementById('auth-screen').style.opacity = '0';
             setTimeout(() => {
-                authScreen.style.display = 'none';
-                dashboardScreen.classList.remove('opacity-0', 'pointer-events-none');
+                document.getElementById('auth-screen').style.display = 'none';
+                document.getElementById('dashboard-screen').classList.remove('opacity-0', 'pointer-events-none');
+                initDashboard();
             }, 300);
         }
 
-        function logout() {
-            const authScreen = document.getElementById('auth-screen');
-            const dashboardScreen = document.getElementById('dashboard-screen');
+        function initDashboard() {
+            document.getElementById('user-display-name').innerText = currentUser.username;
+            document.getElementById('user-role-badge').innerText = currentUser.role.toUpperCase();
+            document.getElementById('admin-menu-section').style.display = currentUser.role === 'admin' ? 'block' : 'none';
 
-            dashboardScreen.classList.add('opacity-0', 'pointer-events-none');
-            authScreen.style.display = 'flex';
-            setTimeout(() => {
-                authScreen.style.opacity = '1';
-            }, 50);
+            updateStats();
+            renderActivityFeed();
+            if (currentUser.role === 'admin') renderAdminTable();
+        }
+
+        function updateStats() {
+            document.getElementById('stat-registered-users').innerText = db.users.length;
+            document.getElementById('stat-vip-users').innerText = db.users.filter(x => x.isVip).length;
+
+            if (currentUser) {
+                const u = db.users.find(x => x.username === currentUser.username) || currentUser;
+                document.getElementById('stat-user-balance').innerHTML = `${u.balance.toFixed(2)} <span class="text-xs font-normal text-gray-400">TL</span>`;
+                
+                const statusText = u.role === 'admin' ? 'Kurucu' : (u.isVip ? 'VIP Üye' : 'Standart Üye');
+                document.getElementById('stat-user-status').innerText = statusText;
+                document.getElementById('stat-user-crown').className = u.role === 'admin' ? 'fa-solid fa-crown text-amber-400 ml-1' : (u.isVip ? 'fa-solid fa-star text-amber-400 ml-1' : 'hidden');
+            }
+        }
+
+        function renderAdminTable() {
+            const tbody = document.getElementById('user-management-table');
+            tbody.innerHTML = '';
+            db.users.forEach(u => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="p-3 font-semibold text-white">${u.username}</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] ${u.role === 'admin' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-gray-500/10 text-gray-400'}">${u.role.toUpperCase()} ${u.isVip ? '(VIP)' : ''}</span></td>
+                        <td class="p-3 font-mono text-indigo-400">${u.balance} TL</td>
+                        <td class="p-3 space-x-2">
+                            <button onclick="addBalance('${u.username}')" class="bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 border border-indigo-500/30 px-2.5 py-1 rounded-lg text-[10px] transition">+ Bakiye Ekle</button>
+                            <button onclick="toggleVip('${u.username}')" class="bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-lg text-[10px] transition">${u.isVip ? 'VIP Kaldır' : 'VIP Yap'}</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function addBalance(username) {
+            const amount = prompt(`${username} kullanıcısına ne kadar TL bakiye eklemek istiyorsunuz?`, '100');
+            if (amount && !isNaN(amount)) {
+                const u = db.users.find(x => x.username === username);
+                if (u) {
+                    u.balance += parseFloat(amount);
+                    saveDB();
+                    renderAdminTable();
+                    alert(`${username} hesabına ${amount} TL başarıyla eklendi!`);
+                }
+            }
+        }
+
+        function toggleVip(username) {
+            const u = db.users.find(x => x.username === username);
+            if (u) {
+                u.isVip = !u.isVip;
+                saveDB();
+                renderAdminTable();
+            }
+        }
+
+        function renderActivityFeed() {
+            const list = document.getElementById('activity-feed-list');
+            list.innerHTML = '';
+            db.logs.slice(0, 5).forEach(log => {
+                list.innerHTML += `
+                    <div class="flex items-start space-x-3">
+                        <div class="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center shrink-0 border border-white/10"><i class="fa-solid fa-user-secret text-[10px] text-indigo-400"></i></div>
+                        <div>
+                            <p class="text-white font-medium">${log.user} ${log.action}</p>
+                            <span class="text-[10px] text-gray-500"><i class="fa-regular fa-clock mr-1"></i>${log.time}</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function showSection(sec) {
+            document.getElementById('section-home').classList.toggle('hidden', sec !== 'home');
+            document.getElementById('section-admin').classList.toggle('hidden', sec !== 'admin-panel');
+            document.getElementById('section-buy').classList.toggle('hidden', sec !== 'buy-balance');
+        }
+
+        function logout() {
+            location.reload();
         }
     </script>
 </body>
