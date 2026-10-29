@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osint 904Yilmaz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0d0f12;
+            color: #e2e8f0;
+        }
+        .glass-panel {
+            background: rgba(18, 20, 26, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(22, 25, 33, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- GİRİŞ / KAYIT EKRANI -->
+    <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0c10] bg-opacity-95 px-4">
+        <div class="glass-panel p-8 rounded-2xl w-full max-w-md shadow-2xl relative overflow-hidden">
+            <!-- Arka plan parıltısı -->
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl"></div>
+            
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/5 border border-white/10 mb-4 text-2xl text-indigo-400">
+                    <i class="fa-solid fa-user-secret"></i>
+                </div>
+                <h1 class="text-2xl font-bold tracking-tight text-white">Osint 904Yilmaz</h1>
+                <p class="text-sm text-gray-400 mt-1">Devam etmek için giriş yapın veya kayıt olun</p>
+            </div>
+
+            <!-- Sekme Butonları -->
+            <div class="flex bg-black/40 p-1 rounded-xl mb-6 border border-white/5">
+                <button onclick="switchTab('login')" id="tab-login" class="flex-1 py-2 text-sm font-medium rounded-lg bg-white/10 text-white transition">Giriş Yap</button>
+                <button onclick="switchTab('register')" id="tab-register" class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-400 hover:text-white transition">Kayıt Ol</button>
+            </div>
+
+            <!-- Giriş Formu -->
+            <form id="form-login" onsubmit="handleAuth(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1.5">E-posta veya Kullanıcı Adı</label>
+                    <input type="text" required placeholder="904yilmaz" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1.5">Şifre</label>
+                    <input type="password" required placeholder="••••••••" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+                </div>
+                <button type="submit" class="w-full mt-2 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-medium rounded-xl shadow-lg shadow-indigo-600/20 transition">
+                    Sisteme Giriş Yap
+                </button>
+            </form>
+
+            <!-- Kayıt Formu (Gizli Başlangıçta) -->
+            <form id="form-register" onsubmit="handleAuth(event)" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1.5">Kullanıcı Adı</label>
+                    <input type="text" required placeholder="904yilmaz" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1.5">E-posta Adresi</label>
+                    <input type="email" required placeholder="ornek@mail.com" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1.5">Şifre Belirle</label>
+                    <input type="password" required placeholder="••••••••" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
+                </div>
+                <button type="submit" class="w-full mt-2 py-3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-medium rounded-xl shadow-lg shadow-indigo-600/20 transition">
+                    Hesap Oluştur
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ANA KONTROL PANELİ (DASHBOARD) -->
+    <div id="dashboard-screen" class="flex h-screen overflow-hidden opacity-0 pointer-events-none transition-opacity duration-500">
+        <!-- SOL MENÜ BAR -->
+        <aside class="w-64 glass-panel border-r border-white/5 flex flex-col justify-between hidden md:flex shrink-0">
+            <div>
+                <!-- Profil Kısmı -->
+                <div class="p-4 border-b border-white/5 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="relative w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center border border-white/10">
+                            <i class="fa-solid fa-user-secret text-sm text-indigo-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">904Yilmaz</h4>
+                            <span class="text-[10px] bg-amber-500/10 text-amber-400 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider border border-amber-500/20">ADMIN</span>
+                        </div>
+                    </div>
+                    <button onclick="logout()" title="Çıkış Yap" class="text-gray-400 hover:text-red-400 transition"><i class="fa-solid fa-power-off"></i></button>
+                </div>
+
+                <!-- Menü Linkleri -->
+                <div class="p-4 space-y-6 overflow-y-auto max-h-[calc(100vh-100px)] text-xs">
+                    <div class="space-y-1">
+                        <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-white/5 text-white font-medium"><i class="fa-solid fa-house w-4"></i><span>Ana Sayfa</span></a>
+                        <a href="#" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-trophy w-4"></i><span>Sıralama</span></a>
+                    </div>
+
+                    <div>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase px-3 mb-2 tracking-wider">YÖNETİM</p>
+                        <div class="space-y-1">
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-shield-halved w-4"></i><span>Admin Paneli</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-wallet w-4"></i><span>Bakiye Paneli</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-bell w-4"></i><span>Bildirim Paneli</span></a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase px-3 mb-2 tracking-wider">FİNANS</p>
+                        <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-credit-card w-4"></i><span>Bakiye İşlemleri</span></a>
+                    </div>
+
+                    <div>
+                        <p class="text-[10px] font-bold text-gray-500 uppercase px-3 mb-2 tracking-wider">SORGU ÇÖZÜMLERİ</p>
+                        <div class="space-y-1">
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-user w-4"></i><span>XED Ücretsiz Sorgular</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-heart-pulse w-4"></i><span>XED Hayat Sorgu</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-phone w-4"></i><span>XED Telefon Çözümleri</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-location-dot w-4"></i><span>XED Adres Çözümleri</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-id-card w-4"></i><span>XED Sgk Sorgu</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-file-lines w-4"></i><span>XED Vesika Çözümleri</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ANA İÇERİK ALANI -->
+        <main class="flex-1 overflow-y-auto p-4 md:p-8 space-y-6">
+            <!-- Hero / Banner Alanı -->
+            <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[260px] border border-white/5 shadow-xl">
+                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-transparent to-purple-500/5 pointer-events-none"></div>
+                <div class="relative z-10 max-w-2xl w-full">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white flex items-center justify-center space-x-3">
+                        <span>Osint 904Yilmaz</span>
+                        <i class="fa-solid fa-user-secret text-indigo-400"></i>
+                    </h2>
+                    <p class="text-xs uppercase tracking-widest text-indigo-400/80 font-semibold mt-2">YAKINDA SİZLERLE!</p>
+                    <p class="text-xs italic text-gray-400 mt-1">"Ne kadar sessiz olursan, o kadar çok işitebilirsin"</p>
+
+                    <!-- Arama Çubuğu -->
+                    <div class="mt-6 relative flex items-center">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 text-gray-400 text-sm"></i>
+                        <input type="text" placeholder="Email, username, Discord ID or domain" class="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 pl-11 pr-12 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition shadow-inner">
+                        <button class="absolute right-2 w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition"><i class="fa-solid fa-arrow-right text-xs"></i></button>
+                    </div>
+                    <p class="text-[10px] text-gray-500 mt-2">DISCORD.GG/CPLC & OWER AMCA</p>
+                </div>
+            </div>
+
+            <!-- İstatistik Kartları -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
+                    <div class="flex justify-between items-start">
+                        <span class="text-2xl font-bold text-white">4</span>
+                        <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-users text-xs"></i></div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">KAYITLI KULLANICILAR</p>
+                        <div class="w-full bg-white/5 h-1 rounded-full mt-2 overflow-hidden">
+                            <div class="bg-indigo-500 h-full w-1/4"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
+                    <div class="flex justify-between items-start">
+                        <span class="text-2xl font-bold text-white">2</span>
+                        <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-star text-xs"></i></div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">VIP ÜYELER</p>
+                        <div class="w-full bg-white/5 h-1 rounded-full mt-2 overflow-hidden">
+                            <div class="bg-amber-500 h-full w-2/4"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-base font-bold text-white">Kurucu</span>
+                            <i class="fa-solid fa-crown text-amber-400 ml-1"></i>
+                        </div>
+                        <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-id-badge text-xs"></i></div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">ÜYELİK DURUMU</p>
+                        <div class="w-full bg-white/5 h-1 rounded-full mt-2"></div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
+                    <div class="flex justify-between items-start">
+                        <span class="text-2xl font-bold text-white">0.00 <span class="text-xs font-normal text-gray-400">TL</span></span>
+                        <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-wallet text-xs"></i></div>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">TOPLAM BAKİYE</p>
+                        <div class="w-full bg-white/5 h-1 rounded-full mt-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alt Kısım: Spotlight, Activity Feed ve Duyurular -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- XED Spotlight -->
+                <div class="glass-card p-6 rounded-3xl flex flex-col justify-between min-h-[220px]">
+                    <div class="flex items-center space-x-2 text-xs font-semibold text-gray-300">
+                        <i class="fa-solid fa-bolt text-amber-400"></i>
+                        <span>XED SPOTLIGHT</span>
+                    </div>
+                    <div class="text-center py-6">
+                        <i class="fa-solid fa-crown text-4xl text-amber-400 mb-2"></i>
+                        <h4 class="text-sm font-bold text-white">Sistem Aktif</h4>
+                    </div>
+                    <div></div>
+                </div>
+
+                <!-- Activity Feed -->
+                <div class="glass-card p-6 rounded-3xl space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2 text-xs font-semibold text-gray-300">
+                            <i class="fa-solid fa-list-ul"></i>
+                            <span>ACTIVITY FEED</span>
+                        </div>
+                        <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full font-bold border border-emerald-500/20">CANLI</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3 text-xs">
+                            <div class="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center shrink-0 border border-white/10"><i class="fa-solid fa-user-secret text-[10px] text-indigo-400"></i></div>
+                            <div>
+                                <p class="text-white font-medium">904Yilmaz giriş yaptı, nerdesin kardeşim sen?</p>
+                                <span class="text-[10px] text-gray-500"><i class="fa-regular fa-clock mr-1"></i>19:28</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 text-xs">
+                            <div class="w-7 h-7 rounded-full bg-neutral-800 flex items-center justify-center shrink-0 border border-white/10"><i class="fa-solid fa-user-secret text-[10px] text-indigo-400"></i></div>
+                            <div>
+                                <p class="text-white font-medium">904Yilmaz giriş yaptı, fazla bakma kafa yapar.</p>
+                                <span class="text-[10px] text-gray-500"><i class="fa-regular fa-clock mr-1"></i>22:41</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duyurular -->
+                <div class="glass-card p-6 rounded-3xl space-y-4">
+                    <div class="flex items-center space-x-2 text-xs font-semibold text-gray-300">
+                        <i class="fa-solid fa-bullhorn text-indigo-400"></i>
+                        <span>DUYURULAR</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded font-bold border border-indigo-500/20">SİSTEM</span>
+                                <span class="text-[10px] text-gray-500">Bugün 12:45</span>
+                            </div>
+                            <h5 class="text-xs font-bold text-white">Sistem Güncellemesi v2.5</h5>
+                            <p class="text-[11px] text-gray-400 mt-0.5">Altyapı güçlendirildi, sorgu süreleri %40 hızlandırıldı.</p>
+                        </div>
+                        <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded font-bold border border-purple-500/20">YENİLİK</span>
+                                <span class="text-[10px] text-gray-500">Dün 18:30</span>
+                            </div>
+                            <h5 class="text-xs font-bold text-white">Dosya Paylaşım Sistemi</h5>
+                            <p class="text-[11px] text-gray-400 mt-0.5">Artık dosyalarınızı güvenli ve şifreli olarak paylaşabilirsiniz.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript Etkileşim Kodları -->
+    <script>
+        function switchTab(tab) {
+            const loginForm = document.getElementById('form-login');
+            const registerForm = document.getElementById('form-register');
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+
+            if (tab === 'login') {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                tabLogin.classList.add('bg-white/10', 'text-white');
+                tabLogin.classList.remove('text-gray-400');
+                tabRegister.classList.remove('bg-white/10', 'text-white');
+                tabRegister.classList.add('text-gray-400');
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                tabRegister.classList.add('bg-white/10', 'text-white');
+                tabRegister.classList.remove('text-gray-400');
+                tabLogin.classList.remove('bg-white/10', 'text-white');
+                tabLogin.classList.add('text-gray-400');
+            }
+        }
+
+        function handleAuth(event) {
+            event.preventDefault();
+            // Giriş ekranını yavaşça gizle, ana paneli aç
+            const authScreen = document.getElementById('auth-screen');
+            const dashboardScreen = document.getElementById('dashboard-screen');
+
+            authScreen.style.opacity = '0';
+            setTimeout(() => {
+                authScreen.style.display = 'none';
+                dashboardScreen.classList.remove('opacity-0', 'pointer-events-none');
+            }, 300);
+        }
+
+        function logout() {
+            const authScreen = document.getElementById('auth-screen');
+            const dashboardScreen = document.getElementById('dashboard-screen');
+
+            dashboardScreen.classList.add('opacity-0', 'pointer-events-none');
+            authScreen.style.display = 'flex';
+            setTimeout(() => {
+                authScreen.style.opacity = '1';
+            }, 50);
+        }
+    </script>
+</body>
+</html>
