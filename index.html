@@ -10,7 +10,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #12151c; /* Göz yormayan şık krom-gri arka plan */
+            background-color: #12151c;
             color: #e2e8f0;
         }
         .glass-panel {
@@ -152,7 +152,7 @@
                         <div>
                             <span id="stat-user-status" class="text-base font-bold text-white">Kurucu (Owner)</span>
                         </div>
-                        <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid id-badge text-xs"></i></div>
+                        <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-id-badge text-xs"></i></div>
                     </div>
                     <div class="mt-4"><p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">ÜYELİK DURUMU</p></div>
                 </div>
@@ -293,8 +293,8 @@
                         <div class="space-y-3">
                             <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
                                 <span class="text-[10px] bg-slate-500/10 text-slate-300 px-2 py-0.5 rounded font-bold border border-slate-500/20">SİSTEM</span>
-                                <h5 class="text-xs font-bold text-white mt-1">Kromik Tema ve Owner Yetkilendirmesi</h5>
-                                <p class="text-[11px] text-gray-400 mt-0.5">Arayüz şık kromik tona kavuşturuldu ve Yılmaz Öztürk hesabı Owner olarak sabitlendi.</p>
+                                <h5 class="text-xs font-bold text-white mt-1">Osint 904Yilmaz Sistemi Aktif</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Tüm altyapı eksiksiz ve temiz şekilde yapılandırıldı.</p>
                             </div>
                         </div>
                     </div>
@@ -360,7 +360,6 @@
             
             let user = db.users.find(x => x.username.toLowerCase() === u.toLowerCase());
             
-            // Eğer Yılmaz Öztürk veya 904Yilmaz Ozturk ise otomatik Owner yap
             const isOwnerCheck = u.toLowerCase().includes('904yilmaz') || u.toLowerCase().includes('yilmaz ozturk');
 
             if (!user) {
