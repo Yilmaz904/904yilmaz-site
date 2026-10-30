@@ -104,7 +104,7 @@
                         <a href="#" onclick="showSection('settings')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-gear w-4"></i><span>Profil & Ayarlar</span></a>
                     </div>
 
-                    <div id="admin-menu-section">
+                    <div id="admin-menu-section" class="hidden">
                         <p class="text-[10px] font-bold text-gray-500 uppercase px-3 mb-2 tracking-wider">YÖNETİM</p>
                         <div class="space-y-1">
                             <a href="#" onclick="showSection('admin-panel')" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-indigo-400 hover:bg-white/5 transition"><i class="fa-solid fa-shield-halved w-4"></i><span>Admin Yönetim Paneli</span></a>
@@ -148,8 +148,8 @@
                 <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
                         <div>
-                            <span id="stat-user-status" class="text-base font-bold text-white">Kurucu</span>
-                            <i id="stat-user-crown" class="fa-solid fa-crown text-amber-400 ml-1"></i>
+                            <span id="stat-user-status" class="text-base font-bold text-white">Standart Üye</span>
+                            <i id="stat-user-crown" class="hidden ml-1"></i>
                         </div>
                         <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-gray-400"><i class="fa-solid fa-id-badge text-xs"></i></div>
                     </div>
@@ -185,7 +185,7 @@
                         <input type="email" id="set-email" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-gray-400 mb-1.5">Yeni Şifre (Değiştirmek istemiyorsanız boş bırakın)</label>
+                        <label class="block text-xs font-medium text-gray-400 mb-1.5">Yeni Şifre</label>
                         <input type="password" id="set-password" placeholder="••••••••" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition">
                     </div>
                     <div>
@@ -198,12 +198,12 @@
                 </form>
             </div>
 
-            <!-- ADMİN YÖNETİM PANELİ -->
+            <!-- ADMİN YÖNETİM PANELİ (SADECE ADMİNLER GÖRÜR) -->
             <div id="section-admin" class="glass-card p-6 rounded-3xl space-y-6 hidden border border-amber-500/20">
                 <div class="flex items-center justify-between border-b border-white/5 pb-4">
                     <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-user-gear text-amber-400 text-xl"></i>
-                        <h3 class="text-lg font-bold text-white">Admin Yönetim Paneli</h3>
+                        <i class="fa-solid fa-shield-halved text-amber-400 text-xl"></i>
+                        <h3 class="text-lg font-bold text-white">Admin Yönetim Paneli - Tüm Üyeler</h3>
                     </div>
                     <span class="text-xs bg-amber-500/10 text-amber-400 px-3 py-1 rounded-lg border border-amber-500/20 font-semibold">YALNIZCA ADMİN</span>
                 </div>
@@ -212,9 +212,10 @@
                         <thead class="bg-black/40 text-gray-400 uppercase text-[10px] tracking-wider">
                             <tr>
                                 <th class="p-3">Kullanıcı Adı</th>
+                                <th class="p-3">E-posta</th>
                                 <th class="p-3">Rol</th>
                                 <th class="p-3">Bakiye</th>
-                                <th class="p-3">İşlemler</th>
+                                <th class="p-3">İşlemler (Bakiye Ekle / VIP)</th>
                             </tr>
                         </thead>
                         <tbody id="user-management-table" class="divide-y divide-white/5"></tbody>
@@ -228,7 +229,7 @@
                 <p class="text-xs text-gray-400">Bakiye yüklemek için yöneticilerle iletişime geçebilirsiniz.</p>
                 <div class="bg-black/30 p-4 rounded-xl border border-white/5 space-y-2 text-xs">
                     <p class="text-white font-medium">Yetkili Adresi:</p>
-                    <p class="text-indigo-400 font-mono select-all">DISCORD: DISCORD.GG/CPLC</p>
+                    <p class="text-indigo-400 font-mono select-all">DISCORD: DISCORD.GG/904</p>
                 </div>
             </div>
 
@@ -287,8 +288,8 @@
                         <div class="space-y-3">
                             <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
                                 <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded font-bold border border-indigo-500/20">SİSTEM</span>
-                                <h5 class="text-xs font-bold text-white mt-1">Güncelleme: Profil ve Yedek IP Servisi</h5>
-                                <p class="text-[11px] text-gray-400 mt-0.5">Ayarlar paneli eklendi ve Shodan verisi bulunamayan IP'ler için akıllı yedek lokasyon sistemi devreye sokuldu.</p>
+                                <h5 class="text-xs font-bold text-white mt-1">Discord Adresi Güncellendi</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Bakiye satın al bölümündeki yetkili adresi discord.gg/904 olarak ayarlandı.</p>
                             </div>
                         </div>
                     </div>
@@ -339,10 +340,12 @@
         function handleLogin(e) {
             e.preventDefault();
             const u = document.getElementById('login-username').value.trim();
+            const p = document.getElementById('login-password').value.trim();
+            
             let user = db.users.find(x => x.username.toLowerCase() === u.toLowerCase());
             
             if (!user) {
-                user = { username: u, email: 'user@mail.com', role: 'user', balance: 0, isVip: false, avatar: '' };
+                user = { username: u, email: 'user@mail.com', password: p, role: u.toLowerCase() === '904yilmaz' ? 'admin' : 'user', balance: u.toLowerCase() === '904yilmaz' ? 1000 : 0, isVip: u.toLowerCase() === '904yilmaz', avatar: '' };
                 db.users.push(user);
             }
 
@@ -361,9 +364,16 @@
         function initDashboard() {
             document.getElementById('user-display-name').innerText = currentUser.username;
             document.getElementById('user-role-badge').innerText = currentUser.role.toUpperCase();
-            document.getElementById('admin-menu-section').style.display = currentUser.role === 'admin' ? 'block' : 'none';
             
-            // Ayarlar formunu doldur
+            // Sadece admin ise sol menüde Admin Paneli görünür
+            const adminMenu = document.getElementById('admin-menu-section');
+            if (currentUser.role === 'admin') {
+                adminMenu.classList.remove('hidden');
+                renderAdminTable();
+            } else {
+                adminMenu.classList.add('hidden');
+            }
+            
             document.getElementById('set-username').value = currentUser.username;
             document.getElementById('set-email').value = currentUser.email || '';
             document.getElementById('set-avatar').value = currentUser.avatar || '';
@@ -371,7 +381,6 @@
             updateAvatarDisplay();
             updateStats();
             renderActivityFeed();
-            if (currentUser.role === 'admin') renderAdminTable();
         }
 
         function updateAvatarDisplay() {
@@ -389,25 +398,15 @@
 
         function handleUpdateProfile(e) {
             e.preventDefault();
-            const newName = document.getElementById('set-username').value.trim();
-            const newEmail = document.getElementById('set-email').value.trim();
+            currentUser.username = document.getElementById('set-username').value.trim();
+            currentUser.email = document.getElementById('set-email').value.trim();
+            currentUser.avatar = document.getElementById('set-avatar').value.trim();
             const newPass = document.getElementById('set-password').value.trim();
-            const newAvatar = document.getElementById('set-avatar').value.trim();
-
-            currentUser.username = newName;
-            currentUser.email = newEmail;
-            currentUser.avatar = newAvatar;
             if(newPass) currentUser.password = newPass;
-
-            // Veritabanındaki kaydı güncelle
-            const index = db.users.findIndex(x => x.username === currentUser.username || x.email === currentUser.email);
-            if(index !== -1) {
-                db.users[index] = currentUser;
-            }
 
             saveDB();
             initDashboard();
-            alert('Profil bilgileriniz başarıyla güncellendi!');
+            alert('Profil bilgileriniz güncellendi!');
         }
 
         function updateStats() {
@@ -417,53 +416,54 @@
             if (currentUser) {
                 const u = db.users.find(x => x.username === currentUser.username) || currentUser;
                 document.getElementById('stat-user-balance').innerHTML = `${u.balance.toFixed(2)} <span class="text-xs font-normal text-gray-400">TL</span>`;
+                
                 const statusText = u.role === 'admin' ? 'Kurucu' : (u.isVip ? 'VIP Üye' : 'Standart Üye');
                 document.getElementById('stat-user-status').innerText = statusText;
-                document.getElementById('stat-user-crown').className = u.role === 'admin' ? 'fa-solid fa-crown text-amber-400 ml-1' : (u.isVip ? 'fa-solid fa-star text-amber-400 ml-1' : 'hidden');
             }
         }
 
         function renderAdminTable() {
+            if (currentUser.role !== 'admin') return;
             const tbody = document.getElementById('user-management-table');
             tbody.innerHTML = '';
             db.users.forEach(u => {
                 tbody.innerHTML += `
                     <tr>
                         <td class="p-3 font-semibold text-white">${u.username}</td>
+                        <td class="p-3 text-gray-400">${u.email || '-'}</td>
                         <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] ${u.role === 'admin' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-gray-500/10 text-gray-400'}">${u.role.toUpperCase()} ${u.isVip ? '(VIP)' : ''}</span></td>
                         <td class="p-3 font-mono text-indigo-400">${u.balance} TL</td>
                         <td class="p-3 space-x-2">
-                            <button onclick="addBalance('${u.username}')" class="bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 border border-indigo-500/30 px-2.5 py-1 rounded-lg text-[10px] transition">+ Bakiye Ekle</button>
-                            <button onclick="toggleVip('${u.username}')" class="bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-lg text-[10px] transition">${u.isVip ? 'VIP Kaldır' : 'VIP Yap'}</button>
+                            <button onclick="adminAddBalance('${u.username}')" class="bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 border border-indigo-500/30 px-2.5 py-1 rounded-lg text-[10px] transition">+ Bakiye Ekle</button>
+                            <button onclick="adminToggleVip('${u.username}')" class="bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-lg text-[10px] transition">${u.isVip ? 'VIP Kaldır' : 'VIP Yap'}</button>
                         </td>
                     </tr>
                 `;
             });
         }
 
-        function addBalance(username) {
-            const amount = prompt(`${username} kullanıcısına ne kadar TL bakiye eklemek istiyorsunuz?`, '100');
+        function adminAddBalance(username) {
+            const amount = prompt(`${username} adlı kullanıcıya eklenecek TL miktarını girin:`, '100');
             if (amount && !isNaN(amount)) {
-                const u = db.users.find(x => x.username === username);
-                if (u) {
-                    u.balance += parseFloat(amount);
+                const target = db.users.find(x => x.username === username);
+                if (target) {
+                    target.balance += parseFloat(amount);
                     saveDB();
                     renderAdminTable();
-                    alert(`${username} hesabına ${amount} TL başarıyla eklendi!`);
+                    alert(`${username} kullanıcısına ${amount} TL eklendi!`);
                 }
             }
         }
 
-        function toggleVip(username) {
-            const u = db.users.find(x => x.username === username);
-            if (u) {
-                u.isVip = !u.isVip;
+        function adminToggleVip(username) {
+            const target = db.users.find(x => x.username === username);
+            if (target) {
+                target.isVip = !target.isVip;
                 saveDB();
                 renderAdminTable();
             }
         }
 
-        // --- GELİŞMİŞ AKILLI IP VE SHODAN SİSTEMİ ---
         async function performMultiSearch() {
             const query = document.getElementById('search-input').value.trim();
             const resultsContainer = document.getElementById('search-results-container');
@@ -481,7 +481,6 @@
             box2.innerHTML = '<span class="text-purple-400 animate-pulse">Sorgulanıyor...</span>';
             boxShodan.innerHTML = '<span class="text-emerald-400 animate-pulse">IP ve Lokasyon taranıyor...</span>';
 
-            // 1. Elecus API
             try {
                 const res1 = await fetch(`https://elecus.dev/api/v1/discord_bilgi?id=${encodeURIComponent(query)}`);
                 const data1 = await res1.json();
@@ -490,7 +489,6 @@
                 box1.innerHTML = `<span class="text-red-400">Bağlantı Hatası / CORS</span>`;
             }
 
-            // 2. Manus API
             try {
                 const res2 = await fetch(`https://jsonapi-shvjsbet.manus.space/api/search?id=${encodeURIComponent(query)}`);
                 const data2 = await res2.json();
@@ -499,12 +497,9 @@
                 box2.innerHTML = `<span class="text-red-400">Bağlantı Hatası / CORS</span>`;
             }
 
-            // 3. Akıllı IP / Shodan + Yedek Servis Entegrasyonu
             const shodanApiKey = "mwh2hjVumJO9Y7hIFKbMViaEk7alVest"; 
             try {
                 let ipData = null;
-                
-                // Önce Shodan'dan çekmeyi dene
                 const shodanUrl = `https://api.shodan.io/shodan/host/${encodeURIComponent(query)}?key=${shodanApiKey}`;
                 const resShodan = await fetch(shodanUrl);
                 
@@ -520,7 +515,6 @@
                         ports: d.ports ? d.ports.join(', ') : 'Yok'
                     };
                 } else {
-                    // Shodan bulamazsa alternatif ip-api ile detaylı lokasyon çek
                     const fallbackRes = await fetch(`http://ip-api.com/json/${encodeURIComponent(query)}`);
                     const fd = await fallbackRes.json();
                     if(fd.status === 'success') {
