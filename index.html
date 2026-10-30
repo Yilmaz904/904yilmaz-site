@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Osint 904Yilmaz Casino</title>
+    <title>Osint 904Yilmaz Casino & Bakiye</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -61,7 +61,7 @@
                     <i class="fa-solid fa-dice"></i>
                 </div>
                 <h1 class="text-2xl font-bold tracking-tight text-white">Osint 904Yilmaz Casino</h1>
-                <p class="text-sm text-gray-400 mt-1">Gerçekçi Casinoya Giriş Yapın</p>
+                <p class="text-sm text-gray-400 mt-1">Güvenli Giriş Paneli</p>
             </div>
 
             <div class="flex bg-black/40 p-1 rounded-xl mb-6 border border-white/5">
@@ -79,7 +79,7 @@
                     <input type="password" id="login-password" required placeholder="••••••••" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 transition">
                 </div>
                 <button type="submit" class="w-full mt-2 py-3 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-black font-bold rounded-xl shadow-lg transition">
-                    Casinoya Giriş Yap
+                    Sisteme Giriş Yap
                 </button>
             </form>
 
@@ -124,8 +124,8 @@
                 <div class="p-4 space-y-6 overflow-y-auto max-h-[calc(100vh-100px)] text-xs">
                     <div class="space-y-1">
                         <a href="#" onclick="showSection('home')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-300 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-house w-4"></i><span>Ana Sayfa</span></a>
-                        <a href="#" onclick="showSection('casino-lobby')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-amber-500/20 text-amber-400 font-bold border border-amber-500/30"><i class="fa-solid fa-dice w-4"></i><span>3D VIP Casino Lobi</span></a>
-                        <a href="#" onclick="showSection('buy-balance')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-cart-shopping w-4"></i><span>Bakiye Satın Al</span></a>
+                        <a href="#" onclick="showSection('casino-lobby')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-amber-400 hover:bg-white/5 transition"><i class="fa-solid fa-dice w-4"></i><span>3D VIP Casino Lobi</span></a>
+                        <a href="#" onclick="showSection('buy-balance')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-amber-500/20 text-amber-400 font-bold border border-amber-500/30"><i class="fa-solid fa-cart-shopping w-4"></i><span>Bakiye Satın Al</span></a>
                         <a href="#" onclick="showSection('settings')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-gear w-4"></i><span>Profil & Ayarlar</span></a>
                     </div>
 
@@ -182,12 +182,126 @@
                         <span id="stat-user-balance" class="text-2xl font-bold text-amber-400">9999.00 <span class="text-xs font-normal text-gray-400">TL</span></span>
                         <button onclick="quickAddBalance()" title="Kasa Bakiye Yükle" class="w-8 h-8 rounded-xl bg-amber-500/20 hover:bg-amber-500/40 border border-amber-500/30 flex items-center justify-center text-amber-400 transition"><i class="fa-solid fa-plus text-xs"></i></button>
                     </div>
-                    <div class="mt-4"><p class="text-[10px] text-amber-300 font-semibold uppercase tracking-wider">KASA BAKİYESİ (%50 ŞANS)</p></div>
+                    <div class="mt-4"><p class="text-[10px] text-amber-300 font-semibold uppercase tracking-wider">KASA BAKİYESİ</p></div>
+                </div>
+            </div>
+
+            <!-- GERÇEK ÖDEME YÖNTEMLERİ İLE BAKİYE SATIN AL -->
+            <div id="section-buy" class="glass-card p-6 rounded-3xl space-y-6 border border-amber-500/30">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/5 pb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-2xl casino-glow">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-white">Bakiye Satın Al & Kasa Yükle</h3>
+                            <p class="text-xs text-amber-300">Türkiye (Papara, IBAN) ve Azerbaycan (Banka Kartı) ile güvenli ödeme</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paketler Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Paket 1 -->
+                    <div class="bg-black/50 p-6 rounded-2xl border border-white/10 flex flex-col justify-between space-y-4 hover:border-amber-500/50 transition">
+                        <div>
+                            <span class="text-[10px] bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-lg border border-amber-500/20 font-bold uppercase">BAŞLANGIÇ PAKETİ</span>
+                            <h4 class="text-2xl font-black text-white mt-3">300 Site Parası</h4>
+                            <p class="text-xs text-gray-400 mt-1">Casino oyunları ve sorgular için ideal paket.</p>
+                        </div>
+                        <div class="border-t border-white/5 pt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-gray-400">Türkiye Fiyatı:</span>
+                                <span class="text-amber-400 font-bold">150 ₺</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span class="text-gray-400">Azerbaycan Fiyatı:</span>
+                                <span class="text-emerald-400 font-bold">15 ₼ (Manat)</span>
+                            </div>
+                        </div>
+                        <button onclick="openCheckout(300, 150, 15)" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-black font-extrabold rounded-xl text-xs shadow-lg transition">Satın Al</button>
+                    </div>
+
+                    <!-- Paket 2 -->
+                    <div class="bg-black/50 p-6 rounded-2xl border border-amber-500/40 flex flex-col justify-between space-y-4 shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-12 -top-12 w-24 h-24 bg-amber-500/10 rounded-full blur-xl"></div>
+                        <div>
+                            <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-lg border border-amber-500/30 font-bold uppercase">POPÜLER SEÇENEK</span>
+                            <h4 class="text-2xl font-black text-white mt-3">900 Site Parası</h4>
+                            <p class="text-xs text-gray-400 mt-1">Daha fazla eğlence ve yüksek kazanç şansı.</p>
+                        </div>
+                        <div class="border-t border-white/5 pt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-gray-400">Türkiye Fiyatı:</span>
+                                <span class="text-amber-400 font-bold">450 ₺</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span class="text-gray-400">Azerbaycan Fiyatı:</span>
+                                <span class="text-emerald-400 font-bold">45 ₼ (Manat)</span>
+                            </div>
+                        </div>
+                        <button onclick="openCheckout(900, 450, 45)" class="w-full py-3 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 text-black font-extrabold rounded-xl text-xs shadow-lg transition">Satın Al</button>
+                    </div>
+
+                    <!-- Paket 3 -->
+                    <div class="bg-black/50 p-6 rounded-2xl border border-white/10 flex flex-col justify-between space-y-4 hover:border-amber-500/50 transition">
+                        <div>
+                            <span class="text-[10px] bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-lg border border-amber-500/20 font-bold uppercase">VIP DEV KASA</span>
+                            <h4 class="text-2xl font-black text-white mt-3">1500 Site Parası</h4>
+                            <p class="text-xs text-gray-400 mt-1">VIP oyuncular için en avantajlı dev bakiye.</p>
+                        </div>
+                        <div class="border-t border-white/5 pt-4 space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-gray-400">Türkiye Fiyatı:</span>
+                                <span class="text-amber-400 font-bold">1000 ₺</span>
+                            </div>
+                            <div class="flex justify-between text-xs">
+                                <span class="text-gray-400">Azerbaycan Fiyatı:</span>
+                                <span class="text-emerald-400 font-bold">85 ₼ (Manat)</span>
+                            </div>
+                        </div>
+                        <button onclick="openCheckout(1500, 1000, 85)" class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-black font-extrabold rounded-xl text-xs shadow-lg transition">Satın Al</button>
+                    </div>
+                </div>
+
+                <!-- ÖDEME YÖNTEMLERİ BİLGİ ALANI -->
+                <div class="bg-black/40 p-6 rounded-2xl border border-white/10 space-y-4">
+                    <h4 class="text-sm font-bold text-white flex items-center"><i class="fa-solid fa-shield-halved text-amber-400 mr-2"></i>Ödeme Yöntemleri ve Talimatlar</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-gray-300">
+                        <div class="bg-black/40 p-4 rounded-xl border border-white/5 space-y-2">
+                            <p class="text-amber-400 font-bold"><i class="fa-solid fa-turkey mr-1"></i> Türkiye Ödemeleri (Papara / IBAN)</p>
+                            <p><strong>Papara Numarası:</strong> <span class="font-mono text-white select-all">1234 5678 90</span></p>
+                            <p><strong>IBAN (TR):</strong> <span class="font-mono text-white select-all">TR00 0000 0000 0000 0000 00</span></p>
+                            <p class="text-[11px] text-gray-400">Açıklama kısmına kullanıcı adınızı yazarak ödeme yapabilirsiniz.</p>
+                        </div>
+                        <div class="bg-black/40 p-4 rounded-xl border border-white/5 space-y-2">
+                            <p class="text-emerald-400 font-bold"><i class="fa-solid fa-earth-americas mr-1"></i> Azerbaycan Ödemeleri (Banka Kartı)</p>
+                            <p><strong>Kart Numarası:</strong> <span class="font-mono text-white select-all">4169 5800 0000 0000</span></p>
+                            <p><strong>Bank:</strong> <span class="text-white">Kapital Bank / Birbank</span></p>
+                            <p class="text-[11px] text-gray-400">Manat ile kart üzerinden ödeme yapıp Discord üzerinden dekont iletebilirsiniz.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ÖDEME ONAY MODALI -->
+            <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 hidden px-4">
+                <div class="glass-panel p-6 rounded-2xl w-full max-w-md space-y-4 border border-amber-500/40 relative">
+                    <h3 id="checkout-title" class="text-lg font-bold text-white">Bakiye Satın Al</h3>
+                    <p id="checkout-desc" class="text-xs text-gray-300"></p>
+                    <div class="bg-black/50 p-4 rounded-xl border border-white/10 space-y-2 text-xs">
+                        <p class="text-amber-400 font-bold">Ödeme Bildirimi:</p>
+                        <p class="text-gray-300">Ödemeyi gerçekleştirdikten sonra aşağıdaki butona basarak yöneticilere bildirim gönderebilirsiniz.</p>
+                    </div>
+                    <div class="flex space-x-3 pt-2">
+                        <button onclick="closeCheckout()" class="flex-1 py-2.5 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl text-xs transition">İptal</button>
+                        <button onclick="completeCheckout()" class="flex-1 py-2.5 bg-amber-500 hover:bg-amber-400 text-black font-extrabold rounded-xl text-xs transition">Ödemeyi Bildir / Yükle</button>
+                    </div>
                 </div>
             </div>
 
             <!-- 3D VIP CASINO LOBİSİ -->
-            <div id="section-casino-lobby" class="glass-card p-6 rounded-3xl space-y-6 border border-amber-500/30">
+            <div id="section-casino-lobby" class="glass-card p-6 rounded-3xl space-y-6 hidden border border-amber-500/30">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/5 pb-4">
                     <div class="flex items-center space-x-3">
                         <div class="w-12 h-12 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-2xl casino-glow">
@@ -198,52 +312,29 @@
                             <p class="text-xs text-amber-300">Gerçek Las Vegas atmosferi, %50 kazanma/kaybetme olasılığı ve anlık ödemeler</p>
                         </div>
                     </div>
-                    <button onclick="quickAddBalance()" class="bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-black font-extrabold px-4 py-2.5 rounded-xl text-xs shadow-lg transition">+ Kasaya Bakiye Yükle</button>
+                    <button onclick="showSection('buy')" class="bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 text-black font-extrabold px-4 py-2.5 rounded-xl text-xs shadow-lg transition">Bakiye Satın Al</button>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Oyun 1: Slot -->
-                    <div onclick="openGame('slot')" class="bg-gradient-to-br from-neutral-900 via-zinc-900 to-amber-950/40 p-6 rounded-2xl border border-amber-500/30 hover:border-amber-400 transition duration-300 cursor-pointer transform hover:-translate-y-1.5 shadow-2xl flex flex-col items-center text-center space-y-4 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-amber-500/5 opacity-0 group-hover:opacity-100 transition"></div>
-                        <div class="w-16 h-16 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 text-3xl border border-amber-500/40 shadow-inner">🎰</div>
-                        <div>
-                            <h4 class="font-bold text-white text-base">Vegas 3D Slot Makinesi</h4>
-                            <p class="text-[11px] text-gray-400 mt-1">%50 Kazanma şansı, 2X Ödül</p>
-                        </div>
-                        <span class="px-5 py-2 bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs rounded-xl shadow-lg transition">OYNA (2X)</span>
+                    <div onclick="openGame('slot')" class="bg-gradient-to-br from-neutral-900 to-amber-950/40 p-6 rounded-2xl border border-amber-500/30 hover:border-amber-400 transition cursor-pointer flex flex-col items-center text-center space-y-4 shadow-xl">
+                        <div class="w-16 h-16 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 text-3xl border border-amber-500/40">🎰</div>
+                        <div><h4 class="font-bold text-white text-base">Vegas 3D Slot</h4><p class="text-[11px] text-gray-400 mt-1">%50 Şans, 2X Ödül</p></div>
+                        <span class="px-5 py-2 bg-amber-500 text-black font-extrabold text-xs rounded-xl">OYNA</span>
                     </div>
-
-                    <!-- Oyun 2: Şanslı Çark -->
-                    <div onclick="openGame('wheel')" class="bg-gradient-to-br from-neutral-900 via-zinc-900 to-emerald-950/40 p-6 rounded-2xl border border-emerald-500/30 hover:border-emerald-400 transition duration-300 cursor-pointer transform hover:-translate-y-1.5 shadow-2xl flex flex-col items-center text-center space-y-4 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition"></div>
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-3xl border border-emerald-500/40 shadow-inner">🎡</div>
-                        <div>
-                            <h4 class="font-bold text-white text-base">Royal Çark-ı Felek</h4>
-                            <p class="text-[11px] text-gray-400 mt-1">2X, 3X ve 5X Yüksek Çarpanlar</p>
-                        </div>
-                        <span class="px-5 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs rounded-xl shadow-lg transition">ÇARKI ÇEVİR</span>
+                    <div onclick="openGame('wheel')" class="bg-gradient-to-br from-neutral-900 to-emerald-950/40 p-6 rounded-2xl border border-emerald-500/30 hover:border-emerald-400 transition cursor-pointer flex flex-col items-center text-center space-y-4 shadow-xl">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-3xl border border-emerald-500/40">🎡</div>
+                        <div><h4 class="font-bold text-white text-base">Royal Çark</h4><p class="text-[11px] text-gray-400 mt-1">Yüksek Çarpanlar</p></div>
+                        <span class="px-5 py-2 bg-emerald-500 text-black font-extrabold text-xs rounded-xl">ÇEVİR</span>
                     </div>
-
-                    <!-- Oyun 3: Yazı Tura -->
-                    <div onclick="openGame('coin')" class="bg-gradient-to-br from-neutral-900 via-zinc-900 to-indigo-950/40 p-6 rounded-2xl border border-indigo-500/30 hover:border-indigo-400 transition duration-300 cursor-pointer transform hover:-translate-y-1.5 shadow-2xl flex flex-col items-center text-center space-y-4 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-indigo-500/5 opacity-0 group-hover:opacity-100 transition"></div>
-                        <div class="w-16 h-16 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-3xl border border-indigo-500/40 shadow-inner">🪙</div>
-                        <div>
-                            <h4 class="font-bold text-white text-base">3D Altın Yazı-Tura</h4>
-                            <p class="text-[11px] text-gray-400 mt-1">Tam %50 Olasılık, 2X Kazanç</p>
-                        </div>
-                        <span class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs rounded-xl shadow-lg transition">DÜELLO BAŞLAT</span>
+                    <div onclick="openGame('coin')" class="bg-gradient-to-br from-neutral-900 to-indigo-950/40 p-6 rounded-2xl border border-indigo-500/30 hover:border-indigo-400 transition cursor-pointer flex flex-col items-center text-center space-y-4 shadow-xl">
+                        <div class="w-16 h-16 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-3xl border border-indigo-500/40">🪙</div>
+                        <div><h4 class="font-bold text-white text-base">Yazı - Tura</h4><p class="text-[11px] text-gray-400 mt-1">Tam %50 Olasılık</p></div>
+                        <span class="px-5 py-2 bg-indigo-600 text-white font-extrabold text-xs rounded-xl">DÜELLO</span>
                     </div>
-
-                    <!-- Oyun 4: Mayın Tarlası (Mines) -->
-                    <div onclick="openGame('mines')" class="bg-gradient-to-br from-neutral-900 via-zinc-900 to-rose-950/40 p-6 rounded-2xl border border-rose-500/30 hover:border-rose-400 transition duration-300 cursor-pointer transform hover:-translate-y-1.5 shadow-2xl flex flex-col items-center text-center space-y-4 relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-rose-500/5 opacity-0 group-hover:opacity-100 transition"></div>
-                        <div class="w-16 h-16 rounded-2xl bg-rose-500/20 flex items-center justify-center text-rose-400 text-3xl border border-rose-500/40 shadow-inner">💣</div>
-                        <div>
-                            <h4 class="font-bold text-white text-base">3D Mayın Tarlası (Mines)</h4>
-                            <p class="text-[11px] text-gray-400 mt-1">Güvenli kutuları aç, çarpanı katla!</p>
-                        </div>
-                        <span class="px-5 py-2 bg-rose-600 hover:bg-rose-500 text-white font-extrabold text-xs rounded-xl shadow-lg transition">MAYINLARI AÇ</span>
+                    <div onclick="openGame('mines')" class="bg-gradient-to-br from-neutral-900 to-rose-950/40 p-6 rounded-2xl border border-rose-500/30 hover:border-rose-400 transition cursor-pointer flex flex-col items-center text-center space-y-4 shadow-xl">
+                        <div class="w-16 h-16 rounded-2xl bg-rose-500/20 flex items-center justify-center text-rose-400 text-3xl border border-rose-500/40">💣</div>
+                        <div><h4 class="font-bold text-white text-base">Mayın Tarlası</h4><p class="text-[11px] text-gray-400 mt-1">Güvenli Kutular</p></div>
+                        <span class="px-5 py-2 bg-rose-600 text-white font-extrabold text-xs rounded-xl">OYNA</span>
                     </div>
                 </div>
             </div>
@@ -252,170 +343,100 @@
             <div id="section-game-play" class="glass-card p-6 rounded-3xl space-y-6 hidden border border-amber-500/40 max-w-2xl mx-auto relative shadow-2xl">
                 <button onclick="showSection('casino-lobby')" class="absolute top-6 left-6 text-xs bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-xl flex items-center transition"><i class="fa-solid fa-arrow-left mr-1.5"></i> Lobiye Dön</button>
                 
-                <!-- 1. SLOT OYUNU -->
                 <div id="game-slot" class="space-y-6 pt-8 text-center hidden">
                     <h3 class="text-xl font-extrabold text-amber-400">🎰 VEGAS 3D SLOT MAKİNESİ</h3>
-                    <div class="bg-gradient-to-b from-black to-neutral-950 p-8 rounded-3xl border-4 border-amber-500/50 shadow-2xl relative">
-                        <div class="flex justify-center space-x-4 text-6xl font-mono bg-black/90 p-8 rounded-2xl border border-amber-500/40 shadow-inner">
-                            <div id="reel1" class="w-20 h-24 bg-neutral-900 rounded-xl flex items-center justify-center border border-white/10 shadow-inner">💎</div>
-                            <div id="reel2" class="w-20 h-24 bg-neutral-900 rounded-xl flex items-center justify-center border border-white/10 shadow-inner">7️⃣</div>
-                            <div id="reel3" class="w-20 h-24 bg-neutral-900 rounded-xl flex items-center justify-center border border-white/10 shadow-inner">🍒</div>
+                    <div class="bg-black p-8 rounded-3xl border-4 border-amber-500/50 shadow-2xl">
+                        <div class="flex justify-center space-x-4 text-6xl font-mono bg-black/90 p-8 rounded-2xl border border-amber-500/40">
+                            <div id="reel1" class="w-20 h-24 bg-neutral-900 rounded-xl flex items-center justify-center text-white">💎</div>
+                            <div id="reel2" class="w-20 h-24 bg-neutral-900 rounded-xl flex items-center justify-center text-white">7️⃣</div>
+                            <div id="reel3" class="w-20 h-24 bg-neutral-900 rounded-xl flex items-center justify-center text-white">🍒</div>
                         </div>
                         <div id="slot-status" class="mt-4 text-xs font-bold text-amber-300 h-6">Bahis girin ve kolu çekin (%50 Şans)!</div>
                     </div>
                     <div class="flex items-center space-x-3 justify-center">
-                        <input type="number" id="play-slot-bet" value="100" min="10" class="w-32 bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-center text-white focus:outline-none focus:border-amber-500 font-bold">
-                        <button onclick="runSlotAnimation()" class="px-8 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 text-black font-extrabold rounded-xl shadow-xl transition transform active:scale-95">KOLU ÇEK</button>
+                        <input type="number" id="play-slot-bet" value="100" min="10" class="w-32 bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-center text-white font-bold">
+                        <button onclick="runSlotAnimation()" class="px-8 py-3.5 bg-amber-500 text-black font-extrabold rounded-xl shadow-xl">KOLU ÇEK</button>
                     </div>
                 </div>
 
-                <!-- 2. ŞANSLI ÇARK -->
                 <div id="game-wheel" class="space-y-6 pt-8 text-center hidden">
                     <h3 class="text-xl font-extrabold text-emerald-400">🎡 ROYAL ÇARK-I FELEK</h3>
                     <div class="relative w-64 h-64 mx-auto flex items-center justify-center">
-                        <div id="wheel-body" class="w-56 h-56 rounded-full border-4 border-emerald-400/60 bg-gradient-to-r from-emerald-600 via-teal-700 to-emerald-900 flex items-center justify-center text-3xl font-bold text-white shadow-2xl transition-transform duration-1000">
-                            🎯
-                        </div>
-                        <div class="absolute -top-3 text-3xl text-amber-400 filter drop-shadow">▼</div>
+                        <div id="wheel-body" class="w-56 h-56 rounded-full border-4 border-emerald-400/60 bg-gradient-to-r from-emerald-600 via-teal-700 to-emerald-900 flex items-center justify-center text-3xl font-bold text-white shadow-2xl">🎯</div>
+                        <div class="absolute -top-3 text-3xl text-amber-400">▼</div>
                     </div>
-                    <div id="wheel-status" class="text-xs font-bold text-emerald-300 h-6">Çarkı çevirerek %50 şansla kazancınızı katlayın!</div>
+                    <div id="wheel-status" class="text-xs font-bold text-emerald-300 h-6">Çarkı çevirerek %50 şansla kazanın!</div>
                     <div class="flex items-center space-x-3 justify-center">
-                        <input type="number" id="play-wheel-bet" value="100" min="10" class="w-32 bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-center text-white focus:outline-none focus:border-emerald-500 font-bold">
-                        <button onclick="runWheelAnimation()" class="px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-black font-extrabold rounded-xl shadow-xl transition transform active:scale-95">ÇARKI ÇEVİR</button>
+                        <input type="number" id="play-wheel-bet" value="100" min="10" class="w-32 bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-center text-white font-bold">
+                        <button onclick="runWheelAnimation()" class="px-8 py-3.5 bg-emerald-500 text-black font-extrabold rounded-xl shadow-xl">ÇARKI ÇEVİR</button>
                     </div>
                 </div>
 
-                <!-- 3. YAZI TURA -->
                 <div id="game-coin" class="space-y-6 pt-8 text-center hidden">
                     <h3 class="text-xl font-extrabold text-indigo-400">🪙 3D ALTIN YAZI - TURA</h3>
                     <div class="py-6">
-                        <div id="coin-body" class="w-32 h-32 mx-auto rounded-full bg-gradient-to-tr from-amber-400 via-yellow-300 to-amber-600 border-4 border-amber-300 flex items-center justify-center text-3xl shadow-2xl text-black font-black">
-                            YAZI
-                        </div>
+                        <div id="coin-body" class="w-32 h-32 mx-auto rounded-full bg-gradient-to-tr from-amber-400 to-yellow-200 border-4 border-amber-300 flex items-center justify-center text-3xl shadow-2xl text-black font-black">YAZI</div>
                     </div>
-                    <div id="coin-status" class="text-xs font-bold text-indigo-300 h-6">Tam %50 kazanma ihtimali! Tarafını seç.</div>
+                    <div id="coin-status" class="text-xs font-bold text-indigo-300 h-6">Tam %50 kazanma ihtimali!</div>
                     <div class="space-y-3">
-                        <input type="number" id="play-coin-bet" value="100" min="10" class="w-32 bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-center text-white focus:outline-none focus:border-indigo-500 mx-auto block font-bold">
+                        <input type="number" id="play-coin-bet" value="100" min="10" class="w-32 bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-sm text-center text-white mx-auto block font-bold">
                         <div class="flex justify-center space-x-3">
-                            <button onclick="runCoinAnimation('YAZI')" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs transition shadow-lg">YAZI SEÇ</button>
-                            <button onclick="runCoinAnimation('TURA')" class="px-8 py-3 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-xs transition shadow-lg">TURA SEÇ</button>
+                            <button onclick="runCoinAnimation('YAZI')" class="px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl text-xs">YAZI SEÇ</button>
+                            <button onclick="runCoinAnimation('TURA')" class="px-8 py-3 bg-purple-600 text-white font-bold rounded-xl text-xs">TURA SEÇ</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 4. MAYIN TARLASI (MINES) -->
                 <div id="game-mines" class="space-y-6 pt-6 text-center hidden">
                     <h3 class="text-xl font-extrabold text-rose-400">💣 3D MAYIN TARLASI (MINES)</h3>
-                    <p class="text-xs text-gray-300">Kutulardan güvenli olanları aç, mayına basmadan kazan! (%50 Kazanç)</p>
-                    
                     <div class="flex justify-center items-center space-x-4">
-                        <span class="text-xs text-gray-400 font-bold">Bahis:</span>
                         <input type="number" id="mines-bet" value="100" min="10" class="w-28 bg-black/50 border border-white/10 rounded-xl px-3 py-2 text-xs text-center text-white font-bold">
-                        <button onclick="startMinesGame()" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-xl text-xs shadow-lg transition">Oyunu Başlat</button>
+                        <button onclick="startMinesGame()" class="px-5 py-2.5 bg-rose-600 text-white font-bold rounded-xl text-xs">Başlat</button>
                     </div>
-
                     <div id="mines-grid" class="grid grid-cols-4 gap-3 max-w-xs mx-auto p-4 bg-black/60 rounded-2xl border border-rose-500/30">
-                        <!-- 8 Kutulu Mayın Alanı -->
-                        <div onclick="clickMineBox(0)" class="mine-box h-14 bg-neutral-800 hover:bg-neutral-700 rounded-xl flex items-center justify-center text-xl cursor-pointer border border-white/5 transition font-bold text-gray-400">?</div>
-                        <div onclick="clickMineBox(1)" class="mine-box h-14 bg-neutral-800 hover:bg-neutral-700 rounded-xl flex items-center justify-center text-xl cursor-pointer border border-white/5 transition font-bold text-gray-400">?</div>
-                        <div onclick="clickMineBox(2)" class="mine-box h-14 bg-neutral-800 hover:bg-neutral-700 rounded-xl flex items-center justify-center text-xl cursor-pointer border border-white/5 transition font-bold text-gray-400">?</div>
-                        <div onclick="clickMineBox(3)" class="mine-box h-14 bg-neutral-800 hover:bg-neutral-700 rounded-xl flex items-center justify-center text-xl cursor-pointer border border-white/5 transition font-bold text-gray-400">?</div>
-                        <div onclick="clickMineBox(4)" class="mine-box h-14 bg-neutral-800 hover:bg-neutral-700 rounded-xl flex items-center justify-center text-xl cursor-pointer border border-white/5 transition font-bold text-gray-400">?</div>
-                        <div onclick="clickMineBox(5)" class="mine-box h-14 bg-neutral-800 hover:bg-neutral-700 rounded-xl flex items-center justify-center text-xl cursor-pointer border border-white/5 transition font-bold text-gray-400">?</div>
-                        <div onclick="clickMineBox(6)" class="mine-box h-14 bg-neutral-800 hover:bg-neutral-700 rounded-xl flex items-center justify-center text-xl cursor-pointer border border-white/5 transition font-bold text-gray-400">?</div>
-                        <div onclick="clickMineBox(7)" class="mine-box h-14 bg-neutral-800 hover:bg-neutral-700 rounded-xl flex items-center justify-center text-xl cursor-pointer border border-white/5 transition font-bold text-gray-400">?</div>
+                        <div onclick="clickMineBox(0)" class="mine-box h-14 bg-neutral-800 rounded-xl flex items-center justify-center text-xl cursor-pointer text-gray-400 font-bold">?</div>
+                        <div onclick="clickMineBox(1)" class="mine-box h-14 bg-neutral-800 rounded-xl flex items-center justify-center text-xl cursor-pointer text-gray-400 font-bold">?</div>
+                        <div onclick="clickMineBox(2)" class="mine-box h-14 bg-neutral-800 rounded-xl flex items-center justify-center text-xl cursor-pointer text-gray-400 font-bold">?</div>
+                        <div onclick="clickMineBox(3)" class="mine-box h-14 bg-neutral-800 rounded-xl flex items-center justify-center text-xl cursor-pointer text-gray-400 font-bold">?</div>
+                        <div onclick="clickMineBox(4)" class="mine-box h-14 bg-neutral-800 rounded-xl flex items-center justify-center text-xl cursor-pointer text-gray-400 font-bold">?</div>
+                        <div onclick="clickMineBox(5)" class="mine-box h-14 bg-neutral-800 rounded-xl flex items-center justify-center text-xl cursor-pointer text-gray-400 font-bold">?</div>
+                        <div onclick="clickMineBox(6)" class="mine-box h-14 bg-neutral-800 rounded-xl flex items-center justify-center text-xl cursor-pointer text-gray-400 font-bold">?</div>
+                        <div onclick="clickMineBox(7)" class="mine-box h-14 bg-neutral-800 rounded-xl flex items-center justify-center text-xl cursor-pointer text-gray-400 font-bold">?</div>
                     </div>
-                    <div id="mines-status" class="text-xs font-bold text-rose-300 h-6">Bahsinizi belirleyin ve oyunu başlatın.</div>
+                    <div id="mines-status" class="text-xs font-bold text-rose-300 h-6">Güvenli kutuyu açın.</div>
                 </div>
             </div>
 
-            <!-- AYARLAR VE PROFİL PANELİ -->
+            <!-- AYARLAR -->
             <div id="section-settings" class="glass-card p-6 rounded-3xl space-y-6 hidden border border-slate-500/20">
-                <div class="flex items-center justify-between border-b border-white/5 pb-4">
-                    <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-gear text-slate-300 text-xl"></i>
-                        <h3 class="text-lg font-bold text-white">Profil ve Hesap Ayarları</h3>
-                    </div>
-                    <button onclick="quickAddBalance()" class="text-xs bg-amber-500/10 text-amber-400 px-3 py-1 rounded-lg border border-amber-500/20 font-semibold hover:bg-amber-500/20 transition">+ Bakiye Yükle</button>
-                </div>
-
+                <h3 class="text-lg font-bold text-white">Profil ve Hesap Ayarları</h3>
                 <form onsubmit="handleUpdateProfile(event)" class="space-y-4 max-w-lg">
-                    <div>
-                        <label class="block text-xs font-medium text-gray-400 mb-1.5">Kullanıcı Adı</label>
-                        <input type="text" id="set-username" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-gray-400 mb-1.5">E-posta Adresi</label>
-                        <input type="email" id="set-email" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-gray-400 mb-1.5">Yeni Şifre</label>
-                        <input type="password" id="set-password" placeholder="••••••••" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-gray-400 mb-1.5">Profil Fotoğrafı URL</label>
-                        <input type="url" id="set-avatar" placeholder="https://ornek.com/avatar.png" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 transition">
-                    </div>
-                    <button type="submit" class="py-3 px-6 bg-slate-700 hover:bg-slate-600 text-white font-medium rounded-xl text-xs transition shadow-lg">
-                        Değişiklikleri Kaydet
-                    </button>
+                    <input type="text" id="set-username" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white">
+                    <input type="email" id="set-email" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white">
+                    <input type="password" id="set-password" placeholder="••••••••" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white">
+                    <input type="url" id="set-avatar" placeholder="Avatar URL" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm text-white">
+                    <button type="submit" class="py-3 px-6 bg-slate-700 text-white rounded-xl text-xs">Kaydet</button>
                 </form>
             </div>
 
-            <!-- ADMİN VE OWNER YÖNETİM PANELİ -->
+            <!-- ADMİN -->
             <div id="section-admin" class="glass-card p-6 rounded-3xl space-y-6 hidden border border-amber-500/20">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/5 pb-4">
-                    <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-shield-halved text-amber-400 text-xl"></i>
-                        <h3 class="text-lg font-bold text-white">Yönetici Paneli - Üye Yönetimi</h3>
-                    </div>
-                    <div class="relative w-full md:w-64">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-xs"></i>
-                        <input type="text" id="admin-user-search" oninput="renderAdminTable()" placeholder="Kullanıcı adı ara..." class="w-full bg-black/40 border border-white/10 rounded-xl py-2 pl-9 pr-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                    </div>
-                </div>
+                <h3 class="text-lg font-bold text-white">Yönetici Paneli</h3>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs text-gray-300">
-                        <thead class="bg-black/40 text-gray-400 uppercase text-[10px] tracking-wider">
-                            <tr>
-                                <th class="p-3">Kullanıcı Adı</th>
-                                <th class="p-3">E-posta</th>
-                                <th class="p-3">Rol</th>
-                                <th class="p-3">Bakiye</th>
-                                <th class="p-3">VIP Bitiş</th>
-                                <th class="p-3">İşlemler</th>
-                            </tr>
+                        <thead class="bg-black/40 text-gray-400 uppercase text-[10px]">
+                            <tr><th class="p-3">Kullanıcı</th><th class="p-3">Bakiye</th><th class="p-3">İşlem</th></tr>
                         </thead>
                         <tbody id="user-management-table" class="divide-y divide-white/5"></tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- BAKİYE SATIN AL -->
-            <div id="section-buy" class="glass-card p-6 rounded-3xl space-y-4 hidden">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-lg font-bold text-white flex items-center space-x-2"><i class="fa-solid fa-cart-shopping text-slate-300"></i><span>Bakiye Yükleme ve Satın Al</span></h3>
-                    <button onclick="quickAddBalance()" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 border border-amber-500/30 px-3 py-1.5 rounded-xl text-xs font-semibold transition">+ Kasa Bakiyesi Ekle</button>
-                </div>
-                <p class="text-xs text-gray-400">Bakiye yüklemek için doğrudan yukarıdaki butonu kullanabilir veya yöneticilerle iletişime geçebilirsiniz.</p>
-                <div class="bg-black/30 p-4 rounded-xl border border-white/5 space-y-2 text-xs">
-                    <p class="text-white font-medium">Yetkili Adresi:</p>
-                    <p class="text-slate-300 font-mono select-all">DISCORD: DISCORD.GG/904</p>
-                </div>
-            </div>
-
             <!-- ANA SAYFA -->
             <div id="section-home" class="space-y-6 hidden">
                 <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[240px] border border-white/5 shadow-xl">
-                    <div class="relative z-10 max-w-2xl w-full">
-                        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white flex items-center justify-center space-x-3">
-                            <span>Osint 904Yilmaz</span>
-                            <i class="fa-solid fa-user-secret text-amber-400"></i>
-                        </h2>
-                        <p class="text-xs uppercase tracking-widest text-amber-400 font-semibold mt-2">VIP CASINO & OSINT PLATFORMU</p>
-                        <p class="text-xs italic text-gray-400 mt-1">"Ne kadar sessiz olursan, o kadar çok işitebilirsin"</p>
-                        <button onclick="showSection('casino-lobby')" class="mt-5 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-extrabold rounded-xl shadow-lg transition">3D Casino Lobisine Git</button>
-                    </div>
+                    <h2 class="text-3xl font-extrabold text-white">Osint 904Yilmaz</h2>
+                    <button onclick="showSection('casino-lobby')" class="mt-5 px-6 py-3 bg-amber-500 text-black font-extrabold rounded-xl">Casino Lobisi</button>
                 </div>
             </div>
 
@@ -430,22 +451,12 @@
         };
 
         let currentUser = null;
-        let minesState = { active: false, bet: 0, mineIndex: -1, openedCount: 0 };
+        let selectedPackage = { coins: 0, tl: 0, azn: 0 };
+        let minesState = { active: false, bet: 0, mineIndex: -1 };
 
         function saveDB() {
             localStorage.setItem('osint_db', JSON.stringify(db));
-            checkVipExpirations();
             updateStats();
-        }
-
-        function checkVipExpirations() {
-            const now = Date.now();
-            db.users.forEach(u => {
-                if(u.isVip && u.vipUntil && now > u.vipUntil) {
-                    u.isVip = false;
-                    u.vipUntil = null;
-                }
-            });
         }
 
         function switchTab(tab) {
@@ -467,7 +478,7 @@
             }
             db.users.push({ username: u, email: email, password: pass, role: 'user', balance: 1000, isVip: false, vipUntil: null, avatar: '' });
             saveDB();
-            alert('Kayıt başarılı! 1000 TL hediye kasanız tanımlandı, giriş yapabilirsiniz.');
+            alert('Kayıt başarılı! 1000 TL hediye kasanız tanımlandı.');
             switchTab('login');
         }
 
@@ -480,16 +491,7 @@
             const isOwnerCheck = u.toLowerCase().includes('904yilmaz') || u.toLowerCase().includes('yilmaz ozturk');
 
             if (!user) {
-                user = { 
-                    username: u, 
-                    email: isOwnerCheck ? 'yilmaz@mail.com' : 'user@mail.com', 
-                    password: p, 
-                    role: isOwnerCheck ? 'owner' : 'user', 
-                    balance: isOwnerCheck ? 9999 : 1000, 
-                    isVip: isOwnerCheck, 
-                    vipUntil: null,
-                    avatar: '' 
-                };
+                user = { username: u, email: 'user@mail.com', password: p, role: isOwnerCheck ? 'owner' : 'user', balance: isOwnerCheck ? 9999 : 1000, isVip: isOwnerCheck, vipUntil: null, avatar: '' };
                 db.users.push(user);
             } else if (isOwnerCheck) {
                 user.role = 'owner';
@@ -509,8 +511,7 @@
 
         function initDashboard() {
             document.getElementById('user-display-name').innerText = currentUser.username;
-            const badge = document.getElementById('user-role-badge');
-            badge.innerText = currentUser.role.toUpperCase();
+            document.getElementById('user-role-badge').innerText = currentUser.role.toUpperCase();
             
             const adminMenu = document.getElementById('admin-menu-section');
             if (currentUser.role === 'admin' || currentUser.role === 'owner') {
@@ -524,21 +525,8 @@
             document.getElementById('set-email').value = currentUser.email || '';
             document.getElementById('set-avatar').value = currentUser.avatar || '';
 
-            updateAvatarDisplay();
             updateStats();
-        }
-
-        function updateAvatarDisplay() {
-            const img = document.getElementById('user-avatar-img');
-            const icon = document.getElementById('user-avatar-icon');
-            if (currentUser.avatar && currentUser.avatar.trim() !== '') {
-                img.src = currentUser.avatar;
-                img.classList.remove('hidden');
-                icon.classList.add('hidden');
-            } else {
-                img.classList.add('hidden');
-                icon.classList.remove('hidden');
-            }
+            showSection('buy'); // Direkt Bakiye Al ekranı ile başlat
         }
 
         function handleUpdateProfile(e) {
@@ -554,186 +542,130 @@
         function quickAddBalance() {
             const amount = prompt('Kasanıza ne kadar TL eklemek istersiniz?', '1000');
             if(amount && !isNaN(amount) && parseFloat(amount) > 0) {
-                const u = db.users.find(x => x.username === currentUser.username);
-                u.balance += parseFloat(amount);
+                db.users.find(x => x.username === currentUser.username).balance += parseFloat(amount);
                 saveDB();
                 alert(`${amount} TL kasanıza eklendi!`);
             }
         }
 
+        function openCheckout(coins, tl, azn) {
+            selectedPackage = { coins, tl, azn };
+            document.getElementById('checkout-title').innerText = `${coins} Site Parası Satın Al`;
+            document.getElementById('checkout-desc').innerHTML = `Ödenecek Tutar:<br><b>🇹🇷 Türkiye:</b> ${tl} ₺ (Papara / IBAN)<br><b>🇦🇿 Azerbaycan:</b> ${azn} ₼ (Banka Kartı)`;
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function completeCheckout() {
+            const u = db.users.find(x => x.username === currentUser.username);
+            u.balance += selectedPackage.coins;
+            saveDB();
+            closeCheckout();
+            alert(`Ödemeniz onaylandı! ${selectedPackage.coins} site parası kasanıza eklendi.`);
+            showSection('casino-lobby');
+        }
+
         function updateStats() {
             document.getElementById('stat-registered-users').innerText = db.users.length;
             document.getElementById('stat-vip-users').innerText = db.users.filter(x => x.isVip).length;
-
             if (currentUser) {
                 const u = db.users.find(x => x.username === currentUser.username) || currentUser;
                 document.getElementById('stat-user-balance').innerHTML = `${u.balance.toFixed(2)} <span class="text-xs font-normal text-gray-400">TL</span>`;
             }
         }
 
-        // --- LOBİ VE OYUN GEÇİŞLERİ ---
         function openGame(gameType) {
             showSection('game-play');
-            document.getElementById('game-slot').classList.add('hidden');
-            document.getElementById('game-wheel').classList.add('hidden');
-            document.getElementById('game-coin').classList.add('hidden');
-            document.getElementById('game-mines').classList.add('hidden');
-
+            ['game-slot', 'game-wheel', 'game-coin', 'game-mines'].forEach(id => document.getElementById(id).classList.add('hidden'));
             document.getElementById(`game-${gameType}`).classList.remove('hidden');
         }
 
         function checkDeduct(bet) {
             const u = db.users.find(x => x.username === currentUser.username);
-            if (u.balance < bet) {
-                alert('Yetersiz bakiye! Lütfen kasanıza bakiye yükleyin.');
-                return false;
-            }
+            if (u.balance < bet) { alert('Yetersiz bakiye!'); return false; }
             u.balance -= bet;
             saveDB();
             return true;
         }
 
-        // --- 1. SLOT OYUNU (%50 ŞANS) ---
         function runSlotAnimation() {
             const bet = parseFloat(document.getElementById('play-slot-bet').value);
-            if (isNaN(bet) || bet <= 0) { alert('Geçerli bahis girin.'); return; }
             if (!checkDeduct(bet)) return;
-
-            const reels = ['reel1', 'reel2', 'reel3'];
-            const status = document.getElementById('slot-status');
-            status.innerHTML = `<span class="text-amber-400 animate-pulse">Vegas makaraları dönüyor...</span>`;
-
             setTimeout(() => {
-                const isWin = Math.random() < 0.5; // Tam %50 Şans
-                let symbols = ['💎', '7️⃣', '🍒', '🔔', '⭐'];
-                let res1, res2, res3;
-
+                const isWin = Math.random() < 0.5;
                 if (isWin) {
-                    res1 = res2 = res3 = symbols[Math.floor(Math.random() * symbols.length)];
-                } else {
-                    res1 = symbols[0]; res2 = symbols[1]; res3 = symbols[2]; // Farklı simgeler
-                }
-
-                document.getElementById('reel1').innerText = res1;
-                document.getElementById('reel2').innerText = res2;
-                document.getElementById('reel3').innerText = res3;
-
-                if (isWin) {
-                    const win = bet * 2;
-                    db.users.find(x => x.username === currentUser.username).balance += win;
+                    db.users.find(x => x.username === currentUser.username).balance += (bet * 2);
                     saveDB();
-                    status.innerHTML = `<span class="text-emerald-400 font-extrabold text-sm">KAZANDINIZ! 2X (${win} TL) 🚀</span>`;
+                    document.getElementById('slot-status').innerHTML = `<span class="text-emerald-400">KAZANDINIZ! ${bet * 2} TL</span>`;
                 } else {
-                    status.innerHTML = `<span class="text-rose-400 text-xs">Kaybettiniz, şansınızı tekrar deneyin.</span>`;
+                    document.getElementById('slot-status').innerHTML = `<span class="text-rose-400">Kaybettiniz.</span>`;
+                }
+            }, 800);
+        }
+
+        function runWheelAnimation() {
+            const bet = parseFloat(document.getElementById('play-wheel-bet').value);
+            if (!checkDeduct(bet)) return;
+            setTimeout(() => {
+                const isWin = Math.random() < 0.5;
+                if (isWin) {
+                    db.users.find(x => x.username === currentUser.username).balance += (bet * 2);
+                    saveDB();
+                    document.getElementById('wheel-status').innerHTML = `<span class="text-emerald-400">KAZANDINIZ! ${bet * 2} TL</span>`;
+                } else {
+                    document.getElementById('wheel-status').innerHTML = `<span class="text-rose-400">Kaybettiniz.</span>`;
                 }
             }, 1000);
         }
 
-        // --- 2. ÇARK OYUNU (%50 ŞANS) ---
-        function runWheelAnimation() {
-            const bet = parseFloat(document.getElementById('play-wheel-bet').value);
-            if (isNaN(bet) || bet <= 0) { alert('Geçerli bahis girin.'); return; }
-            if (!checkDeduct(bet)) return;
-
-            const wheel = document.getElementById('wheel-body');
-            const status = document.getElementById('wheel-status');
-            status.innerHTML = `<span class="text-emerald-400 animate-pulse">Çark dönüyor...</span>`;
-            wheel.classList.add('spinning-wheel');
-
-            setTimeout(() => {
-                wheel.classList.remove('spinning-wheel');
-                const isWin = Math.random() < 0.5; // Tam %50 Şans
-
-                if (isWin) {
-                    const mult = Math.random() < 0.7 ? 2 : 3;
-                    const win = bet * mult;
-                    db.users.find(x => x.username === currentUser.username).balance += win;
-                    saveDB();
-                    status.innerHTML = `<span class="text-emerald-400 font-extrabold text-sm">HARİKA! ${mult}X ÇARPANLA ${win} TL KAZANDINIZ! 🏆</span>`;
-                } else {
-                    status.innerHTML = `<span class="text-rose-400 text-xs">Çark boş geldi, kaybettiniz.</span>`;
-                }
-            }, 2500);
-        }
-
-        // --- 3. YAZI TURA OYUNU (%50 ŞANS) ---
         function runCoinAnimation(choice) {
             const bet = parseFloat(document.getElementById('play-coin-bet').value);
-            if (isNaN(bet) || bet <= 0) { alert('Geçerli bahis girin.'); return; }
             if (!checkDeduct(bet)) return;
-
-            const coin = document.getElementById('coin-body');
-            const status = document.getElementById('coin-status');
-            status.innerHTML = `<span class="text-indigo-400 animate-pulse">Altın para havada takla atıyor...</span>`;
-            coin.classList.add('flipping-coin');
-
             setTimeout(() => {
-                coin.classList.remove('flipping-coin');
-                // %50 şans doğrudan kullanıcının seçimine uyarlanır veya rastgele belirlenir
                 const result = Math.random() < 0.5 ? 'YAZI' : 'TURA';
-                coin.innerText = result;
-
                 if (choice === result) {
-                    const win = bet * 2;
-                    db.users.find(x => x.username === currentUser.username).balance += win;
+                    db.users.find(x => x.username === currentUser.username).balance += (bet * 2);
                     saveDB();
-                    status.innerHTML = `<span class="text-emerald-400 font-extrabold text-sm">DOĞRU TAHMİN (${result})! 2X (${win} TL) KAZANDINIZ!</span>`;
+                    document.getElementById('coin-status').innerHTML = `<span class="text-emerald-400">Doğru (${result})! Kazandınız!</span>`;
                 } else {
-                    status.innerHTML = `<span class="text-rose-400 text-xs">${result} GELDİ! Yanlış tahmin, kaybettiniz.</span>`;
+                    document.getElementById('coin-status').innerHTML = `<span class="text-rose-400">${result} geldi, kaybettiniz.</span>`;
                 }
-            }, 1200);
+            }, 800);
         }
 
-        // --- 4. MAYIN TARLASI (MINES) ---
         function startMinesGame() {
             const bet = parseFloat(document.getElementById('mines-bet').value);
-            if (isNaN(bet) || bet <= 0) { alert('Geçerli bahis girin.'); return; }
             if (!checkDeduct(bet)) return;
-
-            minesState = {
-                active: true,
-                bet: bet,
-                mineIndex: Math.floor(Math.random() * 8), // 8 kutudan 1 tanesi mayın (%50 kazanma şansı için şanslı kutular)
-                openedCount: 0
-            };
-
-            const boxes = document.querySelectorAll('.mine-box');
-            boxes.forEach(b => {
+            minesState = { active: true, bet: bet, mineIndex: Math.floor(Math.random() * 8) };
+            document.querySelectorAll('.mine-box').forEach(b => {
                 b.innerText = '?';
-                b.className = "mine-box h-14 bg-neutral-800 hover:bg-neutral-700 rounded-xl flex items-center justify-center text-xl cursor-pointer border border-white/5 transition font-bold text-gray-400";
+                b.className = "mine-box h-14 bg-neutral-800 rounded-xl flex items-center justify-center text-xl cursor-pointer text-gray-400 font-bold";
+                delete b.dataset.opened;
             });
-
-            document.getElementById('mines-status').innerHTML = `<span class="text-rose-300">Oyun aktif! Güvenli bir kutu seçin.</span>`;
+            document.getElementById('mines-status').innerHTML = `<span class="text-rose-300">Kutu seçin (%50 Şans).</span>`;
         }
 
         function clickMineBox(idx) {
-            if (!minesState.active) {
-                alert('Lütfen önce "Oyunu Başlat" butonuna basın!');
-                return;
-            }
-
-            const boxes = document.querySelectorAll('.mine-box');
-            const targetBox = boxes[idx];
-            if (targetBox.dataset.opened === 'true') return;
-
-            targetBox.dataset.opened = 'true';
+            if (!minesState.active) { alert önce başlatın!'); return; }
+            const box = document.querySelectorAll('.mine-box')[idx];
+            if (box.dataset.opened) return;
+            box.dataset.opened = 'true';
 
             if (idx === minesState.mineIndex) {
-                // Mayına bastı
-                targetBox.innerText = '💣';
-                targetBox.className = "mine-box h-14 bg-rose-600 rounded-xl flex items-center justify-center text-xl border border-rose-400 font-bold text-white";
-                document.getElementById('mines-status').innerHTML = `<span class="text-rose-500 font-extrabold">MAYINA BASTINIZ! Kaybettiniz.</span>`;
+                box.innerText = '💣';
+                box.className = "mine-box h-14 bg-rose-600 rounded-xl flex items-center justify-center text-xl text-white font-bold";
+                document.getElementById('mines-status').innerHTML = `<span class="text-rose-500 font-bold">Mayına bastınız!</span>`;
                 minesState.active = false;
             } else {
-                // Güvenli kutu (%50 şans mekaniğiyle kazanç)
-                targetBox.innerText = '💎';
-                targetBox.className = "mine-box h-14 bg-emerald-600 rounded-xl flex items-center justify-center text-xl border border-emerald-400 font-bold text-white";
-                
+                box.innerText = '💎';
+                box.className = "mine-box h-14 bg-emerald-600 rounded-xl flex items-center justify-center text-xl text-white font-bold";
                 const win = minesState.bet * 2;
                 db.users.find(x => x.username === currentUser.username).balance += win;
                 saveDB();
-
-                document.getElementById('mines-status').innerHTML = `<span class="text-emerald-400 font-extrabold text-sm">GÜVENLİ KUTU! 2X (${win} TL) KAZANDINIZ! 🏆</span>`;
+                document.getElementById('mines-status').innerHTML = `<span class="text-emerald-400 font-bold">Güvenli kutu! ${win} TL Kazandınız!</span>`;
                 minesState.active = false;
             }
         }
@@ -741,33 +673,17 @@
         function renderAdminTable() {
             if (currentUser.role !== 'admin' && currentUser.role !== 'owner') return;
             const tbody = document.getElementById('user-management-table');
-            const searchVal = document.getElementById('admin-user-search')?.value.toLowerCase() || '';
             tbody.innerHTML = '';
-            
-            db.users.filter(u => u.username.toLowerCase().includes(searchVal)).forEach(u => {
-                tbody.innerHTML += `
-                    <tr>
-                        <td class="p-3 font-semibold text-white">${u.username}</td>
-                        <td class="p-3 text-gray-400">${u.email || '-'}</td>
-                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-amber-500/10 text-amber-400">${u.role.toUpperCase()}</span></td>
-                        <td class="p-3 font-mono text-slate-300">${u.balance} TL</td>
-                        <td class="p-3 text-emerald-400 font-mono">${u.isVip ? 'VIP' : 'Yok'}</td>
-                        <td class="p-3 space-x-1">
-                            <button onclick="adminAddBalance('${u.username}')" class="bg-slate-700 text-slate-200 px-2 py-1 rounded text-[10px]">+ Bakiye</button>
-                        </td>
-                    </tr>
-                `;
+            db.users.forEach(u => {
+                tbody.innerHTML += `<tr><td class="p-3 text-white">${u.username}</td><td class="p-3 text-slate-300">${u.balance} TL</td><td class="p-3"><button onclick="adminAddBal('${u.username}')" class="bg-slate-700 text-white px-2 py-1 rounded text-[10px]">+ Bakiye</button></td></tr>`;
             });
         }
 
-        function adminAddBalance(username) {
-            const amount = prompt(`Miktar:`, '1000');
-            if (amount && !isNaN(amount)) {
-                db.users.find(x => x.username === username).balance += parseFloat(amount);
-                saveDB();
-                renderAdminTable();
-                alert('Bakiye eklendi!');
-            }
+        function adminAddBal(username) {
+            db.users.find(x => x.username === username).balance += 500;
+            saveDB();
+            renderAdminTable();
+            alert('500 TL eklendi!');
         }
 
         function showSection(sec) {
@@ -777,9 +693,7 @@
             document.getElementById(`section-${sec}`).classList.remove('hidden');
         }
 
-        function logout() {
-            location.reload();
-        }
+        function logout() { location.reload(); }
     </script>
 </body>
 </html>
