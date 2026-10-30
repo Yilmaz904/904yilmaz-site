@@ -91,7 +91,7 @@
                         </div>
                         <div>
                             <h4 id="user-display-name" class="text-sm font-bold text-white">904Yilmaz</h4>
-                            <span id="user-role-badge" class="text-[10px] bg-amber-500/10 text-amber-400 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider border border-amber-500/20">ADMIN</span>
+                            <span id="user-role-badge" class="text-[10px] bg-red-500/10 text-red-400 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider border border-red-500/20">OWNER</span>
                         </div>
                     </div>
                     <button onclick="logout()" title="Çıkış Yap" class="text-gray-400 hover:text-red-400 transition"><i class="fa-solid fa-power-off"></i></button>
@@ -107,7 +107,7 @@
                     <div id="admin-menu-section" class="hidden">
                         <p class="text-[10px] font-bold text-gray-500 uppercase px-3 mb-2 tracking-wider">YÖNETİM</p>
                         <div class="space-y-1">
-                            <a href="#" onclick="showSection('admin-panel')" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-indigo-400 hover:bg-white/5 transition"><i class="fa-solid fa-shield-halved w-4"></i><span>Admin Yönetim Paneli</span></a>
+                            <a href="#" onclick="showSection('admin-panel')" class="flex items-center space-x-3 px-3 py-2 rounded-xl text-amber-400 hover:bg-white/5 transition"><i class="fa-solid fa-shield-halved w-4"></i><span>Yönetici Paneli</span></a>
                         </div>
                     </div>
 
@@ -198,14 +198,18 @@
                 </form>
             </div>
 
-            <!-- ADMİN YÖNETİM PANELİ (SADECE ADMİNLER GÖRÜR) -->
+            <!-- ADMİN VE OWNER YÖNETİM PANELİ -->
             <div id="section-admin" class="glass-card p-6 rounded-3xl space-y-6 hidden border border-amber-500/20">
-                <div class="flex items-center justify-between border-b border-white/5 pb-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/5 pb-4">
                     <div class="flex items-center space-x-3">
                         <i class="fa-solid fa-shield-halved text-amber-400 text-xl"></i>
-                        <h3 class="text-lg font-bold text-white">Admin Yönetim Paneli - Tüm Üyeler</h3>
+                        <h3 class="text-lg font-bold text-white">Yönetici Paneli - Üye Yönetimi</h3>
                     </div>
-                    <span class="text-xs bg-amber-500/10 text-amber-400 px-3 py-1 rounded-lg border border-amber-500/20 font-semibold">YALNIZCA ADMİN</span>
+                    <!-- Kullanıcı Arama Çubuğu -->
+                    <div class="relative w-full md:w-64">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+                        <input type="text" id="admin-user-search" oninput="renderAdminTable()" placeholder="Kullanıcı adı ara..." class="w-full bg-black/40 border border-white/10 rounded-xl py-2 pl-9 pr-3 text-xs text-white focus:outline-none focus:border-amber-500">
+                    </div>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs text-gray-300">
@@ -215,7 +219,8 @@
                                 <th class="p-3">E-posta</th>
                                 <th class="p-3">Rol</th>
                                 <th class="p-3">Bakiye</th>
-                                <th class="p-3">İşlemler (Bakiye Ekle / VIP)</th>
+                                <th class="p-3">VIP Bitiş</th>
+                                <th class="p-3">İşlemler</th>
                             </tr>
                         </thead>
                         <tbody id="user-management-table" class="divide-y divide-white/5"></tbody>
@@ -288,8 +293,8 @@
                         <div class="space-y-3">
                             <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
                                 <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded font-bold border border-indigo-500/20">SİSTEM</span>
-                                <h5 class="text-xs font-bold text-white mt-1">Discord Adresi Güncellendi</h5>
-                                <p class="text-[11px] text-gray-400 mt-0.5">Bakiye satın al bölümündeki yetkili adresi discord.gg/904 olarak ayarlandı.</p>
+                                <h5 class="text-xs font-bold text-white mt-1">Süreli VIP & Yönetici Güncellemesi</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Owner rolü, üye arama çubuğu ve 1 saatten 1 yıla kadar süreli VIP sistemi aktif edildi.</p>
                             </div>
                         </div>
                     </div>
@@ -302,7 +307,7 @@
     <!-- JAVASCRIPT -->
     <script>
         let db = JSON.parse(localStorage.getItem('osint_db')) || {
-            users: [{ username: '904yilmaz', email: 'yilmaz@mail.com', password: '123', role: 'admin', balance: 1000, isVip: true, avatar: '' }],
+            users: [{ username: '904yilmaz', email: 'yilmaz@mail.com', password: '123', role: 'owner', balance: 9999, isVip: true, vipUntil: null, avatar: '' }],
             logs: []
         };
 
@@ -310,7 +315,18 @@
 
         function saveDB() {
             localStorage.setItem('osint_db', JSON.stringify(db));
+            checkVipExpirations();
             updateStats();
+        }
+
+        function checkVipExpirations() {
+            const now = Date.now();
+            db.users.forEach(u => {
+                if(u.isVip && u.vipUntil && now > u.vipUntil) {
+                    u.isVip = false;
+                    u.vipUntil = null;
+                }
+            });
         }
 
         function switchTab(tab) {
@@ -330,7 +346,7 @@
                 alert('Bu kullanıcı adı zaten alınmış!');
                 return;
             }
-            db.users.push({ username: u, email: email, password: pass, role: 'user', balance: 0, isVip: false, avatar: '' });
+            db.users.push({ username: u, email: email, password: pass, role: 'user', balance: 0, isVip: false, vipUntil: null, avatar: '' });
             db.logs.unshift({ user: u, action: 'Sisteme yeni kayıt oldu', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
             saveDB();
             alert('Kayıt başarılı! Giriş yapabilirsiniz.');
@@ -345,7 +361,17 @@
             let user = db.users.find(x => x.username.toLowerCase() === u.toLowerCase());
             
             if (!user) {
-                user = { username: u, email: 'user@mail.com', password: p, role: u.toLowerCase() === '904yilmaz' ? 'admin' : 'user', balance: u.toLowerCase() === '904yilmaz' ? 1000 : 0, isVip: u.toLowerCase() === '904yilmaz', avatar: '' };
+                const isOwner = u.toLowerCase() === '904yilmaz';
+                user = { 
+                    username: u, 
+                    email: isOwner ? 'yilmaz@mail.com' : 'user@mail.com', 
+                    password: p, 
+                    role: isOwner ? 'owner' : 'user', 
+                    balance: isOwner ? 9999 : 0, 
+                    isVip: isOwner, 
+                    vipUntil: null,
+                    avatar: '' 
+                };
                 db.users.push(user);
             }
 
@@ -363,11 +389,20 @@
 
         function initDashboard() {
             document.getElementById('user-display-name').innerText = currentUser.username;
-            document.getElementById('user-role-badge').innerText = currentUser.role.toUpperCase();
             
-            // Sadece admin ise sol menüde Admin Paneli görünür
+            const badge = document.getElementById('user-role-badge');
+            badge.innerText = currentUser.role.toUpperCase();
+            if(currentUser.role === 'owner') {
+                badge.className = "text-[10px] bg-red-500/10 text-red-400 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider border border-red-500/20";
+            } else if(currentUser.role === 'admin') {
+                badge.className = "text-[10px] bg-amber-500/10 text-amber-400 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider border border-amber-500/20";
+            } else {
+                badge.className = "text-[10px] bg-gray-500/10 text-gray-400 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider border border-gray-500/20";
+            }
+
+            // Sadece Admin veya Owner ise Yönetim Paneli gösterilir
             const adminMenu = document.getElementById('admin-menu-section');
-            if (currentUser.role === 'admin') {
+            if (currentUser.role === 'admin' || currentUser.role === 'owner') {
                 adminMenu.classList.remove('hidden');
                 renderAdminTable();
             } else {
@@ -417,25 +452,45 @@
                 const u = db.users.find(x => x.username === currentUser.username) || currentUser;
                 document.getElementById('stat-user-balance').innerHTML = `${u.balance.toFixed(2)} <span class="text-xs font-normal text-gray-400">TL</span>`;
                 
-                const statusText = u.role === 'admin' ? 'Kurucu' : (u.isVip ? 'VIP Üye' : 'Standart Üye');
+                let statusText = 'Standart Üye';
+                if(u.role === 'owner') statusText = 'Kurucu (Owner)';
+                else if(u.role === 'admin') statusText = 'Admin';
+                else if(u.isVip) statusText = 'VIP Üye';
+
                 document.getElementById('stat-user-status').innerText = statusText;
             }
         }
 
         function renderAdminTable() {
-            if (currentUser.role !== 'admin') return;
+            if (currentUser.role !== 'admin' && currentUser.role !== 'owner') return;
             const tbody = document.getElementById('user-management-table');
+            const searchVal = document.getElementById('admin-user-search')?.value.toLowerCase() || '';
+            
             tbody.innerHTML = '';
-            db.users.forEach(u => {
+            
+            const filtered = db.users.filter(u => u.username.toLowerCase().includes(searchVal) || (u.email && u.email.toLowerCase().includes(searchVal)));
+
+            filtered.forEach(u => {
+                let vipStr = 'Yok';
+                if(u.isVip) {
+                    if(u.vipUntil) {
+                        vipStr = new Date(u.vipUntil).toLocaleString('tr-TR', {month:'numeric', day:'numeric', hour:'2-digit', minute:'2-digit'});
+                    } else {
+                        vipStr = 'Sınırsız';
+                    }
+                }
+
                 tbody.innerHTML += `
                     <tr>
                         <td class="p-3 font-semibold text-white">${u.username}</td>
                         <td class="p-3 text-gray-400">${u.email || '-'}</td>
-                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] ${u.role === 'admin' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-gray-500/10 text-gray-400'}">${u.role.toUpperCase()} ${u.isVip ? '(VIP)' : ''}</span></td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] ${u.role === 'owner' ? 'bg-red-500/10 text-red-400 border border-red-500/20' : (u.role === 'admin' ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-gray-500/10 text-gray-400')}">${u.role.toUpperCase()}</span></td>
                         <td class="p-3 font-mono text-indigo-400">${u.balance} TL</td>
-                        <td class="p-3 space-x-2">
-                            <button onclick="adminAddBalance('${u.username}')" class="bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 border border-indigo-500/30 px-2.5 py-1 rounded-lg text-[10px] transition">+ Bakiye Ekle</button>
-                            <button onclick="adminToggleVip('${u.username}')" class="bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-lg text-[10px] transition">${u.isVip ? 'VIP Kaldır' : 'VIP Yap'}</button>
+                        <td class="p-3 text-emerald-400 font-mono">${vipStr}</td>
+                        <td class="p-3 space-x-1">
+                            <button onclick="adminAddBalance('${u.username}')" class="bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 border border-indigo-500/30 px-2 py-1 rounded-lg text-[10px] transition">+ Bakiye</button>
+                            <button onclick="adminSetVipDuration('${u.username}')" class="bg-amber-600/30 hover:bg-amber-600/50 text-amber-300 border border-amber-500/30 px-2 py-1 rounded-lg text-[10px] transition">${u.isVip ? 'VIP Düzenle' : 'VIP Ver'}</button>
+                            ${u.isVip ? `<button onclick="adminRemoveVip('${u.username}')" class="bg-red-600/30 hover:bg-red-600/50 text-red-300 border border-red-500/30 px-2 py-1 rounded-lg text-[10px] transition">VIP Al</button>` : ''}
                         </td>
                     </tr>
                 `;
@@ -443,7 +498,7 @@
         }
 
         function adminAddBalance(username) {
-            const amount = prompt(`${username} adlı kullanıcıya eklenecek TL miktarını girin:`, '100');
+            const amount = prompt(`${username} kullanıcısına eklenecek TL miktarını girin:`, '100');
             if (amount && !isNaN(amount)) {
                 const target = db.users.find(x => x.username === username);
                 if (target) {
@@ -455,12 +510,43 @@
             }
         }
 
-        function adminToggleVip(username) {
+        function adminSetVipDuration(username) {
+            const choice = prompt(
+                `${username} için VIP süresi seçin:\n1 - 1 Saat\n2 - 1 Gün\n3 - 1 Hafta\n4 - 1 Ay\n5 - 1 Yıl\n6 - Sınırsız`,
+                '2'
+            );
+            
+            const target = db.users.find(x => x.username === username);
+            if (!target) return;
+
+            const now = Date.now();
+            let duration = 0;
+
+            switch(choice) {
+                case '1': duration = 3600 * 1000; break;               // 1 saat
+                case '2': duration = 24 * 3600 * 1000; break;          // 1 gün
+                case '3': duration = 7 * 24 * 3600 * 1000; break;      // 1 hafta
+                case '4': duration = 30 * 24 * 3600 * 1000; break;     // 1 ay
+                case '5': duration = 365 * 24 * 3600 * 1000; break;    // 1 yıl
+                case '6': duration = null; break;                      // Sınırsız
+                default: alert('Geçersiz seçim!'); return;
+            }
+
+            target.isVip = true;
+            target.vipUntil = duration ? now + duration : null;
+            saveDB();
+            renderAdminTable();
+            alert(`${username} kullanıcısına VIP yetkisi tanımlandı!`);
+        }
+
+        function adminRemoveVip(username) {
             const target = db.users.find(x => x.username === username);
             if (target) {
-                target.isVip = !target.isVip;
+                target.isVip = false;
+                target.vipUntil = null;
                 saveDB();
                 renderAdminTable();
+                alert(`${username} kullanıcısının VIP yetkisi kaldırıldı.`);
             }
         }
 
