@@ -210,7 +210,7 @@
 
                         <div class="mt-6 relative flex items-center">
                             <i class="fa-solid fa-magnifying-glass absolute left-4 text-gray-400 text-sm"></i>
-                            <input type="text" id="search-input" placeholder="Discord ID, IP adresi veya arama terimi girin..." class="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 pl-11 pr-28 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition shadow-inner">
+                            <input type="text" id="search-input" placeholder="Discord ID, IP adresi (Örn: 8.8.8.8) veya arama terimi girin..." class="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 pl-11 pr-28 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition shadow-inner">
                             <button onclick="performMultiSearch()" class="absolute right-2 px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center text-white text-xs transition"><i class="fa-solid fa-arrow-right mr-1"></i> Sorgula</button>
                         </div>
                     </div>
@@ -253,7 +253,7 @@
                             <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
                                 <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded font-bold border border-indigo-500/20">SİSTEM</span>
                                 <h5 class="text-xs font-bold text-white mt-1">Shodan API Entegrasyonu</h5>
-                                <p class="text-[11px] text-gray-400 mt-0.5">Shodan host/ip arama modülü sisteme başarıyla entegre edildi.</p>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Shodan host/ip arama modülü aktif ve anahtar entegre edildi.</p>
                             </div>
                         </div>
                     </div>
@@ -382,7 +382,7 @@
             }
         }
 
-        // --- ÇÇOKLU API VE SHODAN ENTEGRASYONU ---
+        // --- ÇOKLU API VE SHODAN ENTEGRASYONU ---
         async function performMultiSearch() {
             const query = document.getElementById('search-input').value.trim();
             const resultsContainer = document.getElementById('search-results-container');
@@ -418,22 +418,20 @@
                 box2.innerHTML = `<span class="text-red-400">Bağlantı Hatası / CORS</span>`;
             }
 
-            // 3. Shodan API (Host / IP Sorgusu)
-            // Not: Shodan API anahtarınızı buraya yazabilirsiniz (Örn: YOUR_SHODAN_API_KEY)
-            const shodanApiKey = "YOUR_SHODAN_API_KEY"; 
+            // 3. Shodan API (Host / IP Sorgusu - API Anahtarınız Entegre Edildi)
+            const shodanApiKey = "mwh2hjVumJO9Y7hIFKbMViaEk7alVest"; 
             try {
-                // Eğer doğrudan IP girildiyse host endpoint'i, metin girildiyse search endpoint'i kullanılabilir
                 const shodanUrl = `https://api.shodan.io/shodan/host/${encodeURIComponent(query)}?key=${shodanApiKey}`;
                 const resShodan = await fetch(shodanUrl);
                 
                 if(!resShodan.ok) {
-                    throw new Error("Shodan anahtarı geçersiz veya IP bulunamadı.");
+                    throw new Error("Geçerli bir IP girin veya anahtar sınırına ulaşılmış olabilir.");
                 }
                 
                 const dataShodan = await resShodan.json();
                 boxShodan.innerHTML = `<pre class="whitespace-pre-wrap">IP: ${dataShodan.ip_str}\nÜlke: ${dataShodan.country_name}\nAçık Portlar: ${dataShodan.ports?.join(', ')}</pre>`;
             } catch (err) {
-                boxShodan.innerHTML = `<span class="text-amber-400">Shodan Bilgi: Geçerli bir IP girin veya Shodan API anahtarını tanımlayın. (${err.message})</span>`;
+                boxShodan.innerHTML = `<span class="text-amber-400">Shodan Bilgi: Lütfen geçerli bir IP adresi aratın (Örn: 8.8.8.8). (${err.message})</span>`;
             }
         }
 
