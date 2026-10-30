@@ -45,7 +45,6 @@
                 <button onclick="switchTab('register')" id="tab-register" class="flex-1 py-2 text-sm font-medium rounded-lg text-gray-400 hover:text-white transition">Kayıt Ol</button>
             </div>
 
-            <!-- Giriş Formu -->
             <form id="form-login" onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1.5">Kullanıcı Adı</label>
@@ -60,7 +59,6 @@
                 </button>
             </form>
 
-            <!-- Kayıt Formu -->
             <form id="form-register" onsubmit="handleRegister(event)" class="space-y-4 hidden">
                 <div>
                     <label class="block text-xs font-medium text-gray-400 mb-1.5">Kullanıcı Adı</label>
@@ -81,9 +79,8 @@
         </div>
     </div>
 
-    <!-- ANA KONTROL PANELİ (DASHBOARD) -->
+    <!-- ANA KONTROL PANELİ -->
     <div id="dashboard-screen" class="flex h-screen overflow-hidden opacity-0 pointer-events-none transition-opacity duration-500">
-        <!-- SOL MENÜ -->
         <aside class="w-64 glass-panel border-r border-white/5 flex flex-col justify-between hidden md:flex shrink-0">
             <div>
                 <div class="p-4 border-b border-white/5 flex items-center justify-between">
@@ -99,14 +96,12 @@
                     <button onclick="logout()" title="Çıkış Yap" class="text-gray-400 hover:text-red-400 transition"><i class="fa-solid fa-power-off"></i></button>
                 </div>
 
-                <!-- Menü Linkleri -->
                 <div class="p-4 space-y-6 overflow-y-auto max-h-[calc(100vh-100px)] text-xs">
                     <div class="space-y-1">
                         <a href="#" onclick="showSection('home')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl bg-white/5 text-white font-medium"><i class="fa-solid fa-house w-4"></i><span>Ana Sayfa</span></a>
                         <a href="#" onclick="showSection('buy-balance')" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition"><i class="fa-solid fa-cart-shopping w-4"></i><span>Bakiye Satın Al</span></a>
                     </div>
 
-                    <!-- YÖNETİM MENÜSÜ -->
                     <div id="admin-menu-section">
                         <p class="text-[10px] font-bold text-gray-500 uppercase px-3 mb-2 tracking-wider">YÖNETİM</p>
                         <div class="space-y-1">
@@ -129,10 +124,8 @@
             </div>
         </aside>
 
-        <!-- ANA İÇERİK ALANI -->
         <main class="flex-1 overflow-y-auto p-4 md:p-8 space-y-6">
             
-            <!-- İSTATİSTİKLER -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="glass-card p-5 rounded-2xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
@@ -204,7 +197,7 @@
                 </div>
             </div>
 
-            <!-- ANA SAYFA VE ARAMA ÇUBUĞU -->
+            <!-- ANA SAYFA VE ÇOKLU API ARAMA ÇUBUĞU -->
             <div id="section-home" class="space-y-6">
                 <div class="glass-card rounded-3xl p-8 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[240px] border border-white/5 shadow-xl">
                     <div class="relative z-10 max-w-2xl w-full">
@@ -215,29 +208,32 @@
                         <p class="text-xs uppercase tracking-widest text-indigo-400/80 font-semibold mt-2">YAKINDA SİZLERLE!</p>
                         <p class="text-xs italic text-gray-400 mt-1">"Ne kadar sessiz olursan, o kadar çok işitebilirsin"</p>
 
-                        <!-- ARAMA ÇUBUĞU -->
                         <div class="mt-6 relative flex items-center">
                             <i class="fa-solid fa-magnifying-glass absolute left-4 text-gray-400 text-sm"></i>
-                            <input type="text" id="search-input" placeholder="Discord ID veya arama terimi girin..." class="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 pl-11 pr-28 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition shadow-inner">
+                            <input type="text" id="search-input" placeholder="Discord ID, IP adresi veya arama terimi girin..." class="w-full bg-black/40 border border-white/10 rounded-2xl py-3.5 pl-11 pr-28 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition shadow-inner">
                             <button onclick="performMultiSearch()" class="absolute right-2 px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center text-white text-xs transition"><i class="fa-solid fa-arrow-right mr-1"></i> Sorgula</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- ARAMA SONUÇLARI ALANI -->
+                <!-- ARAMA SONUÇLARI ALANI (Elecus, Manus ve Shodan) -->
                 <div id="search-results-container" class="glass-card p-6 rounded-3xl space-y-4 hidden">
                     <div class="flex items-center justify-between">
-                        <span class="text-xs font-semibold text-gray-300"><i class="fa-solid fa-list-check text-indigo-400 mr-2"></i>API Sorgu Sonuçları</span>
+                        <span class="text-xs font-semibold text-gray-300"><i class="fa-solid fa-list-check text-indigo-400 mr-2"></i>Çoklu API Sorgu Sonuçları</span>
                         <span id="result-count" class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded-full border border-indigo-500/25">Aktif</span>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="bg-black/40 p-4 rounded-xl text-xs font-mono text-gray-300 max-h-60 overflow-y-auto">
-                            <p class="text-indigo-400 font-bold mb-2">Elecus Discord API Sonucu:</p>
+                            <p class="text-indigo-400 font-bold mb-2">Elecus Discord API:</p>
                             <div id="result-box-1">Sonuç bekleniyor...</div>
                         </div>
                         <div class="bg-black/40 p-4 rounded-xl text-xs font-mono text-gray-300 max-h-60 overflow-y-auto">
-                            <p class="text-purple-400 font-bold mb-2">Manus API Sonucu:</p>
+                            <p class="text-purple-400 font-bold mb-2">Manus API:</p>
                             <div id="result-box-2">Sonuç bekleniyor...</div>
+                        </div>
+                        <div class="bg-black/40 p-4 rounded-xl text-xs font-mono text-gray-300 max-h-60 overflow-y-auto">
+                            <p class="text-emerald-400 font-bold mb-2">Shodan IP / Host API:</p>
+                            <div id="result-box-shodan">Sonuç bekleniyor...</div>
                         </div>
                     </div>
                 </div>
@@ -256,8 +252,8 @@
                         <div class="space-y-3">
                             <div class="bg-black/30 p-3.5 rounded-2xl border border-white/5">
                                 <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded font-bold border border-indigo-500/20">SİSTEM</span>
-                                <h5 class="text-xs font-bold text-white mt-1">API Entegrasyonu</h5>
-                                <p class="text-[11px] text-gray-400 mt-0.5">Çift yönlü API sorgulama altyapısı başarıyla eklendi.</p>
+                                <h5 class="text-xs font-bold text-white mt-1">Shodan API Entegrasyonu</h5>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Shodan host/ip arama modülü sisteme başarıyla entegre edildi.</p>
                             </div>
                         </div>
                     </div>
@@ -386,38 +382,58 @@
             }
         }
 
-        // --- ÇİFT API ARAMA ENTEGRASYONU ---
+        // --- ÇÇOKLU API VE SHODAN ENTEGRASYONU ---
         async function performMultiSearch() {
             const query = document.getElementById('search-input').value.trim();
             const resultsContainer = document.getElementById('search-results-container');
             const box1 = document.getElementById('result-box-1');
             const box2 = document.getElementById('result-box-2');
+            const boxShodan = document.getElementById('result-box-shodan');
 
             if (!query) {
-                alert('Lütfen sorgulanacak bir ID veya değer girin.');
+                alert('Lütfen arama için bir ID, IP veya anahtar kelime girin.');
                 return;
             }
 
             resultsContainer.classList.remove('hidden');
             box1.innerHTML = '<span class="text-indigo-400 animate-pulse">Sorgulanıyor...</span>';
             box2.innerHTML = '<span class="text-purple-400 animate-pulse">Sorgulanıyor...</span>';
+            boxShodan.innerHTML = '<span class="text-emerald-400 animate-pulse">Shodan taranıyor...</span>';
 
-            // 1. API İsteki (Elecus Discord Bilgi)
+            // 1. Elecus API
             try {
                 const res1 = await fetch(`https://elecus.dev/api/v1/discord_bilgi?id=${encodeURIComponent(query)}`);
                 const data1 = await res1.json();
                 box1.innerHTML = `<pre class="whitespace-pre-wrap">${JSON.stringify(data1, null, 2)}</pre>`;
             } catch (err) {
-                box1.innerHTML = `<span class="text-red-400">Hata: ${err.message} (CORS engeli olabilir)</span>`;
+                box1.innerHTML = `<span class="text-red-400">Bağlantı Hatası / CORS</span>`;
             }
 
-            // 2. API İsteki (Manus Search)
+            // 2. Manus API
             try {
                 const res2 = await fetch(`https://jsonapi-shvjsbet.manus.space/api/search?id=${encodeURIComponent(query)}`);
                 const data2 = await res2.json();
                 box2.innerHTML = `<pre class="whitespace-pre-wrap">${JSON.stringify(data2, null, 2)}</pre>`;
             } catch (err) {
-                box2.innerHTML = `<span class="text-red-400">Hata: ${err.message} (CORS engeli olabilir)</span>`;
+                box2.innerHTML = `<span class="text-red-400">Bağlantı Hatası / CORS</span>`;
+            }
+
+            // 3. Shodan API (Host / IP Sorgusu)
+            // Not: Shodan API anahtarınızı buraya yazabilirsiniz (Örn: YOUR_SHODAN_API_KEY)
+            const shodanApiKey = "YOUR_SHODAN_API_KEY"; 
+            try {
+                // Eğer doğrudan IP girildiyse host endpoint'i, metin girildiyse search endpoint'i kullanılabilir
+                const shodanUrl = `https://api.shodan.io/shodan/host/${encodeURIComponent(query)}?key=${shodanApiKey}`;
+                const resShodan = await fetch(shodanUrl);
+                
+                if(!resShodan.ok) {
+                    throw new Error("Shodan anahtarı geçersiz veya IP bulunamadı.");
+                }
+                
+                const dataShodan = await resShodan.json();
+                boxShodan.innerHTML = `<pre class="whitespace-pre-wrap">IP: ${dataShodan.ip_str}\nÜlke: ${dataShodan.country_name}\nAçık Portlar: ${dataShodan.ports?.join(', ')}</pre>`;
+            } catch (err) {
+                boxShodan.innerHTML = `<span class="text-amber-400">Shodan Bilgi: Geçerli bir IP girin veya Shodan API anahtarını tanımlayın. (${err.message})</span>`;
             }
         }
 
