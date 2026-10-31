@@ -3,63 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Osint 904Yilmaz | Corporate Luxury Edition</title>
+    <title>Osint 904Yilmaz | Chrome Luxury OSINT & Security Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
         
         :root {
-            --bg-main: #f4f5f7;
-            --card-bg: rgba(255, 255, 255, 0.75);
-            --border-light: rgba(226, 232, 240, 0.8);
+            --chrome-border: rgba(255, 255, 255, 0.25);
+            --chrome-glow: rgba(220, 225, 235, 0.15);
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #eef2f6 0%, #e2e8f0 50%, #d8e0e9 100%);
-            color: #1e293b;
+            background: radial-gradient(circle at 50% 0%, #2a2f3a 0%, #161920 60%, #0d0f14 100%);
+            color: #e2e8f0;
+            background-attachment: fixed;
         }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 1);
+        /* Şeffaf Krom Cam Efekti */
+        .chrome-panel {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
-            transition: all 0.3s ease;
+        .chrome-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.2) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .glass-card:hover {
-            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.07);
-            border-color: rgba(203, 213, 225, 0.9);
+        .chrome-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
         }
 
-        .luxury-gradient-text {
-            background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+        .chrome-gradient-text {
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
 
-        .luxury-button {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(30, 41, 59, 0.2);
+        .chrome-button {
+            background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 50%, #64748b 100%);
+            color: #0f172a;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
             transition: all 0.3s ease;
         }
 
-        .luxury-button:hover {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
+        .chrome-button:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.25), inset 0 1px 0 rgba(255, 255, 255, 1);
             transform: translateY(-1px);
+        }
+
+        .chrome-input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .chrome-input:focus {
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            outline: none;
         }
 
         /* Animasyonlar */
@@ -73,7 +89,7 @@
 
         @keyframes flipCoin {
             0% { transform: rotateY(0deg) scale(1); }
-            50% { transform: rotateY(900deg) scale(1.2); }
+            50% { transform: rotateY(900deg) scale(1.3); }
             100% { transform: rotateY(1800deg) scale(1); }
         }
         .flipping-coin {
@@ -81,81 +97,100 @@
         }
 
         @keyframes reelSpin {
-            0% { transform: translateY(-5px); }
-            50% { transform: translateY(5px); }
+            0% { transform: translateY(-8px); }
+            50% { transform: translateY(8px); }
             100% { transform: translateY(0px); }
         }
         .spinning-reel {
             animation: reelSpin 0.15s infinite;
         }
+
+        /* Özel Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
     </style>
 </head>
 <body class="h-full flex flex-col overflow-x-hidden">
 
-    <!-- DDOS & BOT PROJECTION MODAL -->
-    <div id="ddos-challenge-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-md hidden px-4">
-        <div class="glass-panel p-8 rounded-3xl w-full max-w-md text-center space-y-5 border border-slate-200">
-            <div class="w-16 h-16 rounded-2xl bg-slate-100 border border-slate-300 flex items-center justify-center mx-auto text-slate-700 text-2xl shadow-inner">
-                <i class="fa-solid fa-shield-cat"></i>
+    <!-- DDOS & CAPTCHA GÜVENLİK MODALI -->
+    <div id="ddos-challenge-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-xl hidden px-4">
+        <div class="chrome-panel p-8 rounded-3xl w-full max-w-md text-center space-y-5 border border-white/20 shadow-2xl">
+            <div class="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center mx-auto text-slate-200 text-3xl shadow-inner">
+                <i class="fa-solid fa-shield-virus"></i>
             </div>
             <div>
-                <h3 class="text-xl font-bold text-slate-800">Güvenlik Doğrulaması</h3>
-                <p class="text-xs text-slate-500 mt-1">Sistemimizde anormallik veya yoğun istek tespit edildi. Lütfen bot olmadığınızı doğrulayın.</p>
+                <h3 class="text-xl font-black text-white tracking-wide">DDoS Shield & Bot Koruması</h3>
+                <p class="text-xs text-slate-400 mt-1">Sistemde yüksek frekanslı istek tespit edildi. Güvenlik doğrulamasını tamamlayın.</p>
             </div>
-            <div class="bg-slate-100 p-4 rounded-2xl border border-slate-200 text-slate-700 font-mono text-lg font-bold">
+            <div class="bg-black/50 p-4 rounded-2xl border border-white/10 text-white font-mono text-xl font-bold">
                 <span id="captcha-question">...</span>
             </div>
-            <input type="number" id="captcha-answer" placeholder="Cevabı girin" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-center text-slate-800 focus:outline-none focus:border-slate-600 transition">
-            <button onclick="verifyCaptcha()" class="w-full py-3 luxury-button font-semibold rounded-xl text-xs uppercase tracking-wider">Doğrula ve Devam Et</button>
+            <input type="number" id="captcha-answer" placeholder="Doğrulama Cevabı" class="w-full chrome-input rounded-xl px-4 py-3 text-sm text-center">
+            <button onclick="verifyCaptcha()" class="w-full py-3.5 chrome-button font-black rounded-xl text-xs uppercase tracking-wider">Doğrula ve Erişim Sağla</button>
         </div>
     </div>
 
     <!-- GİRİŞ / KAYIT EKRANI -->
-    <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-100/80 backdrop-blur-xl px-4">
-        <div class="glass-panel p-8 md:p-10 rounded-3xl w-full max-w-md relative overflow-hidden">
-            <div class="absolute -top-20 -right-20 w-44 h-44 bg-slate-300/40 rounded-full blur-3xl"></div>
+    <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-[#0b0d13]/90 backdrop-blur-2xl px-4">
+        <div class="chrome-panel p-8 md:p-10 rounded-3xl w-full max-w-md relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-52 h-52 bg-white/10 rounded-full blur-3xl"></div>
             
             <div class="text-center mb-8">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white border border-slate-200 shadow-sm mb-4 text-2xl text-slate-700">
-                    <i class="fa-solid fa-user-shield"></i>
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 border border-white/20 shadow-inner mb-4 text-2xl text-slate-200">
+                    <i class="fa-solid fa-user-secret"></i>
                 </div>
-                <h1 class="text-2xl font-extrabold tracking-tight luxury-gradient-text">Osint 904Yilmaz</h1>
-                <p class="text-xs text-slate-500 font-medium mt-1">Kurumsal Çözüm & İstihbarat Platformu</p>
+                <h1 class="text-3xl font-black tracking-tight chrome-gradient-text">Osint 904Yilmaz</h1>
+                <p class="text-xs text-slate-400 font-medium mt-1">Kurumsal Şeffaf Krom OSINT Suite</p>
             </div>
 
-            <div class="flex bg-slate-200/60 p-1.5 rounded-2xl mb-6 border border-slate-300/50">
-                <button onclick="switchTab('login')" id="tab-login" class="flex-1 py-2 text-xs font-bold rounded-xl bg-white text-slate-800 shadow-sm transition">Giriş Yap</button>
-                <button onclick="switchTab('register')" id="tab-register" class="flex-1 py-2 text-xs font-bold rounded-xl text-slate-500 hover:text-slate-800 transition">Kayıt Ol</button>
+            <div class="flex bg-black/40 p-1.5 rounded-2xl mb-6 border border-white/10">
+                <button onclick="switchTab('login')" id="tab-login" class="flex-1 py-2.5 text-xs font-bold rounded-xl bg-white/20 text-white transition">Giriş Yap</button>
+                <button onclick="switchTab('register')" id="tab-register" class="flex-1 py-2.5 text-xs font-bold rounded-xl text-slate-400 hover:text-white transition">Kayıt Ol</button>
             </div>
+
+            <!-- BOT HOOK (HONEYPOT FIELD FOR EXTRA DDOS PROTECTION) -->
+            <input type="text" id="bot-trap" class="hidden" autocomplete="off">
 
             <form id="form-login" onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1.5">Kullanıcı Adı</label>
-                    <input type="text" id="login-username" required placeholder="904Yilmaz Ozturk" class="w-full bg-white/80 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-500 transition shadow-sm">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Kullanıcı Adı</label>
+                    <input type="text" id="login-username" required placeholder="904Yilmaz Ozturk" class="w-full chrome-input rounded-xl px-4 py-3 text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1.5">Şifre</label>
-                    <input type="password" id="login-password" required placeholder="••••••••" class="w-full bg-white/80 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-500 transition shadow-sm">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Şifre</label>
+                    <input type="password" id="login-password" required placeholder="••••••••" class="w-full chrome-input rounded-xl px-4 py-3 text-sm">
                 </div>
-                <button type="submit" class="w-full mt-2 py-3.5 luxury-button font-bold text-xs uppercase tracking-wider rounded-xl">
+                <button type="submit" class="w-full mt-2 py-3.5 chrome-button font-black text-xs uppercase tracking-wider rounded-xl">
                     Sisteme Giriş Yap
                 </button>
             </form>
 
             <form id="form-register" onsubmit="handleRegister(event)" class="space-y-4 hidden">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1.5">Kullanıcı Adı</label>
-                    <input type="text" id="reg-username" required placeholder="kullanici_adi" class="w-full bg-white/80 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-500 transition shadow-sm">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Kullanıcı Adı</label>
+                    <input type="text" id="reg-username" required placeholder="kullanici_adi" class="w-full chrome-input rounded-xl px-4 py-3 text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1.5">E-posta Adresi</label>
-                    <input type="email" id="reg-email" required placeholder="ornek@mail.com" class="w-full bg-white/80 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-500 transition shadow-sm">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">E-posta Adresi</label>
+                    <input type="email" id="reg-email" required placeholder="ornek@mail.com" class="w-full chrome-input rounded-xl px-4 py-3 text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 mb-1.5">Şifre Belirle</label>
-                    <input type="password" id="reg-password" required placeholder="••••••••" class="w-full bg-white/80 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-500 transition shadow-sm">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Şifre Belirle</label>
+                    <input type="password" id="reg-password" required placeholder="••••••••" class="w-full chrome-input rounded-xl px-4 py-3 text-sm">
                 </div>
-                <button type="submit" class="w-full mt-2 py-3.5 luxury-button font-bold text-xs uppercase tracking-wider rounded-xl">
+                <button type="submit" class="w-full mt-2 py-3.5 chrome-button font-black text-xs uppercase tracking-wider rounded-xl">
                     Hesap Oluştur
                 </button>
             </form>
@@ -165,58 +200,61 @@
     <!-- ANA KONTROL PANELİ -->
     <div id="dashboard-screen" class="flex h-screen overflow-hidden opacity-0 pointer-events-none transition-opacity duration-500">
         <!-- SOL SIDEBAR -->
-        <aside class="w-72 glass-panel border-r border-slate-200/80 flex flex-col justify-between hidden md:flex shrink-0">
+        <aside class="w-72 chrome-panel border-r border-white/10 flex flex-col justify-between hidden md:flex shrink-0">
             <div>
-                <div class="p-5 border-b border-slate-200/60 flex items-center justify-between">
+                <div class="p-5 border-b border-white/10 flex items-center justify-between">
                     <div class="flex items-center space-x-3">
-                        <div class="relative w-11 h-11 rounded-2xl bg-white flex items-center justify-center border border-slate-200 overflow-hidden shadow-sm">
+                        <div class="relative w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center border border-white/20 overflow-hidden shadow-inner">
                             <img id="user-avatar-img" src="" class="w-full h-full object-cover hidden" alt="Avatar">
-                            <i id="user-avatar-icon" class="fa-solid fa-user-tie text-slate-600 text-lg"></i>
+                            <i id="user-avatar-icon" class="fa-solid fa-user-secret text-slate-300 text-lg"></i>
                         </div>
                         <div>
-                            <h4 id="user-display-name" class="text-sm font-extrabold text-slate-800 truncate max-w-[120px]">904Yilmaz Ozturk</h4>
-                            <span id="user-role-badge" class="text-[9px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-extrabold uppercase tracking-wider">OWNER</span>
+                            <h4 id="user-display-name" class="text-sm font-black text-white truncate max-w-[120px]">904Yilmaz Ozturk</h4>
+                            <span id="user-role-badge" class="text-[9px] bg-red-500/20 text-red-300 px-2 py-0.5 rounded-full font-black uppercase tracking-wider border border-red-500/30">OWNER</span>
                         </div>
                     </div>
-                    <button onclick="logout()" title="Çıkış Yap" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 transition flex items-center justify-center"><i class="fa-solid fa-power-off text-xs"></i></button>
+                    <button onclick="logout()" title="Çıkış Yap" class="w-8 h-8 rounded-xl bg-white/10 hover:bg-red-500/20 text-slate-300 hover:text-red-400 border border-white/10 transition flex items-center justify-center"><i class="fa-solid fa-power-off text-xs"></i></button>
                 </div>
 
-                <div class="p-4 space-y-6 overflow-y-auto max-h-[calc(100vh-110px)] text-xs font-medium">
+                <div class="p-4 space-y-6 overflow-y-auto max-h-[calc(100vh-180px)] text-xs font-medium">
                     <div class="space-y-1">
-                        <a href="#" onclick="showSection('home')" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl bg-slate-800 text-white font-semibold transition"><i class="fa-solid fa-chart-line w-4"></i><span>Ana Sayfa</span></a>
-                        <a href="#" onclick="showSection('buy-balance')" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-200/60 hover:text-slate-900 transition"><i class="fa-solid fa-wallet w-4"></i><span>Bakiye Satın Al</span></a>
-                        <a href="#" onclick="showSection('settings')" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-slate-600 hover:bg-slate-200/60 hover:text-slate-900 transition"><i class="fa-solid fa-sliders w-4"></i><span>Profil & Ayarlar</span></a>
-                        <a href="#" onclick="showSection('casino-lobby')" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-amber-700 font-semibold hover:bg-amber-100/50 transition"><i class="fa-solid fa-dice w-4"></i><span>2D Mobil Casino</span></a>
+                        <a href="#" onclick="showSection('home')" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl bg-white/15 text-white font-bold border border-white/20 transition"><i class="fa-solid fa-house w-4"></i><span>Ana Sayfa</span></a>
+                        <a href="#" onclick="showSection('buy-balance')" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-slate-300 hover:bg-white/10 hover:text-white transition"><i class="fa-solid fa-cart-shopping w-4"></i><span>Bakiye Satın Al</span></a>
+                        <a href="#" onclick="showSection('settings')" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-slate-300 hover:bg-white/10 hover:text-white transition"><i class="fa-solid fa-gear w-4"></i><span>Profil & Ayarlar</span></a>
+                        <a href="#" onclick="showSection('casino-lobby')" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-amber-400 font-bold hover:bg-amber-500/10 transition"><i class="fa-solid fa-gamepad w-4"></i><span>2D Mobil Casino</span></a>
                     </div>
 
                     <div id="admin-menu-section" class="hidden">
-                        <p class="text-[10px] font-extrabold text-slate-400 uppercase px-3.5 mb-2 tracking-wider">YÖNETİM</p>
+                        <p class="text-[10px] font-black text-slate-400 uppercase px-3.5 mb-2 tracking-wider">YÖNETİM</p>
                         <div class="space-y-1">
-                            <a href="#" onclick="showSection('admin-panel')" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-slate-700 bg-slate-200/40 hover:bg-slate-200 transition font-semibold"><i class="fa-solid fa-user-gear w-4"></i><span>Yönetici Paneli</span></a>
+                            <a href="#" onclick="showSection('admin-panel')" class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 transition font-bold"><i class="fa-solid fa-shield-halved w-4"></i><span>Yönetici Paneli</span></a>
                         </div>
                     </div>
 
                     <div>
-                        <p class="text-[10px] font-extrabold text-slate-400 uppercase px-3.5 mb-2 tracking-wider">SORGU ÇÖZÜMLERİ</p>
+                        <p class="text-[10px] font-black text-slate-400 uppercase px-3.5 mb-2 tracking-wider">SORGU ÇÖZÜMLERİ</p>
                         <div class="space-y-1">
-                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-600 hover:bg-slate-200/60 hover:text-slate-900 transition"><i class="fa-solid fa-database w-4"></i><span>Ücretsiz Sorgular</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-600 hover:bg-slate-200/60 hover:text-slate-900 transition"><i class="fa-solid fa-heart-pulse w-4"></i><span>Hayat Sorgu</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-600 hover:bg-slate-200/60 hover:text-slate-900 transition"><i class="fa-solid fa-mobile-screen w-4"></i><span>Telefon Çözümleri</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-600 hover:bg-slate-200/60 hover:text-slate-900 transition"><i class="fa-solid fa-map-location-dot w-4"></i><span>Adres Çözümleri</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-600 hover:bg-slate-200/60 hover:text-slate-900 transition"><i class="fa-solid fa-address-card w-4"></i><span>SGK Sorgu</span></a>
-                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-600 hover:bg-slate-200/60 hover:text-slate-900 transition"><i class="fa-solid fa-file-invoice w-4"></i><span>Vesika Çözümleri</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-white/10 hover:text-white transition"><i class="fa-solid fa-user w-4"></i><span>Ücretsiz Sorgular</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-white/10 hover:text-white transition"><i class="fa-solid fa-heart-pulse w-4"></i><span>Hayat Sorgu</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-white/10 hover:text-white transition"><i class="fa-solid fa-phone w-4"></i><span>Telefon Çözümleri</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-white/10 hover:text-white transition"><i class="fa-solid fa-location-dot w-4"></i><span>Adres Çözümleri</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-white/10 hover:text-white transition"><i class="fa-solid fa-id-card w-4"></i><span>SGK Sorgu</span></a>
+                            <a href="#" class="flex items-center space-x-3 px-3.5 py-2 rounded-xl text-slate-300 hover:bg-white/10 hover:text-white transition"><i class="fa-solid fa-file-lines w-4"></i><span>Vesika Çözümleri</span></a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- DDoS MONITOR FOOTER CARD -->
-            <div class="p-4 m-3 bg-white/70 rounded-2xl border border-slate-200 shadow-sm">
-                <div class="flex items-center justify-between text-[11px] mb-1 font-bold">
-                    <span class="text-slate-700 flex items-center"><i class="fa-solid fa-shield-virus text-emerald-600 mr-1.5"></i> DDoS Protection</span>
-                    <span class="text-emerald-600 font-extrabold uppercase">Aktif</span>
+            <!-- DDoS & TRAFİK KONTROL KARTI -->
+            <div class="p-4 m-3 bg-black/40 rounded-2xl border border-white/10 text-xs">
+                <div class="flex items-center justify-between font-bold mb-1">
+                    <span class="text-slate-300 flex items-center"><i class="fa-solid fa-shield-cat text-emerald-400 mr-1.5"></i> DDoS Shield</span>
+                    <span class="text-emerald-400 font-extrabold text-[10px] uppercase">KORUMADA</span>
                 </div>
-                <p class="text-[10px] text-slate-500">Rate Limiter & Bot Guard devrede.</p>
+                <div class="flex justify-between text-[10px] text-slate-400 mt-2 border-t border-white/5 pt-1.5">
+                    <span>İstek Trafiği:</span>
+                    <span id="rate-stat-count" class="font-mono text-white">0 req/s</span>
+                </div>
             </div>
         </aside>
 
@@ -225,211 +263,211 @@
             
             <!-- ÜST İSTATİSTİK KARTLARI -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="glass-card p-5 rounded-3xl flex flex-col justify-between">
+                <div class="chrome-card p-5 rounded-3xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
-                        <span id="stat-registered-users" class="text-2xl font-extrabold text-slate-800">1</span>
-                        <div class="w-10 h-10 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 shadow-inner"><i class="fa-solid fa-users text-sm"></i></div>
+                        <span id="stat-registered-users" class="text-2xl font-black text-white">1</span>
+                        <div class="w-10 h-10 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-slate-300"><i class="fa-solid fa-users text-sm"></i></div>
                     </div>
-                    <div class="mt-4"><p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">KAYITLI KULLANICILAR</p></div>
+                    <div class="mt-4"><p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">KAYITLI KULLANICILAR</p></div>
                 </div>
 
-                <div class="glass-card p-5 rounded-3xl flex flex-col justify-between">
+                <div class="chrome-card p-5 rounded-3xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
-                        <span id="stat-vip-users" class="text-2xl font-extrabold text-slate-800">0</span>
-                        <div class="w-10 h-10 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 shadow-inner"><i class="fa-solid fa-crown text-sm"></i></div>
+                        <span id="stat-vip-users" class="text-2xl font-black text-white">0</span>
+                        <div class="w-10 h-10 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-slate-300"><i class="fa-solid fa-star text-sm"></i></div>
                     </div>
-                    <div class="mt-4"><p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">VIP ÜYELER</p></div>
+                    <div class="mt-4"><p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">VIP ÜYELER</p></div>
                 </div>
 
-                <div class="glass-card p-5 rounded-3xl flex flex-col justify-between">
+                <div class="chrome-card p-5 rounded-3xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
                         <div>
-                            <span id="stat-user-status" class="text-sm font-extrabold text-slate-800">Kurucu (Owner)</span>
+                            <span id="stat-user-status" class="text-sm font-black text-white">Kurucu (Owner)</span>
                         </div>
-                        <div class="w-10 h-10 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 shadow-inner"><i class="fa-solid fa-id-badge text-sm"></i></div>
+                        <div class="w-10 h-10 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-slate-300"><i class="fa-solid fa-id-badge text-sm"></i></div>
                     </div>
-                    <div class="mt-4"><p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">ÜYELİK DURUMU</p></div>
+                    <div class="mt-4"><p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">ÜYELİK DURUMU</p></div>
                 </div>
 
-                <div class="glass-card p-5 rounded-3xl flex flex-col justify-between">
+                <div class="chrome-card p-5 rounded-3xl flex flex-col justify-between">
                     <div class="flex justify-between items-start">
-                        <span id="stat-user-balance" class="text-2xl font-extrabold text-slate-900">9999.00 <span class="text-xs font-normal text-slate-500">TL</span></span>
-                        <button onclick="quickAddBalance()" title="Hızlı Bakiye Ekle" class="w-9 h-9 rounded-2xl bg-slate-900 text-white flex items-center justify-center hover:bg-slate-800 transition shadow-md"><i class="fa-solid fa-plus text-xs"></i></button>
+                        <span id="stat-user-balance" class="text-2xl font-black text-amber-400">9999.00 <span class="text-xs font-normal text-slate-400">TL</span></span>
+                        <button onclick="quickAddBalance()" title="Hızlı Bakiye Ekle" class="w-9 h-9 rounded-2xl bg-amber-500/20 hover:bg-amber-500/40 border border-amber-500/30 text-amber-400 flex items-center justify-center transition"><i class="fa-solid fa-plus text-xs"></i></button>
                     </div>
-                    <div class="mt-4"><p class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">TOPLAM BAKİYE</p></div>
+                    <div class="mt-4"><p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">TOPLAM BAKİYE</p></div>
                 </div>
             </div>
 
             <!-- 2D CASINO LOBİSİ -->
-            <div id="section-casino-lobby" class="glass-card p-6 md:p-8 rounded-3xl space-y-6 hidden">
-                <div class="flex items-center justify-between border-b border-slate-200/80 pb-4">
+            <div id="section-casino-lobby" class="chrome-card p-6 md:p-8 rounded-3xl space-y-6 hidden border border-amber-500/30">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
                     <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-gamepad text-slate-700 text-2xl"></i>
+                        <i class="fa-solid fa-gamepad text-amber-400 text-2xl"></i>
                         <div>
-                            <h3 class="text-lg font-extrabold text-slate-800">2D Mobil Casino Salonu</h3>
-                            <p class="text-xs text-slate-500">Lüks tasarımlı animasyonlu oyunlardan birini seçin</p>
+                            <h3 class="text-lg font-black text-white">2D Mobil Casino Lobi</h3>
+                            <p class="text-xs text-slate-400">Şeffaf krom temalı 4 animasyonlu mini casino oyunu</p>
                         </div>
                     </div>
-                    <button onclick="quickAddBalance()" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm hover:bg-slate-800">+ Hızlı Bakiye Yükle</button>
+                    <button onclick="quickAddBalance()" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 px-4 py-2 rounded-xl text-xs font-bold transition">+ Hızlı Bakiye Yükle</button>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div onclick="openGame('slot')" class="bg-white p-6 rounded-3xl border border-slate-200 hover:border-slate-400 transition duration-300 cursor-pointer shadow-sm hover:shadow-md flex flex-col items-center text-center space-y-4">
-                        <div class="w-16 h-16 rounded-2xl bg-amber-50 flex items-center justify-center text-3xl border border-amber-200">🎰</div>
+                    <div onclick="openGame('slot')" class="bg-gradient-to-br from-black/60 to-slate-900/80 p-6 rounded-3xl border border-white/10 hover:border-amber-400/50 transition duration-300 cursor-pointer shadow-xl flex flex-col items-center text-center space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 text-3xl border border-amber-500/30">🎰</div>
                         <div>
-                            <h4 class="font-extrabold text-slate-800 text-base">Vegas Slots 2D</h4>
-                            <p class="text-xs text-slate-500 mt-1">Dönen 3'lü dikey makara animasyonu</p>
+                            <h4 class="font-black text-white text-base">Vegas Slots 2D</h4>
+                            <p class="text-xs text-slate-400 mt-1">Dönen 3'lü dikey makara animasyonlu slot oyunu</p>
                         </div>
-                        <span class="px-4 py-1.5 bg-slate-900 text-white font-bold text-xs rounded-xl shadow-sm">OYNA (5X)</span>
+                        <span class="px-4 py-1.5 bg-amber-500 text-black font-black text-xs rounded-xl shadow-lg">OYNA (5X)</span>
                     </div>
 
-                    <div onclick="openGame('wheel')" class="bg-white p-6 rounded-3xl border border-slate-200 hover:border-slate-400 transition duration-300 cursor-pointer shadow-sm hover:shadow-md flex flex-col items-center text-center space-y-4">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center text-3xl border border-emerald-200">🎡</div>
+                    <div onclick="openGame('wheel')" class="bg-gradient-to-br from-black/60 to-slate-900/80 p-6 rounded-3xl border border-white/10 hover:border-emerald-400/50 transition duration-300 cursor-pointer shadow-xl flex flex-col items-center text-center space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-3xl border border-emerald-500/30">🎡</div>
                         <div>
-                            <h4 class="font-extrabold text-slate-800 text-base">Şanslı Çark 2D</h4>
-                            <p class="text-xs text-slate-500 mt-1">Dönen animasyonlu çark & çarpanlar</p>
+                            <h4 class="font-black text-white text-base">Şanslı Çark 2D</h4>
+                            <p class="text-xs text-slate-400 mt-1">Dönen animasyonlu çark ve çarpanlar</p>
                         </div>
-                        <span class="px-4 py-1.5 bg-slate-900 text-white font-bold text-xs rounded-xl shadow-sm">ÇARKI ÇEVİR</span>
+                        <span class="px-4 py-1.5 bg-emerald-500 text-black font-black text-xs rounded-xl shadow-lg">ÇARKI ÇEVİR</span>
                     </div>
 
-                    <div onclick="openGame('coin')" class="bg-white p-6 rounded-3xl border border-slate-200 hover:border-slate-400 transition duration-300 cursor-pointer shadow-sm hover:shadow-md flex flex-col items-center text-center space-y-4">
-                        <div class="w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center text-3xl border border-indigo-200">🪙</div>
+                    <div onclick="openGame('coin')" class="bg-gradient-to-br from-black/60 to-slate-900/80 p-6 rounded-3xl border border-white/10 hover:border-indigo-400/50 transition duration-300 cursor-pointer shadow-xl flex flex-col items-center text-center space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-3xl border border-indigo-500/30">🪙</div>
                         <div>
-                            <h4 class="font-extrabold text-slate-800 text-base">3D Yazı - Tura</h4>
-                            <p class="text-xs text-slate-500 mt-1">Takla atan özel para ikilisi</p>
+                            <h4 class="font-black text-white text-base">3D Yazı - Tura</h4>
+                            <p class="text-xs text-slate-400 mt-1">Takla atan animasyonlu para düellosu</p>
                         </div>
-                        <span class="px-4 py-1.5 bg-slate-900 text-white font-bold text-xs rounded-xl shadow-sm">BAHİS YAP (2X)</span>
+                        <span class="px-4 py-1.5 bg-indigo-500 text-white font-black text-xs rounded-xl shadow-lg">BAHİS YAP (2X)</span>
                     </div>
 
-                    <div onclick="openGame('dice')" class="bg-white p-6 rounded-3xl border border-slate-200 hover:border-slate-400 transition duration-300 cursor-pointer shadow-sm hover:shadow-md flex flex-col items-center text-center space-y-4">
-                        <div class="w-16 h-16 rounded-2xl bg-rose-50 flex items-center justify-center text-3xl border border-rose-200">🎲</div>
+                    <div onclick="openGame('dice')" class="bg-gradient-to-br from-black/60 to-slate-900/80 p-6 rounded-3xl border border-white/10 hover:border-rose-400/50 transition duration-300 cursor-pointer shadow-xl flex flex-col items-center text-center space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-rose-500/20 flex items-center justify-center text-rose-400 text-3xl border border-rose-500/30">🎲</div>
                         <div>
-                            <h4 class="font-extrabold text-slate-800 text-base">Çift Zar Arena</h4>
-                            <p class="text-xs text-slate-500 mt-1">Çalkalanan lüks zarlar</p>
+                            <h4 class="font-black text-white text-base">Çift Zar Arena</h4>
+                            <p class="text-xs text-slate-400 mt-1">Çalkalanan zarlar ve yüksek skorlar</p>
                         </div>
-                        <span class="px-4 py-1.5 bg-slate-900 text-white font-bold text-xs rounded-xl shadow-sm">ZAR AT</span>
+                        <span class="px-4 py-1.5 bg-rose-500 text-white font-black text-xs rounded-xl shadow-lg">ZAR AT</span>
                     </div>
                 </div>
             </div>
 
             <!-- TEKİL OYUN EKRANI -->
-            <div id="section-game-play" class="glass-card p-6 md:p-8 rounded-3xl space-y-6 hidden max-w-2xl mx-auto relative">
-                <button onclick="showSection('casino-lobby')" class="absolute top-6 left-6 text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold px-3.5 py-2 rounded-xl flex items-center transition"><i class="fa-solid fa-arrow-left mr-1.5"></i> Lobiye Dön</button>
+            <div id="section-game-play" class="chrome-card p-6 md:p-8 rounded-3xl space-y-6 hidden border border-amber-500/30 max-w-2xl mx-auto relative">
+                <button onclick="showSection('casino-lobby')" class="absolute top-6 left-6 text-xs bg-white/10 hover:bg-white/20 text-white px-3.5 py-2 rounded-xl flex items-center transition border border-white/10"><i class="fa-solid fa-arrow-left mr-1.5"></i> Lobiye Dön</button>
                 
                 <!-- OYUN 1: SLOT -->
                 <div id="game-slot" class="space-y-6 pt-8 text-center hidden">
-                    <h3 class="text-xl font-extrabold text-slate-800">🎰 VEGAS SLOTS 2D</h3>
-                    <div class="bg-slate-900 p-8 rounded-3xl shadow-xl relative border border-slate-800">
-                        <div class="flex justify-center space-x-4 text-5xl font-mono bg-black/60 p-6 rounded-2xl border border-slate-700">
-                            <div id="reel1" class="w-16 h-20 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-inner">🍒</div>
-                            <div id="reel2" class="w-16 h-20 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-inner">🍋</div>
-                            <div id="reel3" class="w-16 h-20 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-600 shadow-inner">🔔</div>
+                    <h3 class="text-xl font-black text-amber-400">🎰 VEGAS SLOTS 2D</h3>
+                    <div class="bg-black/80 p-8 rounded-3xl border border-white/10 shadow-2xl relative">
+                        <div class="flex justify-center space-x-4 text-5xl font-mono bg-black p-6 rounded-2xl border border-white/10 shadow-inner">
+                            <div id="reel1" class="w-16 h-20 bg-slate-900 rounded-xl flex items-center justify-center border border-white/10">🍒</div>
+                            <div id="reel2" class="w-16 h-20 bg-slate-900 rounded-xl flex items-center justify-center border border-white/10">🍋</div>
+                            <div id="reel3" class="w-16 h-20 bg-slate-900 rounded-xl flex items-center justify-center border border-white/10">🔔</div>
                         </div>
                         <div id="slot-status" class="mt-4 text-xs font-bold text-slate-300 h-6">Bahis miktarınızı belirleyin ve çevirin!</div>
                     </div>
                     <div class="flex items-center space-x-3 justify-center">
-                        <input type="number" id="play-slot-bet" value="100" min="10" class="w-32 bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-center text-slate-800 focus:outline-none focus:border-slate-600 font-bold">
-                        <button onclick="runSlotAnimation()" class="px-8 py-3.5 luxury-button font-extrabold rounded-xl text-xs uppercase tracking-wider">ÇEVİR</button>
+                        <input type="number" id="play-slot-bet" value="100" min="10" class="w-32 chrome-input rounded-xl px-4 py-3 text-sm text-center font-bold">
+                        <button onclick="runSlotAnimation()" class="px-8 py-3.5 chrome-button font-black rounded-xl text-xs uppercase tracking-wider">ÇEVİR</button>
                     </div>
                 </div>
 
                 <!-- OYUN 2: ÇARK -->
                 <div id="game-wheel" class="space-y-6 pt-8 text-center hidden">
-                    <h3 class="text-xl font-extrabold text-slate-800">🎡 ŞANSLI ÇARK</h3>
+                    <h3 class="text-xl font-black text-emerald-400">🎡 ŞANSLI ÇARK</h3>
                     <div class="relative w-64 h-64 mx-auto flex items-center justify-center">
-                        <div id="wheel-body" class="w-56 h-56 rounded-full border-4 border-slate-300 bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 flex items-center justify-center text-4xl shadow-2xl transition-transform duration-1000">
+                        <div id="wheel-body" class="w-56 h-56 rounded-full border-4 border-emerald-400/40 bg-gradient-to-tr from-slate-900 via-emerald-950 to-slate-900 flex items-center justify-center text-4xl shadow-2xl transition-transform duration-1000">
                             🎯
                         </div>
-                        <div class="absolute -top-2 text-2xl text-slate-800">▼</div>
+                        <div class="absolute -top-2 text-2xl text-amber-400">▼</div>
                     </div>
-                    <div id="wheel-status" class="text-xs font-bold text-slate-600 h-6">Çarkı çevirin ve çarpanı kapın!</div>
+                    <div id="wheel-status" class="text-xs font-bold text-slate-300 h-6">Çarkı çevirin ve çarpanı kapın!</div>
                     <div class="flex items-center space-x-3 justify-center">
-                        <input type="number" id="play-wheel-bet" value="100" min="10" class="w-32 bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-center text-slate-800 focus:outline-none focus:border-slate-600 font-bold">
-                        <button onclick="runWheelAnimation()" class="px-8 py-3.5 luxury-button font-extrabold rounded-xl text-xs uppercase tracking-wider">ÇARKI ÇEVİR</button>
+                        <input type="number" id="play-wheel-bet" value="100" min="10" class="w-32 chrome-input rounded-xl px-4 py-3 text-sm text-center font-bold">
+                        <button onclick="runWheelAnimation()" class="px-8 py-3.5 chrome-button font-black rounded-xl text-xs uppercase tracking-wider">ÇARKI ÇEVİR</button>
                     </div>
                 </div>
 
                 <!-- OYUN 3: YAZI TURA -->
                 <div id="game-coin" class="space-y-6 pt-8 text-center hidden">
-                    <h3 class="text-xl font-extrabold text-slate-800">🪙 3D YAZI - TURA</h3>
+                    <h3 class="text-xl font-black text-indigo-400">🪙 3D YAZI - TURA</h3>
                     <div class="py-8">
-                        <div id="coin-body" class="w-28 h-28 mx-auto rounded-full bg-gradient-to-tr from-slate-200 to-white border-4 border-slate-300 flex items-center justify-center text-2xl shadow-xl text-slate-800 font-extrabold">
+                        <div id="coin-body" class="w-28 h-28 mx-auto rounded-full bg-gradient-to-tr from-slate-200 to-slate-400 border-4 border-white/40 flex items-center justify-center text-3xl shadow-2xl text-slate-900 font-black">
                             YAZI
                         </div>
                     </div>
-                    <div id="coin-status" class="text-xs font-bold text-slate-600 h-6">Tahmininizi seçin ve bahsi başlatın!</div>
+                    <div id="coin-status" class="text-xs font-bold text-slate-300 h-6">Tahmininizi seçin ve bahsi başlatın!</div>
                     <div class="space-y-3">
-                        <input type="number" id="play-coin-bet" value="100" min="10" class="w-32 bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-center text-slate-800 focus:outline-none focus:border-slate-600 font-bold mx-auto block">
+                        <input type="number" id="play-coin-bet" value="100" min="10" class="w-32 chrome-input rounded-xl px-4 py-3 text-sm text-center font-bold mx-auto block">
                         <div class="flex justify-center space-x-3">
-                            <button onclick="runCoinAnimation('YAZI')" class="px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs transition">YAZI SEÇ</button>
-                            <button onclick="runCoinAnimation('TURA')" class="px-6 py-2.5 bg-slate-600 hover:bg-slate-500 text-white font-bold rounded-xl text-xs transition">TURA SEÇ</button>
+                            <button onclick="runCoinAnimation('YAZI')" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-xs transition">YAZI SEÇ</button>
+                            <button onclick="runCoinAnimation('TURA')" class="px-6 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl text-xs transition">TURA SEÇ</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- OYUN 4: ZAR -->
                 <div id="game-dice" class="space-y-6 pt-8 text-center hidden">
-                    <h3 class="text-xl font-extrabold text-slate-800">🎲 ÇİFT ZAR ARENA</h3>
+                    <h3 class="text-xl font-black text-rose-400">🎲 ÇİFT ZAR ARENA</h3>
                     <div class="flex justify-center space-x-6 py-6 text-6xl">
-                        <div id="dice1" class="w-20 h-20 bg-white border-2 border-slate-300 rounded-2xl flex items-center justify-center shadow-md">⚀</div>
-                        <div id="dice2" class="w-20 h-20 bg-white border-2 border-slate-300 rounded-2xl flex items-center justify-center shadow-md">⚁</div>
+                        <div id="dice1" class="w-20 h-20 bg-slate-900 border border-white/20 rounded-2xl flex items-center justify-center shadow-xl">⚀</div>
+                        <div id="dice2" class="w-20 h-20 bg-slate-900 border border-white/20 rounded-2xl flex items-center justify-center shadow-xl">⚁</div>
                     </div>
-                    <div id="dice-status" class="text-xs font-bold text-slate-600 h-6">7 ve üstü toplam gelirse 2x kazanırsın!</div>
+                    <div id="dice-status" class="text-xs font-bold text-slate-300 h-6">7 ve üstü toplam gelirse 2x kazanırsın!</div>
                     <div class="flex items-center space-x-3 justify-center">
-                        <input type="number" id="play-dice-bet" value="100" min="10" class="w-32 bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-center text-slate-800 focus:outline-none focus:border-slate-600 font-bold">
-                        <button onclick="runDiceAnimation()" class="px-8 py-3.5 luxury-button font-extrabold rounded-xl text-xs uppercase tracking-wider">ZAR AT</button>
+                        <input type="number" id="play-dice-bet" value="100" min="10" class="w-32 chrome-input rounded-xl px-4 py-3 text-sm text-center font-bold">
+                        <button onclick="runDiceAnimation()" class="px-8 py-3.5 chrome-button font-black rounded-xl text-xs uppercase tracking-wider">ZAR AT</button>
                     </div>
                 </div>
             </div>
 
             <!-- AYARLAR VE PROFİL PANELİ -->
-            <div id="section-settings" class="glass-card p-6 md:p-8 rounded-3xl space-y-6 hidden">
-                <div class="flex items-center justify-between border-b border-slate-200/80 pb-4">
+            <div id="section-settings" class="chrome-card p-6 md:p-8 rounded-3xl space-y-6 hidden">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
                     <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-sliders text-slate-700 text-xl"></i>
-                        <h3 class="text-lg font-extrabold text-slate-800">Profil ve Hesap Ayarları</h3>
+                        <i class="fa-solid fa-gear text-slate-300 text-xl"></i>
+                        <h3 class="text-lg font-black text-white">Profil ve Hesap Ayarları</h3>
                     </div>
-                    <button onclick="quickAddBalance()" class="text-xs bg-slate-200 text-slate-800 px-3 py-1.5 rounded-lg font-bold hover:bg-slate-300 transition">+ Bakiye Ekle</button>
+                    <button onclick="quickAddBalance()" class="text-xs bg-amber-500/20 text-amber-400 px-3 py-1.5 rounded-lg border border-amber-500/30 font-bold hover:bg-amber-500/30 transition">+ Bakiye Ekle</button>
                 </div>
 
                 <form onsubmit="handleUpdateProfile(event)" class="space-y-4 max-w-lg">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Kullanıcı Adı</label>
-                        <input type="text" id="set-username" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-600 transition">
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Kullanıcı Adı</label>
+                        <input type="text" id="set-username" class="w-full chrome-input rounded-xl px-4 py-3 text-sm">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">E-posta Adresi</label>
-                        <input type="email" id="set-email" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-600 transition">
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">E-posta Adresi</label>
+                        <input type="email" id="set-email" class="w-full chrome-input rounded-xl px-4 py-3 text-sm">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Yeni Şifre</label>
-                        <input type="password" id="set-password" placeholder="••••••••" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-600 transition">
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Yeni Şifre</label>
+                        <input type="password" id="set-password" placeholder="••••••••" class="w-full chrome-input rounded-xl px-4 py-3 text-sm">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Profil Fotoğrafı URL (Resim Bağlantısı)</label>
-                        <input type="url" id="set-avatar" placeholder="https://ornek.com/avatar.png" class="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-600 transition">
+                        <label class="block text-xs font-semibold text-slate-300 mb-1.5">Profil Fotoğrafı URL (Resim Bağlantısı)</label>
+                        <input type="url" id="set-avatar" placeholder="https://ornek.com/avatar.png" class="w-full chrome-input rounded-xl px-4 py-3 text-sm">
                     </div>
-                    <button type="submit" class="py-3 px-6 luxury-button font-bold rounded-xl text-xs uppercase tracking-wider">
+                    <button type="submit" class="py-3 px-6 chrome-button font-black rounded-xl text-xs uppercase tracking-wider">
                         Değişiklikleri Kaydet
                     </button>
                 </form>
             </div>
 
-            <!-- ADMİN PANELİ -->
-            <div id="section-admin" class="glass-card p-6 md:p-8 rounded-3xl space-y-6 hidden">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200/80 pb-4">
+            <!-- ADMİN YÖNETİM PANELİ -->
+            <div id="section-admin" class="chrome-card p-6 md:p-8 rounded-3xl space-y-6 hidden border border-amber-500/30">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-4">
                     <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-user-gear text-slate-700 text-xl"></i>
-                        <h3 class="text-lg font-extrabold text-slate-800">Yönetici Paneli - Üye Yönetimi</h3>
+                        <i class="fa-solid fa-shield-halved text-amber-400 text-xl"></i>
+                        <h3 class="text-lg font-black text-white">Yönetici Paneli - Üye Yönetimi & Güvenlik Logs</h3>
                     </div>
                     <div class="relative w-full md:w-64">
                         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
-                        <input type="text" id="admin-user-search" oninput="renderAdminTable()" placeholder="Kullanıcı adı ara..." class="w-full bg-white border border-slate-300 rounded-xl py-2 pl-9 pr-3 text-xs text-slate-800 focus:outline-none focus:border-slate-600">
+                        <input type="text" id="admin-user-search" oninput="renderAdminTable()" placeholder="Kullanıcı adı ara..." class="w-full chrome-input rounded-xl py-2 pl-9 pr-3 text-xs">
                     </div>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs text-slate-700">
-                        <thead class="bg-slate-100 text-slate-500 uppercase text-[10px] font-extrabold tracking-wider border-b border-slate-200">
+                    <table class="w-full text-left text-xs text-slate-300">
+                        <thead class="bg-black/60 text-slate-400 uppercase text-[10px] font-black tracking-wider border-b border-white/10">
                             <tr>
                                 <th class="p-3">Kullanıcı Adı</th>
                                 <th class="p-3">E-posta</th>
@@ -439,81 +477,117 @@
                                 <th class="p-3">İşlemler</th>
                             </tr>
                         </thead>
-                        <tbody id="user-management-table" class="divide-y divide-slate-200"></tbody>
+                        <tbody id="user-management-table" class="divide-y divide-white/5"></tbody>
                     </table>
                 </div>
             </div>
 
             <!-- BAKİYE SATIN AL -->
-            <div id="section-buy" class="glass-card p-6 md:p-8 rounded-3xl space-y-5 hidden">
-                <div class="flex justify-between items-center border-b border-slate-200/80 pb-4">
-                    <h3 class="text-lg font-extrabold text-slate-800 flex items-center space-x-2"><i class="fa-solid fa-wallet text-slate-700"></i><span>Bakiye Yükleme ve Satın Al</span></h3>
-                    <button onclick="quickAddBalance()" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-slate-800 transition">+ Anında Test Bakiyesi Ekle</button>
+            <div id="section-buy" class="chrome-card p-6 md:p-8 rounded-3xl space-y-4 hidden">
+                <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                    <h3 class="text-lg font-black text-white flex items-center space-x-2"><i class="fa-solid fa-cart-shopping text-slate-300"></i><span>Bakiye Yükleme ve Satın Al</span></h3>
+                    <button onclick="quickAddBalance()" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 border border-amber-500/30 px-4 py-2 rounded-xl text-xs font-bold transition">+ Anında Test Bakiyesi Ekle</button>
                 </div>
-                <p class="text-xs text-slate-600">Bakiye yüklemek için doğrudan yukarıdaki butonu kullanabilir veya yöneticilerle iletişime geçebilirsiniz.</p>
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-2 text-xs shadow-sm">
-                    <p class="text-slate-800 font-bold">Yetkili Adresi:</p>
-                    <p class="text-slate-600 font-mono select-all font-semibold">DISCORD: DISCORD.GG/904</p>
+                <p class="text-xs text-slate-400">Bakiye yüklemek için doğrudan yukarıdaki butonu kullanabilir veya yöneticilerle iletişime geçebilirsiniz.</p>
+                <div class="bg-black/40 p-5 rounded-2xl border border-white/10 space-y-2 text-xs">
+                    <p class="text-white font-bold">Yetkili Adresi:</p>
+                    <p class="text-slate-300 font-mono select-all">DISCORD: DISCORD.GG/904</p>
                 </div>
             </div>
 
             <!-- ANA SAYFA VE ARAMA ÇUBUĞU -->
             <div id="section-home" class="space-y-6">
-                <div class="glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[260px] shadow-sm">
-                    <div class="relative z-10 max-w-2xl w-full">
-                        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight luxury-gradient-text flex items-center justify-center space-x-3">
+                <!-- ORTADAKİ DEV KROM ŞEFFAF ARAMA MOTORU -->
+                <div class="chrome-panel rounded-3xl p-8 md:p-12 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[280px] shadow-2xl border border-white/20">
+                    <div class="relative z-10 max-w-3xl w-full">
+                        <h2 class="text-3xl md:text-5xl font-black tracking-tight chrome-gradient-text flex items-center justify-center space-x-3">
                             <span>Osint 904Yilmaz</span>
-                            <i class="fa-solid fa-shield-halved text-slate-600 text-2xl"></i>
+                            <i class="fa-solid fa-user-secret text-slate-300 text-3xl"></i>
                         </h2>
-                        <p class="text-xs uppercase tracking-widest text-slate-500 font-extrabold mt-2">KURUMSAL İSTİHBARAT SİSTEMİ</p>
-                        <p class="text-xs italic text-slate-500 mt-1">"Ne kadar sessiz olursan, o kadar çok işitebilirsin"</p>
+                        <p class="text-xs uppercase tracking-widest text-slate-400 font-black mt-3">Gelişmiş Krom İstihbarat & IP Analiz Motoru</p>
+                        <p class="text-xs italic text-slate-400 mt-1">"Ne kadar sessiz olursan, o kadar çok işitebilirsin"</p>
 
+                        <!-- ARAMA ÇUBUĞU -->
                         <div class="mt-8 relative flex items-center">
-                            <i class="fa-solid fa-magnifying-glass absolute left-4 text-slate-400 text-sm"></i>
-                            <input type="text" id="search-input" placeholder="Discord ID, IP adresi (Örn: 8.8.8.8) veya arama terimi girin..." class="w-full bg-white/90 border border-slate-300 rounded-2xl py-4 pl-12 pr-32 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-slate-600 transition shadow-sm">
-                            <button onclick="performMultiSearch()" class="absolute right-2.5 px-4 py-2.5 rounded-xl luxury-button flex items-center justify-center text-xs font-bold transition"><i class="fa-solid fa-arrow-right mr-1.5"></i> Sorgula</button>
+                            <i class="fa-solid fa-shield-halved absolute left-4 text-slate-400 text-base"></i>
+                            <input type="text" id="search-input" placeholder="IP Adresi (Örn: 8.8.8.8 veya 1.1.1.1) ya da Discord ID girin..." class="w-full chrome-input rounded-2xl py-4 pl-12 pr-36 text-sm placeholder-slate-500 font-medium shadow-inner">
+                            <button onclick="performMultiSearch()" class="absolute right-2.5 px-5 py-2.5 rounded-xl chrome-button flex items-center justify-center text-xs font-black transition"><i class="fa-solid fa-arrow-right mr-1.5"></i> Sorgula</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- ARAMA SONUÇLARI -->
-                <div id="search-results-container" class="glass-card p-6 rounded-3xl space-y-4 hidden">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold text-slate-700"><i class="fa-solid fa-list-check text-slate-600 mr-2"></i>Çoklu API Sorgu Sonuçları</span>
-                        <span id="result-count" class="text-[10px] bg-slate-200 text-slate-700 px-2.5 py-0.5 rounded-full font-bold">Aktif Tarama</span>
+                <!-- DEV IP DETAY VE ÇOKLU API SONUÇ PANELERİ -->
+                <div id="search-results-container" class="chrome-card p-6 md:p-8 rounded-3xl space-y-6 hidden border border-white/20">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <span class="text-sm font-black text-white flex items-center"><i class="fa-solid fa-globe text-slate-300 mr-2.5 text-base"></i> IP & Multi-API Sorgu Sonuçları</span>
+                        <span id="result-count" class="text-[10px] bg-white/10 text-white px-3 py-1 rounded-full font-bold border border-white/10">5 Farklı API Aktif</span>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200 text-xs font-mono text-slate-700 max-h-60 overflow-y-auto shadow-sm">
-                            <p class="text-slate-800 font-bold mb-2 border-b pb-1">Elecus Discord API:</p>
+
+                    <!-- ORTADAKİ ÖZEL IP BİLGİLERİ ÖZET KARTI -->
+                    <div id="ip-details-master-card" class="bg-gradient-to-br from-black/80 to-slate-900/90 p-6 rounded-2xl border border-white/15 space-y-4 shadow-xl hidden">
+                        <h4 class="text-xs font-black text-amber-400 uppercase tracking-wider border-b border-white/10 pb-2"><i class="fa-solid fa-network-wired mr-2"></i>Hedef IP Adresi Detaylı Analiz Özeti</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-xs">
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                                <span class="text-[10px] text-slate-400 block font-semibold">IP ADRESİ</span>
+                                <span id="master-ip-val" class="font-mono text-white font-bold text-sm">-</span>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                                <span class="text-[10px] text-slate-400 block font-semibold">ÜLKE</span>
+                                <span id="master-ip-country" class="text-white font-bold">-</span>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                                <span class="text-[10px] text-slate-400 block font-semibold">ŞEHİR / BÖLGE</span>
+                                <span id="master-ip-city" class="text-white font-bold">-</span>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                                <span class="text-[10px] text-slate-400 block font-semibold">SERVİS SAĞLAYICI (ISP)</span>
+                                <span id="master-ip-isp" class="text-white font-bold truncate block">-</span>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                                <span class="text-[10px] text-slate-400 block font-semibold">ASN BILGISI</span>
+                                <span id="master-ip-asn" class="text-white font-bold truncate block">-</span>
+                            </div>
+                            <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+                                <span class="text-[10px] text-slate-400 block font-semibold">AÇIK PORTLAR</span>
+                                <span id="master-ip-ports" class="text-amber-400 font-bold font-mono">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ÇOKLU API RAW / JSON ÇIKTI KUTULARI -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div class="bg-black/50 p-4 rounded-2xl border border-white/10 text-xs font-mono text-slate-300 max-h-72 overflow-y-auto">
+                            <p class="text-slate-200 font-bold mb-2 border-b border-white/10 pb-1">Elecus Discord API:</p>
                             <div id="result-box-1">Sonuç bekleniyor...</div>
                         </div>
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200 text-xs font-mono text-slate-700 max-h-60 overflow-y-auto shadow-sm">
-                            <p class="text-slate-800 font-bold mb-2 border-b pb-1">Manus API:</p>
+                        <div class="bg-black/50 p-4 rounded-2xl border border-white/10 text-xs font-mono text-slate-300 max-h-72 overflow-y-auto">
+                            <p class="text-slate-200 font-bold mb-2 border-b border-white/10 pb-1">Manus API:</p>
                             <div id="result-box-2">Sonuç bekleniyor...</div>
                         </div>
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200 text-xs font-mono text-slate-700 max-h-60 overflow-y-auto space-y-1.5 shadow-sm">
-                            <p class="text-slate-800 font-bold mb-2 border-b pb-1"><i class="fa-solid fa-earth-americas mr-1"></i> Shodan & IP Analizi:</p>
+                        <div class="bg-black/50 p-4 rounded-2xl border border-white/10 text-xs font-mono text-slate-300 max-h-72 overflow-y-auto">
+                            <p class="text-emerald-400 font-bold mb-2 border-b border-white/10 pb-1"><i class="fa-solid fa-shield-halved mr-1"></i> Shodan & Global Tarama:</p>
                             <div id="result-box-shodan">Sonuç bekleniyor...</div>
                         </div>
                     </div>
                 </div>
 
+                <!-- ALT BİLGİ & DUYURULAR -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="glass-card p-6 rounded-3xl space-y-4">
+                    <div class="chrome-card p-6 rounded-3xl space-y-4">
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-2 text-xs font-bold text-slate-700"><i class="fa-solid fa-stream"></i><span>ACTIVITY FEED</span></div>
-                            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full font-bold">CANLI</span>
+                            <div class="flex items-center space-x-2 text-xs font-bold text-slate-300"><i class="fa-solid fa-list-ul"></i><span>ACTIVITY FEED</span></div>
+                            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-0.5 rounded-full font-bold border border-emerald-500/30">CANLI</span>
                         </div>
                         <div id="activity-feed-list" class="space-y-3 text-xs"></div>
                     </div>
 
-                    <div class="glass-card p-6 rounded-3xl space-y-4">
-                        <div class="flex items-center space-x-2 text-xs font-bold text-slate-700"><i class="fa-solid fa-bullhorn text-slate-700"></i><span>DUYURULAR</span></div>
+                    <div class="chrome-card p-6 rounded-3xl space-y-4">
+                        <div class="flex items-center space-x-2 text-xs font-bold text-slate-300"><i class="fa-solid fa-bullhorn text-slate-300"></i><span>SİSTEM DUYURULARI</span></div>
                         <div class="space-y-3">
-                            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-                                <span class="text-[9px] bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-extrabold">SİSTEM UPDATE</span>
-                                <h5 class="text-xs font-bold text-slate-800 mt-1">Lüks Kurumsal Tema & DDoS Protection</h5>
-                                <p class="text-[11px] text-slate-500 mt-0.5">Sistem teması Beyaz/Gri Lüks konsepte yükseltildi. DDoS Rate Limiter ve Captcha doğrulaması aktif edildi.</p>
+                            <div class="bg-black/40 p-4 rounded-2xl border border-white/5">
+                                <span class="text-[10px] bg-white/10 text-white px-2 py-0.5 rounded font-bold">V3.0 UPDATE</span>
+                                <h5 class="text-xs font-bold text-white mt-1">Şeffaf Krom Lüks Tasarım & DDoS Shield Yayında</h5>
+                                <p class="text-[11px] text-slate-400 mt-0.5">Şeffaf Krom arayüz, gelişmiş IP bilgileri motoru ve bot/DDoS shield entegre edildi.</p>
                             </div>
                         </div>
                     </div>
@@ -523,19 +597,30 @@
         </main>
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT GÜVENLİK VE VERİTABANI MOTORU -->
     <script>
-        // --- DDOS & RATE LIMITER MODULE ---
+        // --- ADVANCED DDOS & RATE LIMITER SHIELD ---
         const SecuritySystem = {
             requestLog: [],
-            MAX_REQUESTS_PER_WINDOW: 8, // 5 saniyede maksimum 8 istek
+            MAX_REQUESTS_PER_WINDOW: 6, // 5 saniyede maksimum 6 istek
             WINDOW_TIME_MS: 5000,
             captchaAnswer: null,
 
             checkRateLimit() {
+                // Bot Hook Kontrolü (Honeypot)
+                const botTrap = document.getElementById('bot-trap')?.value;
+                if (botTrap) {
+                    alert('Bot davranışı tespit edildi!');
+                    return false;
+                }
+
                 const now = Date.now();
-                this.requestLog = this.requestLog.filter(timestamp => now - timestamp < this.WINDOW_TIME_MS);
+                this.requestLog = this.requestLog.filter(t => now - t < this.WINDOW_TIME_MS);
                 this.requestLog.push(now);
+
+                // Canlı Metrik Güncelleme
+                const statElem = document.getElementById('rate-stat-count');
+                if (statElem) statElem.innerText = `${this.requestLog.length} req/5s`;
 
                 if (this.requestLog.length > this.MAX_REQUESTS_PER_WINDOW) {
                     this.triggerChallenge();
@@ -545,11 +630,11 @@
             },
 
             triggerChallenge() {
-                const num1 = Math.floor(Math.random() * 20) + 1;
-                const num2 = Math.floor(Math.random() * 20) + 1;
-                this.captchaAnswer = num1 + num2;
+                const n1 = Math.floor(Math.random() * 35) + 5;
+                const n2 = Math.floor(Math.random() * 35) + 5;
+                this.captchaAnswer = n1 + n2;
 
-                document.getElementById('captcha-question').innerText = `${num1} + ${num2} = ?`;
+                document.getElementById('captcha-question').innerText = `${n1} + ${n2} = ?`;
                 document.getElementById('captcha-answer').value = '';
                 document.getElementById('ddos-challenge-modal').classList.remove('hidden');
             }
@@ -560,14 +645,14 @@
             if (ans === SecuritySystem.captchaAnswer) {
                 SecuritySystem.requestLog = [];
                 document.getElementById('ddos-challenge-modal').classList.add('hidden');
-                alert('Güvenlik doğrulaması başarılı!');
+                alert('Güvenlik doğrulaması başarılı! Erişim sağlandı.');
             } else {
-                alert('Yanlış cevap! Lütfen tekrar deneyin.');
+                alert('Hatalı doğrulama! Tekrar deneyin.');
                 SecuritySystem.triggerChallenge();
             }
         }
 
-        // --- VERİTABANI & SİSTEM MANTIĞI ---
+        // --- VERİTABANI & LOCALSTORAGE MANTIĞI ---
         let db = JSON.parse(localStorage.getItem('osint_db')) || {
             users: [{ username: '904Yilmaz Ozturk', email: 'yilmaz@mail.com', password: '123', role: 'owner', balance: 9999, isVip: true, vipUntil: null, avatar: '' }],
             logs: []
@@ -595,8 +680,8 @@
             if (!SecuritySystem.checkRateLimit()) return;
             document.getElementById('form-login').classList.toggle('hidden', tab !== 'login');
             document.getElementById('form-register').classList.toggle('hidden', tab !== 'register');
-            document.getElementById('tab-login').className = tab === 'login' ? 'flex-1 py-2 text-xs font-bold rounded-xl bg-white text-slate-800 shadow-sm transition' : 'flex-1 py-2 text-xs font-bold rounded-xl text-slate-500 hover:text-slate-800 transition';
-            document.getElementById('tab-register').className = tab === 'register' ? 'flex-1 py-2 text-xs font-bold rounded-xl bg-white text-slate-800 shadow-sm transition' : 'flex-1 py-2 text-xs font-bold rounded-xl text-slate-500 hover:text-slate-800 transition';
+            document.getElementById('tab-login').className = tab === 'login' ? 'flex-1 py-2.5 text-xs font-bold rounded-xl bg-white/20 text-white transition' : 'flex-1 py-2.5 text-xs font-bold rounded-xl text-slate-400 hover:text-white transition';
+            document.getElementById('tab-register').className = tab === 'register' ? 'flex-1 py-2.5 text-xs font-bold rounded-xl bg-white/20 text-white transition' : 'flex-1 py-2.5 text-xs font-bold rounded-xl text-slate-400 hover:text-white transition';
         }
 
         function handleRegister(e) {
@@ -612,9 +697,9 @@
                 return;
             }
             db.users.push({ username: u, email: email, password: pass, role: 'user', balance: 500, isVip: false, vipUntil: null, avatar: '' });
-            db.logs.unshift({ user: u, action: 'Sisteme yeni kayıt oldu (+500 TL hediye)', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
+            db.logs.unshift({ user: u, action: 'Sisteme kayıt oldu (+500 TL hediye)', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) });
             saveDB();
-            alert('Kayıt başarılı! 500 TL hediyeniz tanımlandı, giriş yapabilirsiniz.');
+            alert('Kayıt başarılı! 500 TL hediyeniz hesabınıza tanımlandı.');
             switchTab('login');
         }
 
@@ -662,7 +747,14 @@
             
             const badge = document.getElementById('user-role-badge');
             badge.innerText = currentUser.role.toUpperCase();
-            
+            if(currentUser.role === 'owner') {
+                badge.className = "text-[9px] bg-red-500/20 text-red-300 px-2 py-0.5 rounded-full font-black uppercase tracking-wider border border-red-500/30";
+            } else if(currentUser.role === 'admin') {
+                badge.className = "text-[9px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full font-black uppercase tracking-wider border border-amber-500/30";
+            } else {
+                badge.className = "text-[9px] bg-slate-500/20 text-slate-300 px-2 py-0.5 rounded-full font-black uppercase tracking-wider border border-slate-500/30";
+            }
+
             const adminMenu = document.getElementById('admin-menu-section');
             if (currentUser.role === 'admin' || currentUser.role === 'owner') {
                 adminMenu.classList.remove('hidden');
@@ -705,17 +797,17 @@
 
             saveDB();
             initDashboard();
-            alert('Profil bilgileriniz güncellendi!');
+            alert('Profil bilgileriniz başarıyla güncellendi!');
         }
 
         function quickAddBalance() {
             if (!SecuritySystem.checkRateLimit()) return;
-            const amount = prompt('Hesabınıza ne kadar TL bakiye eklemek istersiniz?', '500');
+            const amount = prompt('Hesabınıza eklemek istediğiniz TL bakiyesini girin:', '500');
             if(amount && !isNaN(amount) && parseFloat(amount) > 0) {
                 const u = db.users.find(x => x.username === currentUser.username);
                 u.balance += parseFloat(amount);
                 saveDB();
-                alert(`${amount} TL hesabınıza başarıyla eklendi!`);
+                alert(`${amount} TL bakiye hesabınıza başarıyla tanımlandı!`);
             }
         }
 
@@ -725,7 +817,7 @@
 
             if (currentUser) {
                 const u = db.users.find(x => x.username === currentUser.username) || currentUser;
-                document.getElementById('stat-user-balance').innerHTML = `${u.balance.toFixed(2)} <span class="text-xs font-normal text-slate-500">TL</span>`;
+                document.getElementById('stat-user-balance').innerHTML = `${u.balance.toFixed(2)} <span class="text-xs font-normal text-slate-400">TL</span>`;
                 
                 let statusText = 'Standart Üye';
                 if(u.role === 'owner') statusText = 'Kurucu (Owner)';
@@ -736,7 +828,7 @@
             }
         }
 
-        // --- 2D MOBIL CASINO ---
+        // --- 2D MOBIL OYUNLARI ---
         function openGame(gameType) {
             if (!SecuritySystem.checkRateLimit()) return;
             showSection('game-play');
@@ -762,13 +854,13 @@
         function runSlotAnimation() {
             if (!SecuritySystem.checkRateLimit()) return;
             const bet = parseFloat(document.getElementById('play-slot-bet').value);
-            if (isNaN(bet) || bet <= 0) { alert('Geçerli bir bahis girin.'); return; }
+            if (isNaN(bet) || bet <= 0) { alert('Geçerli bir bahis miktar girin.'); return; }
             if (!checkDeduct(bet)) return;
 
             const reels = ['reel1', 'reel2', 'reel3'];
             const items = ['🍒', '🍋', '🔔', '💎', '7️⃣'];
             const status = document.getElementById('slot-status');
-            status.innerHTML = `<span class="text-slate-300 animate-pulse">Makaralar dönüyor...</span>`;
+            status.innerHTML = `<span class="text-amber-400 animate-pulse">Makaralar dönüyor...</span>`;
 
             reels.forEach(r => document.getElementById(r).classList.add('spinning-reel'));
 
@@ -786,9 +878,9 @@
                     const win = bet * 5;
                     db.users.find(x => x.username === currentUser.username).balance += win;
                     saveDB();
-                    status.innerHTML = `<span class="text-emerald-400 font-extrabold">TEBRİKLER! 🎉 ${win} TL KAZANDINIZ!</span>`;
+                    status.innerHTML = `<span class="text-emerald-400 font-black">TEBRİKLER! 🎉 ${win} TL KAZANDINIZ!</span>`;
                 } else {
-                    status.innerHTML = `<span class="text-rose-400 text-xs">Aynı 3 simgeyi bulamadınız, tekrar deneyin.</span>`;
+                    status.innerHTML = `<span class="text-rose-400 text-xs">Aynı 3 simgeyi bulamadınız. Tekrar deneyin.</span>`;
                 }
             }, 1200);
         }
@@ -801,7 +893,7 @@
 
             const wheel = document.getElementById('wheel-body');
             const status = document.getElementById('wheel-status');
-            status.innerHTML = `<span class="text-slate-700 animate-pulse font-bold">Çark dönüyor...</span>`;
+            status.innerHTML = `<span class="text-emerald-400 animate-pulse font-bold">Çark dönüyor...</span>`;
 
             wheel.classList.add('spinning-wheel');
 
@@ -815,11 +907,11 @@
                 saveDB();
 
                 if (mult > 1) {
-                    status.innerHTML = `<span class="text-emerald-700 font-extrabold">HARİKA! ${mult}x İLE ${win} TL KAZANDINIZ!</span>`;
+                    status.innerHTML = `<span class="text-emerald-400 font-black">${mult}x ÇARPAN İLE ${win} TL KAZANDINIZ!</span>`;
                 } else if (mult > 0) {
-                    status.innerHTML = `<span class="text-amber-700 font-bold">${mult}x Çarpan! ${win} TL İade Edildi.</span>`;
+                    status.innerHTML = `<span class="text-amber-400 font-bold">${mult}x Çarpan! ${win} TL İade Edildi.</span>`;
                 } else {
-                    status.innerHTML = `<span class="text-rose-700 font-bold">Çark boş geçti, üzgünüz!</span>`;
+                    status.innerHTML = `<span class="text-rose-400 font-bold">Çark pas geçti, kazanamadınız!</span>`;
                 }
             }, 3000);
         }
@@ -832,7 +924,7 @@
 
             const coin = document.getElementById('coin-body');
             const status = document.getElementById('coin-status');
-            status.innerHTML = `<span class="text-slate-700 animate-pulse font-bold">Para havada dönüyor...</span>`;
+            status.innerHTML = `<span class="text-indigo-400 animate-pulse font-bold">Para dönüyor...</span>`;
 
             coin.classList.add('flipping-coin');
 
@@ -845,9 +937,9 @@
                     const win = bet * 2;
                     db.users.find(x => x.username === currentUser.username).balance += win;
                     saveDB();
-                    status.innerHTML = `<span class="text-emerald-700 font-extrabold">DOĞRU TAHMİN! ${win} TL KAZANDINIZ! 🚀</span>`;
+                    status.innerHTML = `<span class="text-emerald-400 font-black">DOĞRU TAHMİN! ${win} TL KAZANDINIZ! 🚀</span>`;
                 } else {
-                    status.innerHTML = `<span class="text-rose-700 font-bold">${result} Geldi! Yanlış tahmin ettiniz.</span>`;
+                    status.innerHTML = `<span class="text-rose-400 font-bold">${result} Geldi! Yanlış tahmin.</span>`;
                 }
             }, 1500);
         }
@@ -859,7 +951,7 @@
             if (!checkDeduct(bet)) return;
 
             const status = document.getElementById('dice-status');
-            status.innerHTML = `<span class="text-slate-700 animate-pulse font-bold">Zarlar atılıyor...</span>`;
+            status.innerHTML = `<span class="text-rose-400 animate-pulse font-bold">Zarlar atılıyor...</span>`;
 
             const faces = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
             const d1 = Math.floor(Math.random() * 6) + 1;
@@ -874,13 +966,14 @@
                     const win = bet * 2;
                     db.users.find(x => x.username === currentUser.username).balance += win;
                     saveDB();
-                    status.innerHTML = `<span class="text-emerald-700 font-extrabold">TOPLAM ${total}! 2x Kazandınız (${win} TL)! 🏆</span>`;
+                    status.innerHTML = `<span class="text-emerald-400 font-black">TOPLAM ${total}! 2x Kazandınız (${win} TL)! 🏆</span>`;
                 } else {
-                    status.innerHTML = `<span class="text-rose-700 font-bold">Toplam ${total} geldi (7 Altı), kaybettiniz.</span>`;
+                    status.innerHTML = `<span class="text-rose-400 font-bold">Toplam ${total} geldi (7 Altı), kaybettiniz.</span>`;
                 }
             }, 800);
         }
 
+        // --- YÖNETİM PANELSİ ---
         function renderAdminTable() {
             if (currentUser.role !== 'admin' && currentUser.role !== 'owner') return;
             const tbody = document.getElementById('user-management-table');
@@ -902,15 +995,15 @@
 
                 tbody.innerHTML += `
                     <tr>
-                        <td class="p-3 font-bold text-slate-800">${u.username}</td>
-                        <td class="p-3 text-slate-500">${u.email || '-'}</td>
-                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-extrabold ${u.role === 'owner' ? 'bg-slate-800 text-white' : (u.role === 'admin' ? 'bg-slate-600 text-white' : 'bg-slate-200 text-slate-700')}">${u.role.toUpperCase()}</span></td>
-                        <td class="p-3 font-mono font-semibold text-slate-800">${u.balance} TL</td>
-                        <td class="p-3 text-slate-700 font-mono font-semibold">${vipStr}</td>
+                        <td class="p-3 font-bold text-white">${u.username}</td>
+                        <td class="p-3 text-slate-400">${u.email || '-'}</td>
+                        <td class="p-3"><span class="px-2.5 py-0.5 rounded text-[10px] font-black ${u.role === 'owner' ? 'bg-red-500/20 text-red-300 border border-red-500/30' : (u.role === 'admin' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' : 'bg-slate-500/20 text-slate-300')}">${u.role.toUpperCase()}</span></td>
+                        <td class="p-3 font-mono text-amber-300 font-bold">${u.balance} TL</td>
+                        <td class="p-3 text-emerald-400 font-mono">${vipStr}</td>
                         <td class="p-3 space-x-1">
-                            <button onclick="adminAddBalance('${u.username}')" class="bg-slate-800 hover:bg-slate-700 text-white px-2 py-1 rounded-lg text-[10px] font-bold transition">+ Bakiye</button>
-                            <button onclick="adminSetVipDuration('${u.username}')" class="bg-slate-600 hover:bg-slate-500 text-white px-2 py-1 rounded-lg text-[10px] font-bold transition">${u.isVip ? 'VIP Düzenle' : 'VIP Ver'}</button>
-                            ${u.isVip ? `<button onclick="adminRemoveVip('${u.username}')" class="bg-rose-700 hover:bg-rose-800 text-white px-2 py-1 rounded-lg text-[10px] font-bold transition">VIP Al</button>` : ''}
+                            <button onclick="adminAddBalance('${u.username}')" class="bg-white/10 hover:bg-white/20 text-white border border-white/10 px-2.5 py-1 rounded-lg text-[10px] font-bold transition">+ Bakiye</button>
+                            <button onclick="adminSetVipDuration('${u.username}')" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 px-2.5 py-1 rounded-lg text-[10px] font-bold transition">${u.isVip ? 'VIP Düzenle' : 'VIP Ver'}</button>
+                            ${u.isVip ? `<button onclick="adminRemoveVip('${u.username}')" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 px-2.5 py-1 rounded-lg text-[10px] font-bold transition">VIP Al</button>` : ''}
                         </td>
                     </tr>
                 `;
@@ -919,14 +1012,14 @@
 
         function adminAddBalance(username) {
             if (!SecuritySystem.checkRateLimit()) return;
-            const amount = prompt(`${username} kullanıcısına eklenecek TL miktarını girin:`, '100');
+            const amount = prompt(`${username} kullanıcısına eklenecek TL bakiyesini girin:`, '100');
             if (amount && !isNaN(amount)) {
                 const target = db.users.find(x => x.username === username);
                 if (target) {
                     target.balance += parseFloat(amount);
                     saveDB();
                     renderAdminTable();
-                    alert(`${username} kullanıcısına ${amount} TL eklendi!`);
+                    alert(`${username} hesabına ${amount} TL tanımlandı!`);
                 }
             }
         }
@@ -973,41 +1066,47 @@
             }
         }
 
+        // --- DEV ORTA IP SORGULAMA MOTORU & MULTI-API INTEGRATION ---
         async function performMultiSearch() {
             if (!SecuritySystem.checkRateLimit()) return;
 
             const query = document.getElementById('search-input').value.trim();
             const resultsContainer = document.getElementById('search-results-container');
+            const masterIpCard = document.getElementById('ip-details-master-card');
             const box1 = document.getElementById('result-box-1');
             const box2 = document.getElementById('result-box-2');
             const boxShodan = document.getElementById('result-box-shodan');
 
             if (!query) {
-                alert('Lütfen arama için bir ID, IP veya anahtar kelime girin.');
+                alert('Lütfen sorgulama yapmak için bir IP adresi veya Discord ID girin.');
                 return;
             }
 
             resultsContainer.classList.remove('hidden');
-            box1.innerHTML = '<span class="text-slate-500 animate-pulse">Sorgulanıyor...</span>';
-            box2.innerHTML = '<span class="text-slate-500 animate-pulse">Sorgulanıyor...</span>';
-            boxShodan.innerHTML = '<span class="text-slate-500 animate-pulse">IP ve Lokasyon taranıyor...</span>';
+            masterIpCard.classList.add('hidden');
+            box1.innerHTML = '<span class="text-slate-300 animate-pulse">Sorgulanıyor...</span>';
+            box2.innerHTML = '<span class="text-slate-300 animate-pulse">Sorgulanıyor...</span>';
+            boxShodan.innerHTML = '<span class="text-emerald-400 animate-pulse">IP ve Açık Portlar Taranıyor...</span>';
 
+            // 1. ELECUS DISCORD API
             try {
                 const res1 = await fetch(`https://elecus.dev/api/v1/discord_bilgi?id=${encodeURIComponent(query)}`);
                 const data1 = await res1.json();
                 box1.innerHTML = `<pre class="whitespace-pre-wrap">${JSON.stringify(data1, null, 2)}</pre>`;
             } catch (err) {
-                box1.innerHTML = `<span class="text-rose-600">Bağlantı Hatası / CORS</span>`;
+                box1.innerHTML = `<span class="text-rose-400">Elecus API Bağlantı Hatası / CORS</span>`;
             }
 
+            // 2. MANUS API
             try {
                 const res2 = await fetch(`https://jsonapi-shvjsbet.manus.space/api/search?id=${encodeURIComponent(query)}`);
                 const data2 = await res2.json();
                 box2.innerHTML = `<pre class="whitespace-pre-wrap">${JSON.stringify(data2, null, 2)}</pre>`;
             } catch (err) {
-                box2.innerHTML = `<span class="text-rose-600">Bağlantı Hatası / CORS</span>`;
+                box2.innerHTML = `<span class="text-rose-400">Manus API Bağlantı Hatası / CORS</span>`;
             }
 
+            // 3, 4 & 5. SHODAN + IP-API + IPINFO MULTI ENGINE TARAMASI (ORTADAKİ MASTER KART İÇİN)
             const shodanApiKey = "mwh2hjVumJO9Y7hIFKbMViaEk7alVest"; 
             try {
                 let ipData = null;
@@ -1021,11 +1120,13 @@
                         country: d.country_name || 'Bilinmiyor',
                         city: d.city || 'Belirtilmemiş',
                         isp: d.isp || d.org || 'Bilinmiyor',
+                        asn: d.asn || 'Yok',
                         org: d.org || 'Bilinmiyor',
                         os: d.os || 'Tespit Edilemedi',
-                        ports: d.ports ? d.ports.join(', ') : 'Yok'
+                        ports: d.ports ? d.ports.join(', ') : 'Port Yok / Kapalı'
                     };
                 } else {
+                    // Fallback 1: IP-API Engine
                     const fallbackRes = await fetch(`http://ip-api.com/json/${encodeURIComponent(query)}`);
                     const fd = await fallbackRes.json();
                     if(fd.status === 'success') {
@@ -1034,28 +1135,53 @@
                             country: fd.country,
                             city: fd.city,
                             isp: fd.isp,
+                            asn: fd.as || 'Bilinmiyor',
                             org: fd.org,
-                            os: 'Harici Tespit',
-                            ports: 'Açık port verisi Shodan dışı sorgulandı'
+                            os: 'Genel Tarama',
+                            ports: 'Portlar Shodan Dışı Sorgulandı'
                         };
                     } else {
-                        throw new Error("IP bilgisi bulunamadı.");
+                        // Fallback 2: IPInfo Engine
+                        const ipinfoRes = await fetch(`https://ipinfo.io/${encodeURIComponent(query)}/json`);
+                        const id = await ipinfoRes.json();
+                        if (id.ip) {
+                            ipData = {
+                                ip: id.ip,
+                                country: id.country,
+                                city: id.city,
+                                isp: id.org,
+                                asn: 'Harici Tarama',
+                                org: id.org,
+                                os: 'Harici Tespit',
+                                ports: 'Shodan API Key Limiti'
+                            };
+                        } else {
+                            throw new Error("Geçerli IP adresi bulunamadı.");
+                        }
                     }
                 }
 
+                // MASTER IP ÖZET KARTINI DOLDUR VE GÖSTER
+                document.getElementById('master-ip-val').innerText = ipData.ip;
+                document.getElementById('master-ip-country').innerText = ipData.country;
+                document.getElementById('master-ip-city').innerText = ipData.city;
+                document.getElementById('master-ip-isp').innerText = ipData.isp;
+                document.getElementById('master-ip-asn').innerText = ipData.asn;
+                document.getElementById('master-ip-ports').innerText = ipData.ports;
+                masterIpCard.classList.remove('hidden');
+
                 boxShodan.innerHTML = `
-                    <div class="space-y-1 text-slate-700">
-                        <p><strong class="text-slate-900">Hedef IP:</strong> <span class="font-mono text-slate-900 font-bold">${ipData.ip}</span></p>
-                        <p><strong class="text-slate-900">Ülke:</strong> ${ipData.country}</p>
-                        <p><strong class="text-slate-900">Şehir:</strong> ${ipData.city}</p>
-                        <p><strong class="text-slate-900">Sağlayıcı (ISP):</strong> ${ipData.isp}</p>
-                        <p><strong class="text-slate-900">Organizasyon:</strong> ${ipData.org}</p>
-                        <p><strong class="text-slate-900">İşletim Sistemi:</strong> ${ipData.os}</p>
-                        <p><strong class="text-slate-900">Portlar:</strong> <span class="text-amber-700 font-bold">${ipData.ports}</span></p>
+                    <div class="space-y-1.5 text-slate-200">
+                        <p><strong class="text-emerald-400">Hedef IP:</strong> <span class="font-mono text-white font-bold">${ipData.ip}</span></p>
+                        <p><strong class="text-emerald-400">Lokasyon:</strong> ${ipData.country} / ${ipData.city}</p>
+                        <p><strong class="text-emerald-400">ISP / Örgüt:</strong> ${ipData.isp}</p>
+                        <p><strong class="text-emerald-400">ASN:</strong> ${ipData.asn}</p>
+                        <p><strong class="text-emerald-400">İşletim Sistemi:</strong> ${ipData.os}</p>
+                        <p><strong class="text-emerald-400">Açık Portlar:</strong> <span class="text-amber-300 font-mono">${ipData.ports}</span></p>
                     </div>
                 `;
             } catch (err) {
-                boxShodan.innerHTML = `<span class="text-amber-700 font-semibold">Bilgi: Lütfen geçerli bir IP adresi aratın (Örn: 8.8.8.8). <br><small>(${err.message})</small></span>`;
+                boxShodan.innerHTML = `<span class="text-amber-400 font-semibold">IP Sorgulama Uyarısı: Doğrudan geçerli bir IP adresi arattığınızdan emin olun (Örn: 8.8.8.8). <br><small>(${err.message})</small></span>`;
             }
         }
 
@@ -1064,11 +1190,11 @@
             list.innerHTML = '';
             db.logs.slice(0, 5).forEach(log => {
                 list.innerHTML += `
-                    <div class="flex items-start space-x-3 bg-white p-3 rounded-2xl border border-slate-200 shadow-sm">
-                        <div class="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center shrink-0 border border-slate-200"><i class="fa-solid fa-user-check text-xs text-slate-700"></i></div>
+                    <div class="flex items-start space-x-3 bg-white/5 p-3 rounded-2xl border border-white/5">
+                        <div class="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/10"><i class="fa-solid fa-user-shield text-xs text-slate-300"></i></div>
                         <div>
-                            <p class="text-slate-800 font-bold">${log.user} <span class="font-normal text-slate-600">${log.action}</span></p>
-                            <span class="text-[10px] text-slate-400 font-semibold"><i class="fa-regular fa-clock mr-1"></i>${log.time}</span>
+                            <p class="text-white font-bold">${log.user} <span class="font-normal text-slate-400">${log.action}</span></p>
+                            <span class="text-[10px] text-slate-500 font-bold"><i class="fa-regular fa-clock mr-1"></i>${log.time}</span>
                         </div>
                     </div>
                 `;
